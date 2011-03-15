@@ -1,6 +1,10 @@
 ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),thunderc)
 ifneq ($(BUILD_TINY_ANDROID),true)
 
+## Ugly hack: override default libaudio
+MODULE.TARGET.SHARED_LIBRARIES.libaudio :=
+MODULE.TARGET.SHARED_LIBRARIES.libaudiopolicy :=
+
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
