@@ -9,6 +9,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
 PRODUCT_PACKAGES += \
+    libcamera \
     libaudio.thunderc \
     gps.thunderc \
     librs_jni \
@@ -90,7 +91,6 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_COPY_FILES += \
-    vendor/lge/thunderc/files/libcamera.so:system/lib/libcamera.so \
     vendor/lge/thunderc/files/liboemcamera.so:system/lib/liboemcamera.so \
     vendor/lge/thunderc/files/system/lib/libmmipl.so:system/lib/libmmipl.so \
     vendor/lge/thunderc/files/system/lib/libmmjpeg.so:system/lib/libmmjpeg.so \
