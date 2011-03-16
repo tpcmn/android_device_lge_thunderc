@@ -46,15 +46,6 @@
                       android:key="pref_key_sms_delivery_reports"
                       android:summary="@string/pref_summary_sms_delivery_reports"
                       android:title="@string/pref_title_sms_delivery_reports" />
-    <CheckBoxPreference android:defaultValue="true"
-                      android:key="pref_key_sms_split_160"
-                      android:summary="@string/pref_summary_sms_split_160"
-                      android:title="@string/pref_title_sms_split_160" />
-    <CheckBoxPreference android:defaultValue="false"
-                      android:key="pref_key_sms_split_counter"
-                      android:summary="@string/pref_summary_sms_split_counter"
-                      android:dependency="pref_key_sms_split_160"
-                      android:title="@string/pref_title_sms_split_counter" />
     <Preference android:key="pref_key_manage_sim_messages"
                       android:summary="@string/pref_summary_manage_sim_messages"
                       android:title="@string/pref_title_manage_sim_messages" />
@@ -150,17 +141,9 @@
                         android:title="@string/pref_title_mms_black_background"
                         android:summary="@string/pref_summary_mms_black_background"
                         android:defaultValue="false" />
-    <CheckBoxPreference android:key="pref_key_show_counter_always"
-                        android:title="@string/pref_title_show_counter_always"
-                        android:summary="@string/pref_summary_show_counter_always"
-                        android:defaultValue="false" />
     <CheckBoxPreference android:key="pref_key_mms_full_timestamp"
                         android:title="@string/pref_title_mms_full_timestamp"
                         android:summary="@string/pref_summary_mms_full_timestamp"
-                        android:defaultValue="false" />
-    <CheckBoxPreference android:key="pref_key_mms_use_sent_timestamp"
-                        android:title="@string/pref_title_mms_use_sent_timestamp"
-                        android:summary="@string/pref_summary_mms_use_sent_timestamp"
                         android:defaultValue="false" />
     <CheckBoxPreference android:key="pref_key_mms_only_mobile_numbers"
                         android:title="@string/pref_title_only_mobile_numbers"
@@ -179,17 +162,4 @@
                         android:defaultValue="false" />
   </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/prefs_templates_settings">
-        <Preference android:key="pref_key_templates_manage"
-            android:persistent="false" android:summary="@string/pref_summary_templates_manage"
-            android:title="@string/pref_title_templates_manage" />
-        <CheckBoxPreference android:key="pref_key_templates_show_gesture"
-            android:title="@string/pref_title_templates_show_gesture"
-            android:summary="@string/pref_summary_templates_show_gesture"
-            android:defaultValue="false" />
-        <ListPreference android:key="pref_key_templates_gestures_sensitivity"
-            android:title="@string/pref_title_template_gestures_sensitivity"
-            android:entries="@array/pref_templates_gestures_sensitivity_entries"
-            android:entryValues="@array/pref_templates_gestures_sensitivity_values" />
-    </PreferenceCategory>
 </PreferenceScreen>

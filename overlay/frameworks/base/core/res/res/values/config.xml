@@ -23,11 +23,6 @@
 
 	<bool name="config_batterySdCardAccessibility">true</bool>
 
-    <!-- Use the new fancy screen off animation.
-         Turn off to use new Gingerbread animation -->
-    <bool name="config_animateScreenLights">false</bool>
-    
-    <bool name="config_unplugTurnsOnScreen">true</bool>
     
 <!--    <string name="default_wallpaper_component">com.android.wallpaper/.nexus.NexusWallpaper</string> -->
     
@@ -115,14 +110,5 @@
         <item>20</item>
         <item>30</item>
     </integer-array>
-
-    <!-- Enables SIP on WIFI only -->
-    <bool name="config_sip_wifi_only">false</bool>
-
-    <!-- Enable the screen-on animation -->
-    <bool name="config_enableScreenOnAnimation">false</bool>
-
-    <!-- Enable the screen-off animation -->
-    <bool name="config_enableScreenOffAnimation">false</bool>
 
 </resources>
