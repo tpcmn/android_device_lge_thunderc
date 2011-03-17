@@ -876,8 +876,6 @@
     <string name="notification_ongoing_call_format">Current call (<xliff:g id="duration">%s</xliff:g>)</string>
     <!-- The "label" of the in-call Notification for a call that's on hold -->
     <string name="notification_on_hold">On hold</string>
-    <!-- The "label" of the in-call Notification for an incoming ringing call -->
-    <string name="notification_incoming_call">Incoming call</string>
     <!-- Label for the "Voicemail" notification item, when expanded. -->
     <string name="notification_voicemail_title">New voicemail</string>
     <!-- Label for the expanded "Voicemail" notification item,
@@ -924,9 +922,6 @@
     <string name="incall_error_supp_service_reject">Unable to reject call.</string>
     <!-- In-call screen: message displayed in an error dialog -->
     <string name="incall_error_supp_service_hangup">Unable to release call(s).</string>
-
-    <!-- In-call screen: "call type" indication for a SIP call [CHAR LIMIT=30]  -->
-    <string name="incall_call_type_label_sip">Internet call</string>
 
     <!-- Dialog title for the "radio enable" UI for emergency calls -->
     <string name="emergency_enable_radio_dialog_title">Emergency call</string>
