@@ -196,12 +196,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/cnd:system/bin/cnd
 
-# Kernel modules
-# PRODUCT_COPY_FILES += \
-#    device/lge/thunderc/files/kernel/$(SUB_MODEL)/ext2.ko:system/lib/modules/ext2.ko \
-#    device/lge/thunderc/files/kernel/$(SUB_MODEL)/ext4.ko:system/lib/modules/ext4.ko \
-#    device/lge/thunderc/files/kernel/$(SUB_MODEL)/mbcache.ko:system/lib/modules/mbcache.ko \
-
 PRODUCT_COPY_FILES += \
     device/lge/thunderc/files/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/lge/thunderc/files/etc/init.d/mvdalvik.sh:system/etc/init.d/01mvdalvik \
