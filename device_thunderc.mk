@@ -117,6 +117,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/vold.fstab:system/etc/vold.fstab \
 
+# Samba CIFS support, thanks for the module Bob! (bobzhome@cheerful.com)
+PRODUCT_COPY_FILES += \
+    device/lge/thunderc/files/kernel/$(SUB_MODEL)/cifs.ko:system/lib/modules/cifs.ko
+
 # Audio
 PRODUCT_COPY_FILES += \
     device/lge/thunderc/files/etc/AudioFilter.csv:system/etc/AudioFilter.csv \
