@@ -21,10 +21,7 @@ PRODUCT_PACKAGES += \
     e2fsck \
     SpareParts \
     CMWallpapers \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    MagicSmokeWallpapers \
-    VisualizationWallpapers
+    LiveWallpapersPicker
 
 DISABLE_DEXPREOPT := false
 
