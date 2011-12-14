@@ -226,9 +226,9 @@ struct msm_camera_cfg_cmd {
 #define CMD_AXI_CFG_PREVIEW		36
 #define CMD_AXI_CFG_VIDEO		37
 
-#define CMD_STATS_IHIST_ENABLE 38
-#define CMD_STATS_RS_ENABLE 39
-#define CMD_STATS_CS_ENABLE 40
+#define CMD_STATS_IHIST_ENABLE		38
+#define CMD_STATS_RS_ENABLE		39
+#define CMD_STATS_CS_ENABLE		40
 
 /* vfe config command: config command(from config thread)*/
 struct msm_vfe_cfg_cmd {
@@ -237,7 +237,7 @@ struct msm_vfe_cfg_cmd {
 	void *value;
 };
 
-#define MAX_CAMERA_ENABLE_NAME_LEN 32
+#define MAX_CAMERA_ENABLE_NAME_LEN	32
 struct camera_enable_cmd {
 	char name[MAX_CAMERA_ENABLE_NAME_LEN];
 };
@@ -390,7 +390,7 @@ struct msm_snapshot_pp_status {
 #define CFG_GET_PICT_P_PL		25
 #define CFG_GET_AF_MAX_STEPS		26
 #define CFG_GET_PICT_MAX_EXP_LC		27
-#define CFG_SEND_WB_INFO    28
+#define CFG_SEND_WB_INFO    		28
 #define CFG_MAX 			29
 
 /* LGE_CHANGE_S [junyeong.han@lge.com] Add CFG values for auto focus */
@@ -404,7 +404,7 @@ struct msm_snapshot_pp_status {
 #define CFG_AF_LOCKED		104
 #define CFG_AF_UNLOCKED		105
 
-#define CFG_SET_ISO			201
+#define CFG_SET_ISO		201
 #define CFG_SET_SCENE		202
 #endif
 /* LGE_CHANGE_E [junyeong.han@lge.com] */
@@ -434,9 +434,9 @@ struct msm_snapshot_pp_status {
 /* 2010-05-13: Add CAMERA_EFFECT values */
 #if defined (CONFIG_ISX005)
 #define CAMERA_EFFECT_NEGATIVE_SEPIA	9
-#define CAMERA_EFFECT_BLUE				10
-#define CAMERA_EFFECT_PASTEL			11
-#define CAMERA_EFFECT_MAX				12
+#define CAMERA_EFFECT_BLUE		10
+#define CAMERA_EFFECT_PASTEL		11
+#define CAMERA_EFFECT_MAX		12
 #else	/* 5330 origin */
 #define CAMERA_EFFECT_MAX		9
 #endif
@@ -490,24 +490,24 @@ struct sensor_cfg_data {
 	} cfg;
 };
 // LGE ejoon.kim@lge.com mode add
-#define CAMERA_YUV_WB_AUTO						1
-#define CAMERA_YUV_WB_INCANDESCENT			2
-#define CAMERA_YUV_WB_DAYLIGHT				3
-#define CAMERA_YUV_WB_FLUORESCENT			4
+#define CAMERA_YUV_WB_AUTO			1
+#define CAMERA_YUV_WB_INCANDESCENT		2
+#define CAMERA_YUV_WB_DAYLIGHT			3
+#define CAMERA_YUV_WB_FLUORESCENT		4
 #define CAMERA_YUV_WB_CLOUDY_DAYLIGHT		5
 
-#define CAMERA_YUV_ISO_AUTO		1
+#define CAMERA_YUV_ISO_AUTO			1
 #define CAMERA_YUV_ISO_800			2
 #define CAMERA_YUV_ISO_400			3
 #define CAMERA_YUV_ISO_200			4
 #define CAMERA_YUV_ISO_100			5
 
-#define CAMERA_SCENEMODE_AUTO 				1
-#define CAMERA_SCENEMODES_PORTRAIT 			2
+#define CAMERA_SCENEMODE_AUTO 			1
+#define CAMERA_SCENEMODES_PORTRAIT 		2
 #define CAMERA_SCENEMODES_LANDSCAPE 		3
-#define CAMERA_SCENEMODES_SPORTS 			4
-#define CAMERA_SCENEMODES_NIGHT 				5
-#define CAMERA_SCENEMODES_SUNSET 			6
+#define CAMERA_SCENEMODES_SPORTS 		4
+#define CAMERA_SCENEMODES_NIGHT 		5
+#define CAMERA_SCENEMODES_SUNSET 		6
 // LGE End
 
 #define GET_NAME			0

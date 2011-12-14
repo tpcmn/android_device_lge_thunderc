@@ -21,7 +21,7 @@ PRODUCT_PACKAGES += \
     e2fsck \
     SpareParts \
     CMWallpapers \
-    LiveWallpapersPicker
+    LiveWallpapersPicker\
 
 DISABLE_DEXPREOPT := false
 
@@ -31,7 +31,7 @@ PRODUCT_COPY_FILES += \
 
 # Publish that we support the live wallpaper feature.
 PRODUCT_COPY_FILES += \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml \
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -104,6 +104,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/lge/thunderc/files/kernel/$(SUB_MODEL)/wireless.ko:system/lib/modules/wireless.ko \
     device/lge/thunderc/files/kernel/$(SUB_MODEL)/tun.ko:system/lib/modules/tun.ko \
+    device/lge/thunderc/files/kernel/$(SUB_MODEL)/cifs.ko:system/lib/modules/cifs.ko \
     device/lge/thunderc/files/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/wl/nvram.txt:system/etc/wl/nvram.txt \
     device/lge/thunderc/files/etc/dhcpcd/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
@@ -114,10 +115,6 @@ PRODUCT_COPY_FILES += \
 # SD Card
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/vold.fstab:system/etc/vold.fstab \
-
-# Samba CIFS support, thanks for the module Bob! (bobzhome@cheerful.com)
-PRODUCT_COPY_FILES += \
-    device/lge/thunderc/files/kernel/$(SUB_MODEL)/cifs.ko:system/lib/modules/cifs.ko
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -199,6 +196,7 @@ PRODUCT_COPY_FILES += \
 
 # Let's use our own GPS config file
 PRODUCT_COPY_FILES += device/lge/thunderc/files/etc/gps.conf:system/etc/gps.conf
+PRODUCT_COPY_FILES += device/lge/thunderc/files/etc/SuplRootCert:system/etc/SuplRootCert
 
 $(call inherit-product, build/target/product/full.mk)
 
@@ -207,7 +205,7 @@ $(call inherit-product, build/target/product/full.mk)
 PRODUCT_LOCALES += mdpi
 
 PRODUCT_NAME := full_thunderc
-PRODUCT_BRAND := LGE
+PRODUCT_BRAND := sprint
 PRODUCT_DEVICE := thunderc
 PRODUCT_MANUFACTURER := LGE
 
@@ -220,6 +218,7 @@ endif
 
 ifeq ($(SUB_MODEL),LS670)
     # We're on Sprint
+    CDMA_BRAND := sprint
     CDMA_GOOGLE_BASE := android-sprint-us
     CDMA_CARRIER_ALPHA := Sprint
     CDMA_CARRIER_NUMERIC := 310120
@@ -265,6 +264,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/$(BLUETOOTH_FIRMWARE):system/bin/BCM4325.hcd
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.product.brand=$(CDMA_BRAND) \
     ro.com.google.clientidbase=$(CDMA_GOOGLE_BASE) \
     ro.cdma.home.operator.alpha=$(CDMA_CARRIER_ALPHA) \
     ro.cdma.home.operator.numeric=$(CDMA_CARRIER_NUMERIC) \
