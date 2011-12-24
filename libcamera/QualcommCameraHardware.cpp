@@ -233,9 +233,7 @@ static const camera_size_type picture_sizes[] = {
     { 2048, 1536 }, // 3MP QXGA
     { 1600, 1200 }, // 2MP UXGA
     { 1024,  768 }, // 1MP XGA
-    { 800,   600 }, // SVGA
     { 640,   480 }, // VGA
-    { 320,   240 }  // QVGA
 };
 static unsigned int PICTURE_SIZE_COUNT = sizeof(picture_sizes)/sizeof(camera_size_type);
 static const camera_size_type *picture_sizes_ptr;
@@ -1813,7 +1811,7 @@ bool QualcommCameraHardware::native_jpeg_encode(void)
 
    /* Set maker and model. Read the NOTICE before changing this */
    char model[PROP_VALUE_MAX];
-   const char *maker = "InferiorHumanOrgans";
+   const char *maker = "LG Optimus 3.2MP";
    int modelLen = 0;
 
    __system_property_get("ro.product.device", model);
