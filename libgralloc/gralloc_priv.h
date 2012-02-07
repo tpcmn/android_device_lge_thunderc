@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2008 The Android Open Source Project
- * Copyright (c) 2010, Code Aurora Forum. All rights reserved.
+ * Copyright (c) 2010-2011, Code Aurora Forum. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,14 +30,33 @@
 
 #include <linux/fb.h>
 
+#if defined(__cplusplus) && defined(HDMI_DUAL_DISPLAY)
+#include "overlayLib.h"
+#include "overlayLibUI.h"
+using namespace overlay;
+/*
+ * BYPASS_OV_CHANNEL_OPEN - bypass channel is open
+ * BYPASS_OV_CHANNEL_PENDING_CLOSE - disp_loop to close bypass channel
+ * BYPASS_OV_CHANNEL_CLOSED - bypass channel is closed
+ */
+enum { BYPASS_OV_CHANNEL_OPEN,
+          BYPASS_OV_CHANNEL_PENDING_CLOSE, BYPASS_OV_CHANNEL_CLOSED };
+#endif
+
 enum {
     /* gralloc usage bit indicating a pmem_adsp allocation should be used */
     GRALLOC_USAGE_PRIVATE_PMEM_ADSP = GRALLOC_USAGE_PRIVATE_0,
     GRALLOC_USAGE_PRIVATE_PMEM = GRALLOC_USAGE_PRIVATE_1,
+    GRALLOC_USAGE_PRIVATE_ASHMEM = GRALLOC_USAGE_PRIVATE_2,
 };
 
-#define NUM_BUFFERS 2
-#undef NO_SURFACEFLINGER_SWAPINTERVAL
+/* numbers of max buffers for page flipping */
+#define NUM_FRAMEBUFFERS_MIN 2
+#define NUM_FRAMEBUFFERS_MAX 3
+
+/* number of default bufers for page flipping */
+#define NUM_DEF_FRAME_BUFFERS 2
+#define NO_SURFACEFLINGER_SWAPINTERVAL
 #define INTERLACE_MASK 0x80
 /*****************************************************************************/
 #ifdef __cplusplus
@@ -140,13 +159,15 @@ enum {
 
 /* possible formats for 3D content*/
 enum {
-    HAL_NO_3D = 0x00,
-    HAL_3D_IN_LR_SIDE  = 0x10000,
-    HAL_3D_IN_LR_TOP   = 0x20000,
-    HAL_3D_IN_LR_INTERLEAVE = 0x40000,
-    HAL_3D_OUT_LR_SIDE  = 0x1,
-    HAL_3D_OUT_LR_TOP   = 0x2,
-    HAL_3D_OUT_LR_INTERLEAVE = 0x4
+    HAL_NO_3D                         = 0x0000,
+    HAL_3D_IN_SIDE_BY_SIDE_L_R        = 0x10000,
+    HAL_3D_IN_TOP_BOTTOM              = 0x20000,
+    HAL_3D_IN_INTERLEAVE              = 0x40000,
+    HAL_3D_IN_SIDE_BY_SIDE_R_L        = 0x80000,
+    HAL_3D_OUT_SIDE_BY_SIDE           = 0x1000,
+    HAL_3D_OUT_TOP_BOTTOM             = 0x2000,
+    HAL_3D_OUT_INTERLEAVE             = 0x4000,
+    HAL_3D_OUT_MONOSCOPIC             = 0x8000
 };
 
 /*****************************************************************************/
@@ -160,13 +181,71 @@ struct qbuf_t {
     int  idx;
 };
 
+enum buf_state {
+    SUB,
+    REF,
+    AVL
+};
+
 struct avail_t {
     pthread_mutex_t lock;
     pthread_cond_t cond;
 #ifdef __cplusplus
     bool is_avail;
+    buf_state state;
 #endif
 };
+
+
+#ifdef __cplusplus
+/* Store for shared data and synchronization */
+struct ThreadShared {
+    int w;
+    int h;
+    int format;
+    buffer_handle_t buffer;
+    bool isNewBuffer;
+    bool isBufferPosted;
+    bool isExitPending; //Feature close
+    bool isHDMIExitPending; //Only HDMI close
+    //New buffer arrival condition
+    pthread_mutex_t newBufferMutex;
+    pthread_cond_t newBufferCond;
+    //Buffer posted to display  condition, used instead of barrier
+    pthread_mutex_t bufferPostedMutex;
+    pthread_cond_t bufferPostedCond;
+
+    ThreadShared():w(0),h(0),format(0),buffer(0),isNewBuffer(false),
+            isBufferPosted(false), isExitPending(false),
+            isHDMIExitPending(false) {
+        pthread_mutex_init(&newBufferMutex, NULL);
+        pthread_mutex_init(&bufferPostedMutex, NULL);
+        pthread_cond_init(&newBufferCond, NULL);
+        pthread_cond_init(&bufferPostedCond, NULL);
+    }
+
+    void set(int w, int h, int format, buffer_handle_t buffer) {
+        this->w = w;
+        this->h = h;
+        this->format = format;
+        this->buffer = buffer;
+    }
+
+    void get(int& w, int& h, int& format, buffer_handle_t& buffer) {
+        w = this->w;
+        h = this->h;
+        format = this->format;
+        buffer = this->buffer;
+    }
+
+    void clear() {
+        w = h = format = 0;
+        buffer = 0;
+        isNewBuffer = isBufferPosted = isExitPending = \
+                isHDMIExitPending = false;
+    }
+};
+#endif
 
 struct private_module_t {
     gralloc_module_t base;
@@ -189,7 +268,7 @@ struct private_module_t {
     Queue<struct qbuf_t> disp; // non-empty when buffer is ready for display    
 #endif
     int currentIdx;
-    struct avail_t avail[NUM_BUFFERS];
+    struct avail_t avail[NUM_FRAMEBUFFERS_MAX];
     pthread_mutex_t qlock;
     pthread_cond_t qpost;
 
@@ -199,6 +278,38 @@ struct private_module_t {
         PRIV_MIN_SWAP_INTERVAL = 0,
         PRIV_MAX_SWAP_INTERVAL = 1,
     };
+#if defined(__cplusplus) && defined(HDMI_DUAL_DISPLAY)
+    Overlay* pobjOverlay;
+    int orientation;
+    bool videoOverlay;
+    uint32_t currentOffset;
+    bool enableHDMIOutput;
+    bool exitHDMIUILoop;
+    bool hdmiStateChanged;
+    pthread_mutex_t overlayLock;
+    pthread_cond_t overlayPost;
+    OverlayOrigRes<OverlayUI::FB0>* pOrigResPanel;
+    OverlayOrigRes<OverlayUI::FB1>* pOrigResTV;
+    bool isOrigResStarted;
+    ThreadShared ts;
+#endif
+
+#if defined(__cplusplus) && defined(SF_BYPASS)
+    /*
+     * Comp. bypass specific variables
+     * pobjOverlayUI - UI overlay channel for comp. bypass.
+     * overlayui_lock - mutex lock for synchronization between
+     *                  disp_loop and main thread to modify
+     *                  bypassChannelState
+     * bypassChannelState - Current Channel State
+     *                       - OPEN - bypass channel is open
+     *                       - PENDING_CLOSE - close channel pending
+     *                       - CLOSED - bypass channel is closed
+     */
+    OverlayUI* pobjOverlayUI;
+    pthread_mutex_t overlayui_lock;
+    int bypassChannelState;
+#endif
 };
 
 /*****************************************************************************/
@@ -216,6 +327,7 @@ struct private_handle_t {
         PRIV_FLAGS_USES_PMEM_ADSP = 0x00000004,
         PRIV_FLAGS_NEEDS_FLUSH    = 0x00000008,
         PRIV_FLAGS_USES_ASHMEM    = 0x00000010,
+        PRIV_FLAGS_DO_NOT_FLUSH   = 0x00000020,
     };
 
     enum {

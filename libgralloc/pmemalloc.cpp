@@ -87,7 +87,12 @@ int PmemUserspaceAllocator::init_pmem_area_locked()
     int fd = deps.open(pmemdev, O_RDWR, 0);
     if (fd >= 0) {
         size_t size = 0;
-        size = 8<<20;   // MiB
+        err = deps.getPmemTotalSize(fd, &size);
+        if (err < 0) {
+            LOGE("%s: PMEM_GET_TOTAL_SIZE failed (%d), limp mode", pmemdev,
+                    err);
+            size = 8<<20;   // 8 MiB
+        }
         allocator.setSize(size);
 
         void* base = deps.mmap(0, size, PROT_READ|PROT_WRITE, MAP_SHARED, fd,
@@ -176,7 +181,14 @@ int PmemUserspaceAllocator::alloc_pmem_buffer(size_t size, int usage,
             } else {
                 LOGV("%s: mapped fd %d at offset %d, size %d", pmemdev, fd, offset, size);
                 memset((char*)base + offset, 0, size);
-                //cacheflush(intptr_t(base) + offset, intptr_t(base) + offset + size, 0);
+                //Clean cache before flushing to ensure pmem is properly flushed
+                err = deps.cleanPmem(fd, (unsigned long) base + offset, offset, size);
+                if (err < 0) {
+                    LOGE("cleanPmem failed: (%s)", strerror(deps.getErrno()));
+                }
+#ifdef HOST
+                 cacheflush(intptr_t(base) + offset, intptr_t(base) + offset + size, 0);
+#endif
                 *pBase = base;
                 *pOffset = offset;
                 *pFd = fd;

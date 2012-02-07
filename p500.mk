@@ -1,21 +1,13 @@
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
 
 # The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
-
-$(call inherit-product-if-exists, vendor/lge/p500/p500-vendor.mk)
+$(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/lge/p500/overlay
 
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/lge/p500/kernel
-else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
 PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
+    device/lge/p500/kernel:kernel
+
 
 # Board-specific init
 PRODUCT_COPY_FILES += \
@@ -31,13 +23,16 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/AudioFilter.csv:system/etc/AudioFilter.csv \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
-    $(LOCAL_PATH)/configs/7k_handset.kl:system/usr/keylayout/7k_handset.kl
+    $(LOCAL_PATH)/configs/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
+    $(LOCAL_PATH)/configs/thunder_keypad.kl:system/usr/keylayout/thunder_keypad.kl \
+    $(LOCAL_PATH)/configs/thunder_keypad.kcm.bin:system/usr/keychars/thunder_keypad.kcm.bin \
 
 # WiFi
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nvram.txt:system/etc/wl/nvram.txt \
     $(LOCAL_PATH)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    $(LOCAL_PATH)/prebuilt/wireless.ko:system/lib/modules/wireless.ko
+    $(LOCAL_PATH)/prebuilt/wireless.ko:system/lib/modules/wireless.ko \
+    $(LOCAL_PATH)/prebuilt/tun.ko:system/lib/modules/tun.ko
 
 # chargermode
 PRODUCT_COPY_FILES += \
@@ -75,10 +70,22 @@ PRODUCT_PACKAGES += \
     gps.p500 \
     lights.p500 \
     hwaddrs \
-    copybit.msm7k \
-    libOmxCore
 
-$(call inherit-product, build/target/product/full.mk)
+# Live wallpaper packages
+PRODUCT_PACKAGES += \
+    LiveWallpapers \
+    LiveWallpapersPicker \
+    MagicSmokeWallpapers \
+    VisualizationWallpapers \
+    librs_jni
+
+# Publish that we support the live wallpaper feature.
+PRODUCT_COPY_FILES += \
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
+
+$(call inherit-product, vendor/lge/p500/p500-vendor-blobs.mk)
+
+PRODUCT_LOCALES += mdpi
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := p500
