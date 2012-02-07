@@ -1,4 +1,4 @@
-# Copyright (C) 2010 Ricardo Cerqueira
+# Copyright (C) 2012 The CyanogenMod project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,19 +13,15 @@
 # limitations under the License.
 
 
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),thunderc)
-
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_SRC_FILES := bdaddr_read.c
+LOCAL_SRC_FILES := apversion.c
 
+LOCAL_PRELINK_MODULE := false
 LOCAL_SHARED_LIBRARIES := libcutils
-
-LOCAL_MODULE := bdaddr_read
+LOCAL_MODULE := lgapversion
 
 include $(BUILD_EXECUTABLE)
-
-endif

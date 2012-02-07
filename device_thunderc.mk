@@ -14,7 +14,6 @@ PRODUCT_PACKAGES += \
     librs_jni \
     libmm-omxcore \
     libOmxCore \
-    bdaddr_read \
     flash_image \
     dump_image \
     erase_image \
@@ -24,8 +23,10 @@ PRODUCT_PACKAGES += \
     LiveWallpapers \
     LiveWallpapersPicker \
     MagicSmokeWallpapers \
-    VisualizationWallpapers
-
+    hwaddrs \
+    lgapversion \
+    VisualizationWallpapers 
+#    bdaddr_read \
 DISABLE_DEXPREOPT := false
 
 # Backlight
@@ -38,7 +39,7 @@ PRODUCT_COPY_FILES += \
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    device/lge/thunderc/files/common/usr/keylayout/thunder_keypad.kl:system/usr/keylayout/7k_handset.kl \
+    device/lge/thunderc/files/common/usr/keylayout/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
     device/lge/thunderc/files/common/usr/keylayout/thunder_keypad.kl:system/usr/keylayout/thunder_keypad.kl \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keychars/thunder_keypad.kcm.bin:system/usr/keychars/thunder_keypad.kcm.bin \
 
@@ -126,6 +127,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/lge/thunderc/files/$(SUB_MODEL)/kernel/wireless.ko:system/lib/modules/wireless.ko \
     device/lge/thunderc/files/$(SUB_MODEL)/kernel/tun.ko:system/lib/modules/tun.ko \
+    device/lge/thunderc/files/$(SUB_MODEL)/kernel/cifs.ko:system/lib/modules/cifs.ko \
     device/lge/thunderc/files/common/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/wl/nvram.txt:system/etc/wl/nvram.txt \
     device/lge/thunderc/files/common/etc/dhcpcd/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
@@ -223,6 +225,8 @@ PRODUCT_COPY_FILES += \
 
 # Let's use our own GPS config file
 PRODUCT_COPY_FILES += device/lge/thunderc/files/common/etc/gps.conf:system/etc/gps.conf
+
+PRODUCT_COPY_FILES += device/lge/thunderc/files/common/etc/SuplRootCert:system/etc/SuplRootCert
 
 $(call inherit-product, build/target/product/full.mk)
 

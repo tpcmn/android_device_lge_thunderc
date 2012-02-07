@@ -30,6 +30,7 @@ wifi.supplicant_scan_interval=35
 ## opengles 2.0
 ro.opengles.version=131072
 #ro.ril.ecclist=112,911
+
 # camera/camcorder options, hyejin.kim@lge.com
 ro.media.enc.hprof.file.format=mp4
 ro.media.enc.hprof.codec.vid=m4v
@@ -86,6 +87,24 @@ dalvik.vm.execution-mode=int:jit
 debug.sf.hw=1
 windowsmgr.max_events_per_sec=260
 ro.telephony.call_ring.multiple=false
+
+# ADDITIONAL_BUILD_PROPERTIES
+# NETWORK BASED PLUS CODE DIALING
+# 0 disable
+# 1 enable
+ro.cdma.nbpcd=1
+
+# V6 SuperCharger settings
+ro.ril.hsxpa=3
+ro.ril.gprsclass=12
+ro.ril.hep=1
+ro.ril.enable.dtm=1
+ro.ril.hsdpa.category=28
+ro.ril.enable.a53=1
+ro.ril.enable.3g.prefix=1
+ro.ril.htcmaskw1.bitmask=4294967295
+ro.ril.htcmaskw1=14449
+ro.ril.hsupa.category=9
 
 # Common to all CDMA variants (IHO)
 ro.com.google.locationfeatures=1
