@@ -194,6 +194,10 @@ service hciattach /system/bin/brcm_patchram_plus -d --baudrate 3000000 --patchra
 	disabled
 	oneshot
 
+service setapversion /system/bin/lgapversion
+	disabled
+	oneshot
+
 service qmuxd /system/bin/qmuxd 
 
 service cnd /system/bin/cnd
@@ -252,6 +256,12 @@ on property:dev.bootcomplete=1
 #	 stop dhcp-service
 #	 start dhcp-service
 
+on property:dev.bootcomplete=1
+     exec /system/bin/hwaddrs
+
+## Set proper baseband version after getting the dummy from RIL
+on property:cdma.version.baseband=V07u-000-000-MAR-23-2009
+    start setapversion
 
 service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p10 /dev/block/mmcblk0p11
 	user root
