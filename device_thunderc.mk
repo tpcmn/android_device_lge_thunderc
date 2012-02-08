@@ -18,6 +18,7 @@ PRODUCT_PACKAGES += \
     dump_image \
     erase_image \
     e2fsck \
+    bdaddr_read \
     SpareParts \
     CMWallpapers \
     LiveWallpapers \
@@ -222,6 +223,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/lge/thunderc/files/common/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/lge/thunderc/files/common/etc/init.d/mvdalvik.sh:system/etc/init.d/01mvdalvik \
+    device/lge/thunderc/files/common/etc/init.d/02getmacaddrs:system/etc/init.d/02getmacaddrs
 
 # Let's use our own GPS config file
 PRODUCT_COPY_FILES += device/lge/thunderc/files/common/etc/gps.conf:system/etc/gps.conf

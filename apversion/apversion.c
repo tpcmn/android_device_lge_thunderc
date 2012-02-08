@@ -74,7 +74,7 @@ int main() {
             *result++;
             *--readbuf='\0';
         }
-        property_set("cdma.version.baseband", result);
+        property_set("gsm.version.baseband", result);
         //printf("%s\n",result);
         return 0;
     }

@@ -40,6 +40,7 @@ on boot
 	write /sys/devices/virtual/mtd/mtd5/mtdblock5/queue/rotational 0
 	write /sys/devices/virtual/mtd/mtd6/mtdblock6/queue/rotational 0
 
+	setprop ro.bt.bdaddr_path /data/misc/bluetooth/bdaddr
 	chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
 	chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
 	chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
@@ -146,7 +147,7 @@ on boot
 
 #DHCP
 	mkdir /data/misc/dhcp 0777 system system
-	chmod 0666 /data/bdaddr
+	chmod 0666 /data/misc/bluetooth/bdaddr
 
 ## ERS
 	mkdir /data/data/com.lge.ers
@@ -260,7 +261,7 @@ on property:dev.bootcomplete=1
      exec /system/bin/hwaddrs
 
 ## Set proper baseband version after getting the dummy from RIL
-on property:cdma.version.baseband=V07u-000-000-MAR-23-2009
+on property:gsm.version.baseband=V07u-000-000-MAR-23-2009
     start setapversion
 
 service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p10 /dev/block/mmcblk0p11
