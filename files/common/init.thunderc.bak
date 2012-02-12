@@ -1,6 +1,4 @@
-# Charging while powered off
-on boot-pause
-        exec sbin/chargerlogo
+## hopemini@lge.com, 20100416
 
 # This does the initial RLE animation for the vendor logo.
 # Taken verbatim from the stock init.rc.
@@ -9,9 +7,18 @@ service bootlogo /sbin/bootlogo
   group root
   oneshot
 
-# * If booted via power button
+# This does offline charging:
+#  * If booted via power button, chargerlogo will immediately exit, allowing
+#    the boot to proceed normally.
+#  * If booted via USB cable, chargerlogo will run indefinitely, blocking the
+#    boot process from proceeding any further.
 on early-boot
+  exec /sbin/chargerlogo
   start bootlogo
+
+on boot-pause
+        # Charging while powered off
+        exec sbin/chargerlogo
 
 on boot
 	# Update the mountpoints to noatime
@@ -33,6 +40,7 @@ on boot
 	write /sys/devices/virtual/mtd/mtd5/mtdblock5/queue/rotational 0
 	write /sys/devices/virtual/mtd/mtd6/mtdblock6/queue/rotational 0
 
+	setprop ro.bt.bdaddr_path /data/misc/bluetooth/bdaddr
 	chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
 	chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
 	chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
@@ -139,7 +147,7 @@ on boot
 
 #DHCP
 	mkdir /data/misc/dhcp 0777 system system
-	chmod 0666 /data/bdaddr
+	chmod 0666 /data/misc/bluetooth/bdaddr
 
 ## ERS
 	mkdir /data/data/com.lge.ers
@@ -152,10 +160,6 @@ on boot
 
 # Collect ramconsole data
 	copy /proc/last_kmsg /data/dontpanic/last_kmsg
-        copy /proc/sys/kernel/hotplug /data/dontpanic/hotplug
-        copy /proc/sys/kernel/poweroff_cmd /data/dontpanic/poweroff_cmd
-        copy /proc/sys/kernel/random/boot_id /data/dontpanic/boot_id
-        copy /proc/sysvipc/msg /data/dontpanic/sysvipc_msg
 	chown root log /data/dontpanic/last_kmsg
 	chmod 0640 /data/dontpanic/last_kmsg
 
@@ -188,6 +192,10 @@ on property:init.svc.bootanim=running
 service hciattach /system/bin/brcm_patchram_plus -d --baudrate 3000000 --patchram /system/bin/BCM4325.hcd --enable_hci /dev/ttyHS0
 	user bluetooth
 	group bluetooth net_bt_admin
+	disabled
+	oneshot
+
+service setapversion /system/bin/lgapversion
 	disabled
 	oneshot
 
@@ -249,6 +257,12 @@ on property:dev.bootcomplete=1
 #	 stop dhcp-service
 #	 start dhcp-service
 
+on property:dev.bootcomplete=1
+     exec /system/bin/hwaddrs
+
+## Set proper baseband version after getting the dummy from RIL
+on property:gsm.version.baseband=V07u-000-000-MAR-23-2009
+    start setapversion
 
 service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p10 /dev/block/mmcblk0p11
 	user root
@@ -285,3 +299,6 @@ on property:service.iq.active=0
 # LGE_CHANGE [younchan.kim,2010-06-13] 
 #service tsdown /system/bin/tsdown
 #	oneshot
+
+# Enable USB mounting of SD card...
+write /sys/module/g_android/parameters/product_id 0x1038
