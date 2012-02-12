@@ -14,20 +14,18 @@ PRODUCT_PACKAGES += \
     librs_jni \
     libmm-omxcore \
     libOmxCore \
+    bdaddr_read \
     flash_image \
     dump_image \
     erase_image \
     e2fsck \
-    bdaddr_read \
     SpareParts \
     CMWallpapers \
     LiveWallpapers \
     LiveWallpapersPicker \
     MagicSmokeWallpapers \
-    hwaddrs \
-    lgapversion \
-    VisualizationWallpapers 
-#    bdaddr_read \
+    VisualizationWallpapers
+
 DISABLE_DEXPREOPT := false
 
 # Backlight
@@ -40,8 +38,9 @@ PRODUCT_COPY_FILES += \
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    device/lge/thunderc/files/common/usr/keylayout/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
+    device/lge/thunderc/files/common/usr/keylayout/thunder_keypad.kl:system/usr/keylayout/7k_handset.kl \
     device/lge/thunderc/files/common/usr/keylayout/thunder_keypad.kl:system/usr/keylayout/thunder_keypad.kl \
+    device/lge/thunderc/files/handset-keypress:system/bin/handset-keypress \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keychars/thunder_keypad.kcm.bin:system/usr/keychars/thunder_keypad.kcm.bin \
 
 # Board-specific init
@@ -52,6 +51,8 @@ PRODUCT_COPY_FILES += \
 
 # Off-mode charging pieces
 PRODUCT_COPY_FILES += \
+    device/lge/thunderc/files/ftmpower:root/sbin/ftmpower \
+    device/lge/thunderc/files/battery_charging:system/bin/battery_charging \
     device/lge/thunderc/files/common/sbin/chargerlogo:root/sbin/chargerlogo \
     device/lge/thunderc/files/common/chargerimages/battery_ani_01.rle:root/chargerimages/battery_ani_01.rle \
     device/lge/thunderc/files/common/chargerimages/battery_ani_02.rle:root/chargerimages/battery_ani_02.rle \
@@ -223,13 +224,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/lge/thunderc/files/common/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/lge/thunderc/files/common/etc/init.d/mvdalvik.sh:system/etc/init.d/01mvdalvik \
-    device/lge/thunderc/files/common/etc/init.d/02getmacaddrs:system/etc/init.d/02getmacaddrs
 
 # Let's use our own GPS config file
 PRODUCT_COPY_FILES += device/lge/thunderc/files/common/etc/gps.conf:system/etc/gps.conf
-
 PRODUCT_COPY_FILES += device/lge/thunderc/files/common/etc/SuplRootCert:system/etc/SuplRootCert
-
 $(call inherit-product, build/target/product/full.mk)
 
 # We don't need to pull in the languages_full.mk manually because it'll get clobbered anyhow by full.mk
