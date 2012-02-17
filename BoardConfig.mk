@@ -100,7 +100,7 @@ JS_ENGINE := v8
 
 BUILD_WITH_FULL_STAGEFRIGHT := true
 TARGET_PROVIDES_LIBAUDIO := true 
-# TARGET_PROVIDES_LIBRIL = vendor/lge/thunderc/proprietary/system/lib/libril-qc-1.so
+TARGET_PROVIDES_LIBRIL = vendor/lge/thunderc/proprietary/system/lib/libril-qc-1.so
 
 BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
