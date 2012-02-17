@@ -171,7 +171,6 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/base/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
     frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
@@ -299,11 +298,7 @@ PRODUCT_COPY_FILES += \
 # IDC file
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/touch_mcs6000.idc:system/usr/idc/touch_mcs6000.idc\
-    vendor/lge/thunderc/proprietary/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
-
-# This is a prebuilt from lupohirp.  It's much smaller than the default.  Why?
-PRODUCT_COPY_FILES += \
-    vendor/lge/thunderc/packages/app/LatinIME.apk:system/app/LatinIME.apk
+ vendor/lge/thunderc/proprietary/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
 
 #hwcomposer shit
 PRODUCT_COPY_FILES += \
@@ -314,12 +309,12 @@ PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := thunderc
 PRODUCT_BRAND := LGE
 PRODUCT_DEVICE := thunderc
-PRODUCT_MODEL := LG-LS670
+PRODUCT_MODEL := LG-VM670
 PRODUCT_MANUFACTURER := LGE
 
 CDMA_GOOGLE_BASE := android-sprint-us
-CDMA_CARRIER_ALPHA := Sprint
-CDMA_CARRIER_NUMERIC := 310120
+CDMA_CARRIER_ALPHA := Virgin_Mobile
+CDMA_CARRIER_NUMERIC := 311490
 
 
 PRODUCT_PROPERTY_OVERRIDES += \
