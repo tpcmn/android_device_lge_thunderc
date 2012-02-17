@@ -47,7 +47,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/etc/profile:system/etc/profile \
     vendor/lge/thunderc/proprietary/etc/terminfo/l/linux:system/etc/terminfo/l/linux \
     vendor/lge/thunderc/proprietary/etc/terminfo/u/unknown:system/etc/terminfo/u/unknown \
-    vendor/lge/thunderc/proprietary/etc/apn-conf.xml:system/etc/apn-conf.xml \
+    vendor/lge/thunderc/proprietary/etc/apns-conf.xml:system/etc/apns-conf.xml \
 
 #WIFI
 PRODUCT_COPY_FILES += \
