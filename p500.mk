@@ -70,6 +70,7 @@ PRODUCT_PACKAGES += \
     gps.p500 \
     lights.p500 \
     hwaddrs \
+    hcitool \
 
 # Live wallpaper packages
 PRODUCT_PACKAGES += \
