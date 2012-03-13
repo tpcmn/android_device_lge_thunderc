@@ -94,24 +94,6 @@ ro.telephony.call_ring.multiple=false
 #com.qc.hdmi_out=false
 #persist.sys.usb.config=mass_storage,adb
 
-#[sprint tv transport protocol support]
-sprint.mm.http.proxy = 0.0.0.0
-sprint.mm.http.port = 0
-sprint.mm.rtsp.proxy = 0.0.0.0
-sprint.mm.rtsp.port = 0
-sprint.mm.network.type = unknown
-sprint.mm.nai = unknown
-#END IKSUNFIRE-215
-
-#Define TCP buffer sizes for various networks
-#ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
-net.tcp.buffersize.default=131072,262144,524288,4096,16384,147456
-net.tcp.buffersize.wifi=131072,262144,524288,4096,16384,147456
-net.tcp.buffersize.hspa=131072,262144,524288,4096,16384,147456
-net.tcp.buffersize.umts=131072,262144,524288,4096,16384,147456
-net.tcp.buffersize.edge=16384,32768,65536,4096,16384,32768
-net.tcp.buffersize.gprs=4096,8192,12288,4096,8192,12288
-
 ro.com.google.locationfeatures=1
 ro.cdma.voicemail.number=mine
 ro.setupwizard.enable_bypass=1
