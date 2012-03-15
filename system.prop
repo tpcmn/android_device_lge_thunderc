@@ -92,7 +92,10 @@ ro.telephony.call_ring.multiple=false
 #ro.sf.compbypass.enable=1	
 #com.qc.hardware=true	
 #com.qc.hdmi_out=false
-#persist.sys.usb.config=mass_storage,adb
+persist.sys.usb.config=mass_storage,adb
+ro.ril.baseband=ZVD
+persist.service.adb.enable=1
+ro.camera.preview=true
 
 ro.com.google.locationfeatures=1
 ro.cdma.voicemail.number=mine
