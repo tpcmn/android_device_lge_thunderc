@@ -27,7 +27,6 @@ TARGET_PROVIDES_INIT_TARGET_RC := true
 #BOOT AND BOOTLOADER
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
-#TARGET_NO_RECOVERY := true
 
 #Camera
 #BOARD_USE_FROYO_LIBCAMERA := true
@@ -74,10 +73,10 @@ ARCH_ARM_HAVE_VFP := true
 # Mass Storage for ICS
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/thunderc/prebuilt/UsbController.cpp
-BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file" 
-TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun0/file" 
-#BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/vold/179:1
-#BOARD_SDEXT_DEVICE := /dev/block/vold/179:2
+BOARD_UMS_LUNFILE := /sys/devices/platform/usb_mass_storage/lun0/file 
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file 
+BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/vold/179:1
+BOARD_SDEXT_DEVICE := /dev/block/vold/179:2
 
 #TouchScreen Compatibility for ICS
 BOARD_USE_LEGACY_TOUCHSCREEN := true
