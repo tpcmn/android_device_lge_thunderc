@@ -247,6 +247,8 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libdss.so:system/lib/libdss.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libril.so:system/lib/libril.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/rild:system/bin/rild \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/pppd_runner:system/bin/pppd_runner 
+
 
 # OMX
 #PRODUCT_COPY_FILES += \
@@ -344,3 +346,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
     gsm.sim.operator.numeric=$(CDMA_CARRIER_NUMERIC) \
     gsm.operator.alpha=$(CDMA_CARRIER_ALPHA) \
     gsm.operator.numeric=$(CDMA_CARRIER_NUMERIC)
+
+# Telephony property for CDMA
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.vc_call_vol_steps=15 \
+    ro.telephony.default_network=4 \
+    ro.com.google.clientidbase=android-sprint-us \
+    ro.cdma.home.operator.numeric=310120 \ 
+	ro.cdma.home.operator.alpha=Sprint \
+    net.cdma.pppd.authtype=require-pap \
+    net.cdma.pppd.user=user[SPACE]SprintNextel \
+    net.cdma.datalinkinterface=/dev/ttyCDMA0 \
+    net.interfaces.defaultroute=cdma \
+    net.cdma.ppp.interface=ppp0 \
+    net.connectivity.type=CDMA1 \
+    mobiledata.interfaces=wlan0,ppp0 \ 

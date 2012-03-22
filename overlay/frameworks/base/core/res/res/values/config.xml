@@ -118,6 +118,22 @@
 	<!-- If this value is true, The mms content-disposition field is supported correctly.
 	If false, Content-disposition fragments are ignored -->
     <bool name="config_mms_content_disposition_support">false</bool>
+	
+	    <!-- XXXXX NOTE THE FOLLOWING RESOURCES USE THE WRONG NAMING CONVENTION.
+		Please don't copy them, copy anything else. --> 
+		<!-- This string array should be overridden by the device to present a list of network
+		attributes.  This is used by the connectivity manager to decide which networks can coexist 
+        based on the hardware --> 
+		<!-- An Array of "[Connection name],[ConnectivityManager connection type],
+		[associated radio-type],[priority]  -->
+	<string-array translatable="false" name="networkAttributes">
+        <item>"wifi,1,1,1"</item>
+        <item>"mobile,0,0,0"</item>
+        <item>"mobile_mms,2,0,2"</item>
+        <item>"mobile_supl,3,0,2"</item>
+        <item>"mobile_dun,4,0,4"</item>
+        <item>"mobile_hipri,5,0,3"</item>
+    </string-array>
      
     <!-- Enable the screen-on animation -->
     <!--<bool name="config_enableScreenOnAnimation">false</bool>-->
@@ -131,11 +147,15 @@
     <!-- Component name of the service providing geocoder API support. -->
     <string name="config_geocodeProvider">com.google.android.location.GeocodeProvider</string>
 	
+	<!-- The default iface on which to monitor data use --> 
+    <string name="config_datause_iface">ppp0</string> 
 
     <bool name="config_bluetooth_adapter_quick_switch">false</bool>
     <bool name="config_forceDisableHardwareKeyboard">true</bool>
 
     <!-- The VoiceMail default value is displayed to my own number if it is true -->
     <bool name="config_telephony_use_own_number_for_voicemail">true</bool>
+	
+
 
 </resources>
