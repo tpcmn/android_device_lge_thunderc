@@ -70,7 +70,7 @@ LOCAL_STATIC_LIBRARIES := \
     libaudiopolicy_legacy \
     libmedia_helper
 
-LOCAL_MODULE := audio_policy.p500
+LOCAL_MODULE := audio_policy.thunderc
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_MODULE_TAGS := optional
 

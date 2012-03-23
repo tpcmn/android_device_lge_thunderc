@@ -102,7 +102,10 @@ ro.telephony.call_ring.multiple=false
 #ro.sf.compbypass.enable=1	
 #com.qc.hardware=true	
 #com.qc.hdmi_out=false
+# modified camera blob wants this
+ro.product.camera=thunderc
 persist.sys.usb.config=mass_storage,adb
+ro.bt.bdaddr_path=/data/misc/bd_addr
 ro.secure=0
 ro.allow.mock.location=1
 ro.debuggable=1
