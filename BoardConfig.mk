@@ -5,6 +5,7 @@ include vendor/lge/thunderc/BoardConfigVendor.mk
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBS := true
 BOARD_USES_QCOM_LIBRPC := true
+BOARD_USES_QCOM_AUDIO_SPEECH := true
 # BOARD_USES_QCOM_LEGACY := true
 
 COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT 
