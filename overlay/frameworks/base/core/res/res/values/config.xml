@@ -41,7 +41,6 @@
 
     <string-array translatable="false" name="config_tether_upstream_regexs">
     	<item>"wlan0"</item>
-		<item>"eth\\d"</item>
     	<item>"rmnet\\d"</item>
     </string-array>
     

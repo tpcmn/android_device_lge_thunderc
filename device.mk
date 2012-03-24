@@ -39,8 +39,6 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.local.rc:system/etc/init.local.rc \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \
     device/lge/thunderc/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    device/lge/thunderc/prebuilt/etc/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    device/lge/thunderc/prebuilt/etc/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
 
 # Drew's init stuff
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/08dalvik:system/etc/init.d/08dalvik \
@@ -79,14 +77,18 @@ PRODUCT_COPY_FILES += \
 # OFFLINE CHARGING
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/sbin/bootlogo:root/sbin/bootlogo \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_01.rle:root/bootimages/opening_01.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_02.rle:root/bootimages/opening_02.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_03.rle:root/bootimages/opening_03.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_04.rle:root/bootimages/opening_04.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_05.rle:root/bootimages/opening_05.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_06.rle:root/bootimages/opening_06.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_07.rle:root/bootimages/opening_07.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_08.rle:root/bootimages/opening_08.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_00.rle:root/bootimages/sprint_power_on_00.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_01.rle:root/bootimages/sprint_power_on_01.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_02.rle:root/bootimages/sprint_power_on_02.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_03.rle:root/bootimages/sprint_power_on_03.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_04.rle:root/bootimages/sprint_power_on_04.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_05.rle:root/bootimages/sprint_power_on_05.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_06.rle:root/bootimages/sprint_power_on_06.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_07.rle:root/bootimages/sprint_power_on_07.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_08.rle:root/bootimages/sprint_power_on_08.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_01.rle:root/bootimages/sprint_power_on_09.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_01.rle:root/bootimages/sprint_power_on_10.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_01.rle:root/bootimages/sprint_power_on_11.rle \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/sbin/chargerlogo:root/sbin/chargerlogo \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/black_bg.rle:root/chargerimages/black_bg.rle \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_bg.rle:root/chargerimages/battery_bg.rle \
@@ -247,7 +249,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libdss.so:system/lib/libdss.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libril.so:system/lib/libril.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/rild:system/bin/rild \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/pppd_runner:system/bin/pppd_runner 
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/pppd_runner:system/bin/pppd_runner 
 
 
 # OMX
@@ -321,8 +323,8 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/idc/touch_mcs6000.idc:system/usr/idc/touch_mcs6000.idc\
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
 
-PRODUCT_COPY_FILES += \
-    vendor/lge/thunderc/packages/app/usbstorage.apk:system/app/usbstorage.apk \
+#PRODUCT_COPY_FILES += \
+#    vendor/lge/thunderc/packages/app/usbstorage.apk:system/app/usbstorage.apk \
 
 
 
@@ -347,17 +349,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
     gsm.operator.alpha=$(CDMA_CARRIER_ALPHA) \
     gsm.operator.numeric=$(CDMA_CARRIER_NUMERIC)
 
-# Telephony property for CDMA
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.vc_call_vol_steps=15 \
-    ro.telephony.default_network=4 \
-    ro.com.google.clientidbase=android-sprint-us \
-    ro.cdma.home.operator.numeric=310120 \ 
-	ro.cdma.home.operator.alpha=Sprint \
-    net.cdma.pppd.authtype=require-pap \
-    net.cdma.pppd.user=user[SPACE]SprintNextel \
-    net.cdma.datalinkinterface=/dev/ttyCDMA0 \
-    net.interfaces.defaultroute=cdma \
-    net.cdma.ppp.interface=ppp0 \
-    net.connectivity.type=CDMA1 \
-    mobiledata.interfaces=wlan0,ppp0 \ 
+    
