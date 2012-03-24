@@ -33,6 +33,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keylayout/thunder_keypad.kl:system/usr/keylayout/thunder_keypad.kl \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keylayout/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keychars/thunder_keypad.kcm.bin:system/usr/keychars/thunder_keypad.kcm.bin \
 
 PRODUCT_COPY_FILES += \
@@ -176,7 +177,15 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio.a2dp.default.so:system/lib/hw/audio.a2dp.default.so \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio.primary.thunderc.so:system/lib/hw/audio.primary.thunderc.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio.primary.default.so:system/lib/hw/audio.primary.default.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio_policy.thunderc.so:system/lib/hw/audio_policy.thunderc.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio.primary.goldfish.so:system/lib/hw/audio.primary.goldfish.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio_policy.default.so:system/lib/hw/audio_policy.default.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/bluez-plugin/audio.so:lib/bluez-plugin/audio.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/AudioFilter.csv:system/etc/AudioFilter.csv \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liba2dp.so:system/lib/liba2dp.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liba2dp.so:obj/lib/liba2dp.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libaudioeq.so:system/lib/libaudioeq.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/AutoVolumeControl.txt:system/etc/AutoVolumeControl.txt
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio.primary.thunderc.so:system/lib/hw/audio.primary.thunderc.so \
