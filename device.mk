@@ -90,6 +90,10 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_01.rle:root/bootimages/sprint_power_on_09.rle \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_01.rle:root/bootimages/sprint_power_on_10.rle \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_01.rle:root/bootimages/sprint_power_on_11.rle \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_08.rle:root/bootimages/sprint_power_on_12.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_01.rle:root/bootimages/sprint_power_on_13.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_01.rle:root/bootimages/sprint_power_on_14.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_01.rle:root/bootimages/sprint_power_on_15.rle \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/sbin/chargerlogo:root/sbin/chargerlogo \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/black_bg.rle:root/chargerimages/black_bg.rle \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_bg.rle:root/chargerimages/battery_bg.rle \
@@ -187,7 +191,7 @@ PRODUCT_COPY_FILES += \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liba2dp.so:system/lib/liba2dp.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liba2dp.so:obj/lib/liba2dp.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libaudioeq.so:system/lib/libaudioeq.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/AutoVolumeControl.txt:system/etc/AutoVolumeControl.txt
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/AutoVolumeControl.txt:system/etc/AutoVolumeControl.txt \
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio.primary.thunderc.so:system/lib/hw/audio.primary.thunderc.so \
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio.primary.default.so:system/lib/hw/audio.primary.default.so \
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio_policy.thunderc.so:system/lib/hw/audio_policy.thunderc.so \
