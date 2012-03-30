@@ -86,6 +86,7 @@ ro.media.dec.vid.wmv.enabled=0
 ro.media.cam.preview.fps=0
 ro.media.dec.jpeg.memcap=20000000
 ro.media.enc.jpeg.quality=90,80,70
+ro.camera.preview=true
 persist.cust.tel.eons=1
 dalvik.vm.dexopt-flags=m=y
 dalvik.vm.heapsize=32m

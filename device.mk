@@ -23,7 +23,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL_DIR)/zImage:kernel
 
 PRODUCT_COPY_FILES += \
-    $(foreach f,$(LOCAL_KERNEL_MODULES),$(LOCAL_KERNEL_DIR)/$(f):system/lib/modules/$(f))
+    $(foreach f,$(LOCAL_KERNEL_MODULES),$(LOCAL_KERNEL_DIR)/$(f):system/lib/modules/$(f)) \
+    device/lge/thunderc/bootimg/default.prop:root/default.prop \
 
 # Publish that we support the live wallpaper feature.
 PRODUCT_COPY_FILES += \
@@ -39,7 +40,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.local.rc:system/etc/init.local.rc \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \
-    device/lge/thunderc/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/media_profiles.xml:system/etc/media_profiles.xml \
 
 # Drew's init stuff
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/08dalvik:system/etc/init.d/08dalvik \
@@ -180,26 +181,10 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio.a2dp.default.so:system/lib/hw/audio.a2dp.default.so \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio.primary.thunderc.so:system/lib/hw/audio.primary.thunderc.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio.primary.default.so:system/lib/hw/audio.primary.default.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio_policy.thunderc.so:system/lib/hw/audio_policy.thunderc.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio.primary.goldfish.so:system/lib/hw/audio.primary.goldfish.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio_policy.default.so:system/lib/hw/audio_policy.default.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/bluez-plugin/audio.so:lib/bluez-plugin/audio.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/AudioFilter.csv:system/etc/AudioFilter.csv \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liba2dp.so:system/lib/liba2dp.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liba2dp.so:obj/lib/liba2dp.so \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio.a2dp.default.so:system/lib/hw/audio.a2dp.default.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libaudioeq.so:system/lib/libaudioeq.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/AutoVolumeControl.txt:system/etc/AutoVolumeControl.txt \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio.primary.thunderc.so:system/lib/hw/audio.primary.thunderc.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio.primary.default.so:system/lib/hw/audio.primary.default.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio_policy.thunderc.so:system/lib/hw/audio_policy.thunderc.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio.primary.goldfish.so:system/lib/hw/audio.primary.goldfish.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio_policy.default.so:system/lib/hw/audio_policy.default.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/bluez-plugin/audio.so:lib/bluez-plugin/audio.so \
-    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liba2dp.so:system/lib/liba2dp.so \
-    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liba2dp.so:obj/lib/liba2dp.so \
 	
 # Device permissions
 PRODUCT_COPY_FILES += \
