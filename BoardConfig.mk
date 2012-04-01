@@ -4,6 +4,7 @@ include vendor/lge/thunderc/BoardConfigVendor.mk
 
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBS := true
+BOARD_USES_QCOM_PMEM := true
 BOARD_USES_QCOM_LIBRPC := true
 #BOARD_USES_QCOM_LEGACY := true
 BOARD_COMBO_DEVICE_SUPPORTED := true
@@ -65,13 +66,14 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 #Enable OpenGL Hardware Acceleration
 BOARD_EGL_CFG := vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/egl/egl.cfg
-USE_OPENGL_RENDERER := false
+USE_OPENGL_RENDERER := true
 TARGET_USES_GENLOCK := true
 BOARD_NO_ALLOW_DEQUEUE_CURRENT_BUFFER := true
 
 #Enable jit
 JS_ENGINE := v8
 HTTP := chrome
+ENABLE_JSC_JIT := true
 WITH_JIT := true
 ARCH_ARM_HAVE_VFP := true
 
