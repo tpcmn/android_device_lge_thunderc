@@ -124,7 +124,7 @@ PRODUCT_COPY_FILES += \
 
 # 2D (using proprietary because of poor perfomance of open source libs)
 #PRODUCT_COPY_FILES += \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/gralloc.thunderc.so:system/lib/hw/gralloc.thunderc.so \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/gralloc.thunderc.so:system/lib/hw/gralloc.thunderc.so \
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/gralloc.default.so:system/lib/hw/gralloc.default.so \
 
 # 3D
