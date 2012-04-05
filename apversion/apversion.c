@@ -88,7 +88,7 @@ retry:
 
             /* The baseband string begins with LGP */
             if (0 == strncmp(result, "LGP", 3)) {
-                property_set("gsm.version.baseband", result);
+                property_set(getCDMAbaseband(), result);
                 //printf("%s\n",result);
                 return 0;
             }
