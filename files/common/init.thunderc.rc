@@ -152,9 +152,6 @@ on boot
 
 # Collect ramconsole data
 	copy /proc/last_kmsg /data/dontpanic/last_kmsg
-        copy /proc/sys/kernel/hotplug /data/dontpanic/hotplug
-        copy /proc/sys/kernel/poweroff_cmd /data/dontpanic/poweroff_cmd
-        copy /proc/sys/kernel/random/boot_id /data/dontpanic/boot_id
         copy /proc/sysvipc/msg /data/dontpanic/sysvipc_msg
 	chown root log /data/dontpanic/last_kmsg
 	chmod 0640 /data/dontpanic/last_kmsg

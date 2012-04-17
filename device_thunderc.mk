@@ -38,7 +38,7 @@ PRODUCT_COPY_FILES += \
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    device/lge/thunderc/files/common/usr/keylayout/thunder_keypad.kl:system/usr/keylayout/7k_handset.kl \
+    device/lge/thunderc/files/common/usr/keylayout/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
     device/lge/thunderc/files/common/usr/keylayout/thunder_keypad.kl:system/usr/keylayout/thunder_keypad.kl \
     device/lge/thunderc/files/handset-keypress:system/bin/handset-keypress \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keychars/thunder_keypad.kcm.bin:system/usr/keychars/thunder_keypad.kcm.bin \
@@ -223,7 +223,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     device/lge/thunderc/files/common/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    device/lge/thunderc/files/common/etc/init.d/mvdalvik.sh:system/etc/init.d/01mvdalvik \
+    device/lge/thunderc/files/common/etc/init.d/mvdalvik.sh:system/etc/init.d/11mvdalvik \
 
 # Let's use our own GPS config file
 PRODUCT_COPY_FILES += device/lge/thunderc/files/common/etc/gps.conf:system/etc/gps.conf

@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mms_config version="4">
     <bool name="enabledMMS">true</bool>
-    <int name="maxMessageSize">1048576</int>
-    <int name="maxImageHeight">960</int>
-    <int name="maxImageWidth">1280</int>
+    <int name="maxMessageSize">1024000</int>
+    <int name="mmsHeaderSize">5120</int>
+    <int name="maxImageHeight">480</int>
+    <int name="maxImageWidth">640</int>
     <int name="defaultSMSMessagesPerThread">200</int>
     <int name="defaultMMSMessagesPerThread">20</int>
-    <int name="minMessageCountPerThread">2</int>
+    <int name="minMessageCountPerThread">10</int>
     <int name="maxMessageCountPerThread">5000</int>
-    <bool name="enabledTransID">true</bool>
-    <int name="recipientLimit">40</int>
+    
+    <int name="recipientLimit">-1</int>
+    <string name="emailGatewayNumber">6245</string>
+    <bool name="disableEndterKey">false</bool>
+    <bool name="composeMaxLengthLimit">false</bool>
+    <bool name="convertCharsToSpace">false</bool>
+    <bool name="inputModeAuto">false</bool>
+    <bool name="dateTimeFormat">false</bool>
+    <bool name="japanFeature">false</bool>
+    <bool name="enableMultipartSMS">false</bool>
     <int name="smsToMmsTextThreshold">4</int>
     <string name="uaProfTagName">Profile</string>
-    <string name="userAgent">Sprint-LS670 Mozilla/5.0 (Linux; U; Android 2.2; en-us; LS670 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1</string>
+    <string name="userAgent">Sprint-LS670/Android-mms </string>
     <string name="uaProfUrl">http://device.sprintpcs.com/LG/LS670/LS670ZVD.rdf</string>
+    <bool name="enableSplitSMS">true</bool>
 </mms_config>
