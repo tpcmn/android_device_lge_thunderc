@@ -26,13 +26,37 @@
 #include <gralloc_priv.h>
 
 #define NO_ERROR 0
-//#define LOGV LOGI
+#define LOGV LOGI
 #define GRALLOC_USAGE_PMEM_PRIVATE_ADSP GRALLOC_USAGE_PRIVATE_0
 
+struct qcom_mdp_rect {
+   uint32_t x;
+   uint32_t y;
+   uint32_t w;
+   uint32_t h;
+};
+
+struct qcom_mdp_img {
+   uint32_t width;
+   int32_t  height;
+   int32_t  format;
+   int32_t  offset;
+   int      memory_id; /* The file descriptor */
+};
+
+struct qcom_mdp_blit_req {
+   struct   qcom_mdp_img src;
+   struct   qcom_mdp_img dst;
+   struct   qcom_mdp_rect src_rect;
+   struct   qcom_mdp_rect dst_rect;
+   uint32_t alpha;
+   uint32_t transp_mask;
+   uint32_t flags;
+};
 
 struct blitreq {
    unsigned int count;
-   struct mdp_blit_req req;
+   struct qcom_mdp_blit_req req;
 };
 
 /* Prototypes and extern functions. */
@@ -118,7 +142,11 @@ CameraHAL_CopyBuffers_Hw(int srcFd, int destFd,
 
     blit.req.dst.width     = w;
     blit.req.dst.height    = h;
+#ifndef BINDER_COMPAT
     blit.req.dst.offset    = destOffset;
+#else
+    blit.req.dst.offset    = 0;
+#endif
     blit.req.dst.memory_id = destFd;
     blit.req.dst.format    = destFormat;
 
@@ -178,6 +206,10 @@ CameraHAL_HandlePreviewData(const android::sp<android::IMemory>& dataPtr,
       LOGV("CameraHAL_HandlePreviewData: previewWidth:%d previewHeight:%d "
            "offset:%#x size:%#x base:%p\n", previewWidth, previewHeight,
            (unsigned)offset, size, mHeap != NULL ? mHeap->base() : 0);
+
+      mWindow->set_usage(mWindow,
+                         GRALLOC_USAGE_PMEM_PRIVATE_ADSP |
+                         GRALLOC_USAGE_SW_READ_OFTEN);
 
       retVal = mWindow->set_buffers_geometry(mWindow,
                                              previewWidth, previewHeight,
@@ -298,7 +330,7 @@ CameraHAL_FixupParams(android::CameraParameters &settings)
       "1280x720,800x480,768x432,720x480,640x480,576x432,480x320,384x288,352x288,320x240,240x160,176x144";
    const char *video_sizes =
       "1280x720,800x480,720x480,640x480,352x288,320x240,176x144";
-   const char *preferred_size       = "640x480";
+   const char *preferred_size       = "480x320";
    const char *preview_frame_rates  = "30,27,24,15";
    const char *preferred_frame_rate = "15";
    const char *frame_rate_range     = "(15,30)";
@@ -661,3 +693,4 @@ qcamera_device_open(const hw_module_t* module, const char* name,
    *device = &camera_device->common;
    return NO_ERROR;
 }
+

@@ -36,8 +36,15 @@
     <bool name="config_sf_limitedAlpha">false</bool>
 
     <string-array translatable="false" name="config_tether_usb_regexs">
+        <item>"rndis\\d"</item>
         <item>"usb\\d"</item> 
     </string-array>
+    <integer-array translatable="false" name="config_tether_upstream_types">
+        <item>0</item>
+        <item>1</item>
+        <item>5</item>
+        <item>7</item>
+    </integer-array>
 	
 	<string-array translatable="false" name="config_tether_bluetooth_regexs">
 	    <item>"bnep\\d"</item>
@@ -60,17 +67,6 @@
         <item>7</item> <!-- TYPE_BLUETOOTH -->
 	</integer-array>
 	
-	 <!-- This string array should be overridden by the device to present a list of radio
-	 attributes.  This is used by the connectivity manager to decide which networks can coexist
-	 based on the hardware -->
-	 <!-- An Array of "[ConnectivityManager connectionType],
-	 [# simultaneous connection types]"  -->
-	 <string-array translatable="false" name="radioAttributes">
-		<item>"0,1"</item>
-		<item>"1,1"</item>
-		<item>"6,1"</item>
-		<item>"7,1"</item>
-	</string-array>
 	
 <!--   <string-array translatable="false" name="networkAttributes">
         <item>"mobile,0,0,0,-1,true"</item>

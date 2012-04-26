@@ -7,6 +7,10 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
+ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
+    LOCAL_CFLAGS += -DQCOM_HARDWARE
+endif
+
 ifeq ($(BOARD_HAVE_BLUETOOTH),true)
     LOCAL_CFLAGS += -DWITH_A2DP
 endif
@@ -40,7 +44,7 @@ LOCAL_STATIC_LIBRARIES := \
     libmedia_helper  \
     libaudiohw_legacy
 
-LOCAL_MODULE := audio.primary.msm7x27
+LOCAL_MODULE := audio.primary.thunderc
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_MODULE_TAGS := optional
 
@@ -60,6 +64,9 @@ include $(BUILD_SHARED_LIBRARY)
 # -------------------------------------------------------------
 include $(CLEAR_VARS)
 
+ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
+    LOCAL_CFLAGS += -DQCOM_HARDWARE
+endif
 
 ifeq ($(BOARD_HAVE_BLUETOOTH),true)
     LOCAL_CFLAGS += -DWITH_A2DP
@@ -90,7 +97,7 @@ LOCAL_STATIC_LIBRARIES := \
     libaudiopolicy_legacy \
     libmedia_helper
 
-LOCAL_MODULE := audio_policy.msm7x27
+LOCAL_MODULE := audio_policy.thunderc
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_MODULE_TAGS := optional
 

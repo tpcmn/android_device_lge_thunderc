@@ -10,6 +10,12 @@ $(call inherit-product-if-exists, vendor/lge/thunderc/thunderc-vendor.mk)
 
 PRODUCT_LOCALES := en_US es_ES
 
+# We have enough storage space to hold precise GC data
+PRODUCT_TAGS += dalvik.gc.type-precise
+
+# Use dalvik parameters for a 512 MB device
+$(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
+
 #PRODUCT_INSTALL_PACKAGE := vendor/google/gapps
 
 DEVICE_PACKAGE_OVERLAYS += device/lge/thunderc/overlay
@@ -37,6 +43,28 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keychars/thunderc_keypad.kcm.bin:system/usr/keychars/thunderc_keypad.kcm.bin \
 
+# QCOM init
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.qcom.rc:root/init.qcom.rc \
+    $(LOCAL_PATH)/ueventd.qcom.rc:root/ueventd.qcom.rc \
+    $(LOCAL_PATH)/init.p500.usb.rc:root/init.p500.usb.rc
+
+# BT startup
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/prebuilt/init.qcom.bt.sh:system/bin/init.qcom.bt.sh
+PRODUCT_PACKAGES += \
+    hcitool \
+    hciconfig \
+    hwaddrs
+
+# configs
+product_copy_files += \
+    $(local_path)/configs/audiofilter.csv:system/etc/audiofilter.csv \
+    $(local_path)/configs/media_profiles.xml:system/etc/media_profiles.xml \
+    $(local_path)/configs/thunder_keypad.kl:system/usr/keylayout/thunder_keypad.kl \
+    $(local_path)/configs/thunder_keypad.kcm.bin:system/usr/keychars/thunder_keypad.kcm.bin \
+    $(local_path)/configs/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
+    $(local_path)/configs/adreno_config.txt:system/etc/adreno_config.txt	
+	
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.local.rc:system/etc/init.local.rc \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \
@@ -62,11 +90,6 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/dhcpcd:system/bin/dhcpcd \
     
 
-# BT startup
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/init.qcom.bt.sh:system/bin/init.qcom.bt.sh
-
- # Board-specific init
 
 # Board-specific init
 PRODUCT_COPY_FILES += \
@@ -155,10 +178,10 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/libgb/libmmjpeg.so:obj/lib/libmmjpeg.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/libgb/liboemcamera.so:system/lib/liboemcamera.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/libgb/liboemcamera.so:obj/lib/liboemcamera.so \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/libgb/libcamera.so:obj/lib/libcamera.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/libgb/libcamera.so:system/lib/libcamera.so \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/camera.msm7x27.so:obj/lib/hw/camera.msm7x27.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/camera.msm7x27.so:system/lib/hw/camera.msm7x27.so \
+	#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/libgb/libcamera.so:obj/lib/libcamera.so \
+    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/libgb/libcamera.so:system/lib/libcamera.so \
+	#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/camera.msm7x27.so:obj/lib/hw/camera.msm7x27.so \
+    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/camera.msm7x27.so:system/lib/hw/camera.msm7x27.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcameraservice.so:obj/lib/libcameraservice.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcameraservice.so:system/lib/libcameraservice.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/camera.thunderc.so:obj/lib/hw/camera.thunderc.so \
