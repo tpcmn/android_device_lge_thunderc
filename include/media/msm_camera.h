@@ -639,4 +639,3 @@ struct msm_camsensor_info {
 	int8_t total_steps;
 };
 #endif /* __LINUX_MSM_CAMERA_H */
-

@@ -8,13 +8,17 @@ include vendor/lge/thunderc/BoardConfigVendor.mk
 # Camera
 # http://r.cyanogenmod.com/#/c/13317/
 COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT
-BOARD_CAMERA_USE_GETBUFFERINFO := true
-BOARD_USE_CAF_LIBCAMERA := true
+#BOARD_CAMERA_USE_GETBUFFERINFO := true
+#BOARD_USE_CAF_LIBCAMERA := true
+# This is needed by libcamera.so 
+BOARD_USE_NASTY_PTHREAD_CREATE_HACK := true 
+
 
 # Kernel
 #TARGET_KERNEL_SOURCE := kernel/lge/thunderc
 #TARGET_KERNEL_CONFIG := cyanogenmod_thunderc_defconfig
 #TARGET_PREBUILT_KERNEL := device/lge/p500/prebuilt/zImage
+TARGET_SPECIFIC_HEADER_PATH := device/lge/thunderc/include
 
 # Platform
 TARGET_BOARD_PLATFORM := msm7x27
@@ -33,7 +37,6 @@ TARGET_PROVIDES_INIT_TARGET_RC := true
 # Boot loader
 TARGET_NO_BOOTLOADER := true
 TARGET_BOOTLOADER_BOARD_NAME := thunderc
-TARGET_SPECIFIC_HEADER_PATH := device/lge/thunderc/include
 TARGET_OTA_ASSERT_DEVICE := thunderc
 
 # QCOM Hardware

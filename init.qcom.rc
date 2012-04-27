@@ -1,4 +1,4 @@
-import init.p500.usb.rc
+import init.thunderc.usb.rc
 
 
 on boot-pause
@@ -230,6 +230,12 @@ service map /system/bin/sdptool add --channel=16 MAS
     user bluetooth
     group bluetooth net_bt_admin
     disabled
+    oneshot
+#Market 
+service drm /system/bin/drmserver
+    user root
+    group root
+    enabled
     oneshot
 
 
