@@ -5,7 +5,7 @@
 # product configuration (apps).
 #
 
-PRODUCT_PACKAGES := \
+PRODUCT_PACKAGES += \
 	LiveWallpapersPicker
 
 PRODUCT_PACKAGES += \

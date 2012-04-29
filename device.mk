@@ -21,7 +21,7 @@ $(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 DEVICE_PACKAGE_OVERLAYS += device/lge/thunderc/overlay
 
 # XXX: this is non-standard
-LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/iscreamt3
+LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/iscreamt5
 LOCAL_KERNEL_MODULES := librasdioif.ko tun.ko wireless.ko
 	
 
@@ -30,45 +30,37 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(foreach f,$(LOCAL_KERNEL_MODULES),$(LOCAL_KERNEL_DIR)/$(f):system/lib/modules/$(f)) \
-    device/lge/thunderc/bootimg/default.prop:root/default.prop \
+    
 
 # Publish that we support the live wallpaper feature.
 PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 
 # Keylayouts
-PRODUCT_COPY_FILES += \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keylayout/thunderc_keypad.kl:system/usr/keylayout/thunderc_keypad.kl \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keylayout/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keychars/thunderc_keypad.kcm.bin:system/usr/keychars/thunderc_keypad.kcm.bin \
+#PRODUCT_COPY_FILES += \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keylayout/thunderc_keypad.kl:system/usr/keylayout/thunderc_keypad.kl \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keylayout/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keychars/thunderc_keypad.kcm.bin:system/usr/keychars/thunderc_keypad.kcm.bin \
 
-# QCOM init
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/init.qcom.rc:root/init.qcom.rc \
-    $(LOCAL_PATH)/ueventd.qcom.rc:root/ueventd.qcom.rc \
-    $(LOCAL_PATH)/init.thunderc.usb.rc:root/init.thunderc.usb.rc
+
 
 # BT startup
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/prebuilt/init.qcom.bt.sh:system/bin/init.qcom.bt.sh
-PRODUCT_PACKAGES += \
-    hcitool \
-    hciconfig \
-    hwaddrs
 
 # configs
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audiofilter.csv:system/etc/audiofilter.csv \
-    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
-    $(LOCAL_PATH)/configs/adreno_config.txt:system/etc/adreno_config.txt	
-#    $(LOCAL_PATH)/configs/thunder_keypad.kl:system/usr/keylayout/thunder_keypad.kl \
-#    $(LOCAL_PATH)/configs/thunder_keypad.kcm.bin:system/usr/keychars/thunder_keypad.kcm.bin \
-#    $(LOCAL_PATH)/configs/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
-
+PRODUCT_COPY_FILES += device/lge/thunderc/configs/AudioFilter.csv:system/etc/AudioFilter.csv 
+PRODUCT_COPY_FILES += device/lge/thunderc/configs/media_profiles.xml:system/etc/media_profiles.xml 
+PRODUCT_COPY_FILES += device/lge/thunderc/configs/thunderc_keypad.kl:system/usr/keylayout/thunderc_keypad.kl 
+PRODUCT_COPY_FILES += device/lge/thunderc/configs/thunderc_keypad.kcm.bin:system/usr/keychars/thunderc_keypad.kcm.bin 
+PRODUCT_COPY_FILES += device/lge/thunderc/configs/7k_handset.kl:system/usr/keylayout/7k_handset.kl 
+PRODUCT_COPY_FILES += device/lge/thunderc/configs/Generic.kl:system/usr/keylayout/Generic.kl 
+PRODUCT_COPY_FILES += device/lge/thunderc/configs/default.prop:root/default.prop 
+PRODUCT_COPY_FILES += device/lge/thunderc/configs/adreno_config.txt:system/etc/adreno_config.txt 	
 	
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.local.rc:system/etc/init.local.rc \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \
 
 # Drew's init stuff
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/08dalvik:system/etc/init.d/08dalvik \
@@ -95,8 +87,8 @@ PRODUCT_COPY_FILES += \
 # Board-specific init
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/initlogo.rle:root/initlogo.rle \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/init.thunderc.rc:root/init.thunderc.rc \
-	#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/ueventd.thunderc.rc:root/ueventd.thunderc.rc \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/init.thunderc.rc:root/init.thunderc.rc \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/ueventd.thunderc.rc:root/ueventd.thunderc.rc \
     
 
 # OFFLINE CHARGING
@@ -155,17 +147,17 @@ PRODUCT_COPY_FILES += \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libgsl.so:system/lib/libgsl.so \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOpenVG.so:system/lib/libOpenVG.so \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libC2D2.so:system/lib/libC2D2.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a300_pm4.fw:system/etc/firmware/a300_pm4.fw \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a300_pfp.fw:system/etc/firmware/a300_pfp.fw \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a225_pm4.fw:system/etc/firmware/a225_pm4.fw \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a225p5_pm4.fw:system/etc/firmware/a225p5_pm4.fw \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a225_pfp.fw:system/etc/firmware/a225_pfp.fw \
+# 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOpenVG.so:system/lib/libOpenVG.so \
+	#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw \
+#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
+#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a300_pm4.fw:system/etc/firmware/a300_pm4.fw \
+#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a300_pfp.fw:system/etc/firmware/a300_pfp.fw \
+#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a225_pm4.fw:system/etc/firmware/a225_pm4.fw \
+#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a225p5_pm4.fw:system/etc/firmware/a225p5_pm4.fw \
+#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a225_pfp.fw:system/etc/firmware/a225_pfp.fw \
+		#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libC2D2.so:system/lib/libC2D2.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/gralloc.thunderc.so:system/lib/hw/gralloc.thunderc.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/hwcomposer.thunderc.so:system/lib/hw/hwcomposer.thunderc.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/copybit.thunderc.so:system/lib/hw/copybit.thunderc.so \
@@ -279,6 +271,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libbcmwl.so:system/lib/libbcmwl.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libdss.so:system/lib/libdss.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libril.so:system/lib/libril.so \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libril.so:obj/lib/libril.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/rild:system/bin/rild \
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/pppd_runner:system/bin/pppd_runner 
 

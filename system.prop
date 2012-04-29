@@ -46,7 +46,7 @@ debug.composition.type=mdp
 #dalvik.vm.dexopt-data-only=1
 #persist.android.strictmode=0
 #ro.min_pointer_dur=1
-dalvik.vm.heapsize=24m
+#dalvik.vm.heapsize=24m
 
 # LCD density
 ro.sf.lcd_density=160
@@ -55,9 +55,9 @@ ro.sf.lcd_density=160
 #dalvik.vm.dexopt-flags=m=y
 #windowsmgr.max_events_per_sec=60
 
-#persist.sys.use_dithering=0
+persist.sys.use_dithering=1
 #com.qc.hardware=true
-ro.camera.preview=true
+#ro.camera.preview=true
 persist.cust.tel.eons=1
 
 ro.telephony.call_ring.multiple=false

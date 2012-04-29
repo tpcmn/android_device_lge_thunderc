@@ -82,7 +82,7 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
 # RIL
-BOARD_PROVIDES_LIBRIL := true
+#BOARD_PROVIDES_LIBRIL := true
 
 # Enable the GPS HAL & AMSS version to use for GPS
 BOARD_USES_QCOM_LIBRPC := true
