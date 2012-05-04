@@ -476,8 +476,10 @@ String8 AudioHardware::getParameters(const String8& keys)
     key = String8("tunneled-input-formats");
     if (param.get(key, value) == NO_ERROR) {
         param.addInt(String8("AMR"), true);
+#ifdef CDMA_NETWORK
         param.addInt(String8("QCELP"), true);
         param.addInt(String8("EVRC"), true);
+#endif
     }
     LOGV("AudioHardware::getParameters() %s", param.toString().string());
     return param.toString();
@@ -1096,8 +1098,10 @@ size_t AudioHardware::getInputBufferSize(uint32_t sampleRate, int format, int ch
 {
     if ( (format != AudioSystem::PCM_16_BIT) &&
          (format != AudioSystem::AMR_NB)     &&
+#ifdef CDMA_NETWORK
          (format != AudioSystem::EVRC)       &&
          (format != AudioSystem::QCELP)      &&
+#endif
          (format != AudioSystem::AAC)){
         LOGW("getInputBufferSize bad format: 0x%x", format);
         return 0;
@@ -1111,10 +1115,12 @@ size_t AudioHardware::getInputBufferSize(uint32_t sampleRate, int format, int ch
        return 2048;
     else if (format == AudioSystem::AMR_NB)
        return 320*channelCount;
+#ifdef CDMA_NETWORK
     else if (format == AudioSystem::EVRC)
        return 230*channelCount;
     else if (format == AudioSystem::QCELP)
        return 350*channelCount;
+#endif
     else
        return 2048*channelCount;
 }
@@ -1817,8 +1823,10 @@ status_t AudioHardware::AudioStreamInMSM72xx::set(
     if ((pFormat == 0) ||
         ((*pFormat != AUDIO_HW_IN_FORMAT) &&
          (*pFormat != AudioSystem::AMR_NB) &&
-       (*pFormat != AudioSystem::EVRC) &&
+#ifdef CDMA_NETWORK
+         (*pFormat != AudioSystem::EVRC) &&
          (*pFormat != AudioSystem::QCELP) &&
+#endif
          (*pFormat != AudioSystem::AAC)))
     {
         *pFormat = AUDIO_HW_IN_FORMAT;
@@ -1908,8 +1916,10 @@ status_t AudioHardware::AudioStreamInMSM72xx::set(
     mBufferSize = config.buffer_size;
     }
     else if( (*pFormat == AudioSystem::AMR_NB)
+#ifdef CDMA_NETWORK
               || (*pFormat == AudioSystem::EVRC)
               || (*pFormat == AudioSystem::QCELP)
+#endif
              )
            {
 
@@ -1972,6 +1982,7 @@ status_t AudioHardware::AudioStreamInMSM72xx::set(
           break;
         }
 
+#ifdef CDMA_NETWORK
         case AudioSystem::EVRC:
         {
           LOGI("Recording Format: EVRC");
@@ -1995,6 +2006,7 @@ status_t AudioHardware::AudioStreamInMSM72xx::set(
           mBufferSize = 350;
           break;
         }
+#endif
         default:
         break;
       }

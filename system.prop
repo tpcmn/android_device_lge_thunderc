@@ -53,7 +53,7 @@ ro.sf.lcd_density=160
 
 #dalvik.vm.execution-mode=int:jit
 #dalvik.vm.dexopt-flags=m=y
-#windowsmgr.max_events_per_sec=60
+windowsmgr.max_events_per_sec=260
 
 persist.sys.use_dithering=1
 #com.qc.hardware=true

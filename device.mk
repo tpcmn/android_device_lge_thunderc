@@ -18,10 +18,43 @@ $(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 
 #PRODUCT_INSTALL_PACKAGE := vendor/google/gapps
 
+# PicoTTS
+PRODUCT_REMOVE_FILES += \
+	system/tts/lang_pico/de-DE_gl0_sg.bin \
+	system/tts/lang_pico/de-DE_ta.bin \
+	system/tts/lang_pico/en-GB_kh0_sg.bin \
+	system/tts/lang_pico/en-GB_ta.bin \
+	system/tts/lang_pico/fr-FR_nk0_sg.bin \
+	system/tts/lang_pico/fr-FR_ta.bin \
+	system/tts/lang_pico/it-IT_cm0_sg.bin \
+	system/tts/lang_pico/it-IT_ta.bin
+	
+# Other
+PRODUCT_REMOVE_FILES += \
+	system/app/VideoEditor.apk \
+	system/lib/libvideoeditor_jni.so \
+	system/lib/libvideoeditorplayer.so
+	
+PRODUCT_REMOVE_PACKAGE_FILES := \
+	LatinIME.apk \
+		res/raw-cs/main.dict \
+		res/raw-da/main.dict \
+		res/raw-de/main.dict \
+		res/raw-el/main.dict \
+		res/raw-fr/main.dict \
+		res/raw-hr/main.dict \
+		res/raw-it/main.dict \
+		res/raw-iw/main.dict \
+		res/raw-ka/main.dict \
+		res/raw-nl/main.dict \
+		res/raw-pt/main.dict \
+		res/raw-ru/main.dict \
+		res/raw-sv/main.dict
+
 DEVICE_PACKAGE_OVERLAYS += device/lge/thunderc/overlay
 
 # XXX: this is non-standard
-LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/iscreamt5
+LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/iscreamt6
 LOCAL_KERNEL_MODULES := librasdioif.ko tun.ko wireless.ko
 	
 
@@ -43,7 +76,10 @@ PRODUCT_COPY_FILES += \
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keychars/thunderc_keypad.kcm.bin:system/usr/keychars/thunderc_keypad.kcm.bin \
 
-
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/initlogo.rle:root/initlogo.rle \
+#    $(LOCAL_PATH)/prebuilt/init.qcom.sh:root/init.qcom.sh \
+#    $(LOCAL_PATH)/prebuilt/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh
 
 # BT startup
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/prebuilt/init.qcom.bt.sh:system/bin/init.qcom.bt.sh
@@ -246,12 +282,14 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libidl.so:system/lib/libidl.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libril-qc-1.so:system/lib/libril-qc-1.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liboncrpc.so:system/lib/liboncrpc.so \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liboncrpc.so:obj/lib/liboncrpc.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libdsm.so:system/lib/libdsm.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libqueue.so:system/lib/libqueue.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libdiag.so:system/lib/libdiag.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libauth.so:system/lib/libauth.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcm.so:system/lib/libcm.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libnv.so:system/lib/libnv.so \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libnv.so:obj/lib/libnv.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libpbmlib.so:system/lib/libpbmlib.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libwms.so:system/lib/libwms.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libwmsts.so:system/lib/libwmsts.so \
