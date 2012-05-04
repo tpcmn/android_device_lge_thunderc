@@ -29,7 +29,6 @@
     
     <bool name="config_unplugTurnsOnScreen">true</bool>
     
-    <string name="default_wallpaper_component">com.android.wallpaper/.nexus.NexusWallpaper</string>
     
     <!-- crespo doesn't handle this blur effect very quickly. -->
     <bool name="config_sf_slowBlur">true</bool>

@@ -78,8 +78,8 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/initlogo.rle:root/initlogo.rle \
-#    $(LOCAL_PATH)/prebuilt/init.qcom.sh:root/init.qcom.sh \
-#    $(LOCAL_PATH)/prebuilt/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh
+    $(LOCAL_PATH)/prebuilt/init.qcom.sh:root/init.qcom.sh \
+    $(LOCAL_PATH)/prebuilt/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh
 
 # BT startup
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/prebuilt/init.qcom.bt.sh:system/bin/init.qcom.bt.sh
