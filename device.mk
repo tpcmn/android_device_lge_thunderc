@@ -327,57 +327,45 @@ PRODUCT_COPY_FILES += \
 
 
 # OMX
-#PRODUCT_COPY_FILES += \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmm-omxcore.so:system/lib/libmm-omxcore.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libomx_aacdec_sharedlibrary.so:system/lib/libomx_aacdec_sharedlibrary.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAacDec.so:system/lib/libOmxAacDec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAacEnc.so:system/lib/libOmxAacEnc.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAdpcmDec.so:system/lib/libOmxAdpcmDec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libomx_amrdec_sharedlibrary.so:system/lib/libomx_amrdec_sharedlibrary.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAmrDec.so:system/lib/libOmxAmrDec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libomx_amrenc_sharedlibrary.so:system/lib/libomx_amrenc_sharedlibrary.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAmrEnc.so:system/lib/libOmxAmrEnc.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAmrRtpDec.so:system/lib/libOmxAmrRtpDec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAmrwbDec.so:system/lib/libOmxAmrwbDec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libomx_avcdec_sharedlibrary.so:system/lib/libomx_avcdec_sharedlibrary.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxEvrcDec.so:system/lib/libOmxEvrcDec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxEvrcEnc.so:system/lib/libOmxEvrcEnc.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxH264Dec.so:system/lib/libOmxH264Dec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libomx_m4vdec_sharedlibrary.so:system/lib/libomx_m4vdec_sharedlibrary.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libomx_mp3dec_sharedlibrary.so:system/lib/libomx_mp3dec_sharedlibrary.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxMp3Dec.so:system/lib/libOmxMp3Dec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libomx_nextreaming_divxdec_sharedlibrary.so:system/lib/libomx_nextreaming_divxdec_sharedlibrary.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libomx_nextreaming_wmadec_sharedlibrary.so:system/lib/libomx_nextreaming_wmadec_sharedlibrary.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libomx_nextreaming_wmvdec_sharedlibrary.so:system/lib/libomx_nextreaming_wmvdec_sharedlibrary.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxQcelp13Enc.so:system/lib/libOmxQcelp13Enc.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxQcelpDec.so:system/lib/libOmxQcelpDec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libomx_sharedlibrary.so:system/lib/libomx_sharedlibrary.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxWmvDec.so:system/lib/libOmxWmvDec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libqcomm_omx.so:system/lib/libqcomm_omx.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libstagefright_omx.so:system/lib/libstagefright_omx.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libopencore_common.so:system/lib/libopencore_common.so \
-
 PRODUCT_COPY_FILES += \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmm-omxcore.so:system/lib/libmm-omxcore.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmm-adspsvc.so:system/lib/libmm-adspsvc.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAacDec.so:system/lib/libOmxAacDec.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAacEnc.so:system/lib/libOmxAacEnc.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAdpcmDec.so:system/lib/libOmxAdpcmDec.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAmrDec.so:system/lib/libOmxAmrDec.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAmrEnc.so:system/lib/libOmxAmrEnc.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxCore.so:system/lib/libOmxCore.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAmrRtpDec.so:system/lib/libOmxAmrRtpDec.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAmrwbDec.so:system/lib/libOmxAmrwbDec.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxEvrcDec.so:system/lib/libOmxEvrcDec.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxEvrcHwDec.so:system/lib/libOmxEvrcHwDec.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxEvrcEnc.so:system/lib/libOmxEvrcEnc.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxH264Dec.so:system/lib/libOmxH264Dec.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxMp3Dec.so:system/lib/libOmxMp3Dec.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxOn2Dec.so:system/lib/libOmxOn2Dec.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxQcelp13Enc.so:system/lib/libOmxQcelp13Enc.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxQcelpDec.so:system/lib/libOmxQcelpDec.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxQcelpHwDec.so:system/lib/libOmxQcelpHwDec.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxWmvDec.so:system/lib/libOmxWmvDec.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmm-adspsvc.so:system/lib/libmm-adspsvc.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libdivxdrmdecrypt.so:system/lib/libdivxdrmdecrypt.so \
+
+#PRODUCT_COPY_FILES += \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmm-omxcore.so:system/lib/libmm-omxcore.so \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAacDec.so:system/lib/libOmxAacDec.so \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAacEnc.so:system/lib/libOmxAacEnc.so \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAdpcmDec.so:system/lib/libOmxAdpcmDec.so \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAmrDec.so:system/lib/libOmxAmrDec.so \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAmrEnc.so:system/lib/libOmxAmrEnc.so \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxCore.so:system/lib/libOmxCore.so \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAmrRtpDec.so:system/lib/libOmxAmrRtpDec.so \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAmrwbDec.so:system/lib/libOmxAmrwbDec.so \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxEvrcDec.so:system/lib/libOmxEvrcDec.so \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxEvrcEnc.so:system/lib/libOmxEvrcEnc.so \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxQcelp13Enc.so:system/lib/libOmxQcelp13Enc.so \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxQcelpDec.so:system/lib/libOmxQcelpDec.so \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxWmvDec.so:system/lib/libOmxWmvDec.so \
 
 
 
