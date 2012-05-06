@@ -17,7 +17,7 @@ BOARD_USE_NASTY_PTHREAD_CREATE_HACK := true
 # Kernel
 #TARGET_KERNEL_SOURCE := kernel/lge/thunderc
 #TARGET_KERNEL_CONFIG := cyanogenmod_thunderc_defconfig
-#TARGET_PREBUILT_KERNEL := device/lge/p500/prebuilt/zImage
+TARGET_PREBUILT_KERNEL := device/lge/thunderc/kernels/iscreamt6/zImage
 TARGET_SPECIFIC_HEADER_PATH := device/lge/thunderc/include
 
 # Platform
