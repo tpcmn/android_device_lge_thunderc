@@ -130,18 +130,14 @@ PRODUCT_COPY_FILES += \
 # OFFLINE CHARGING
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/sbin/bootlogo:root/sbin/bootlogo \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_00.rle:root/bootimages/sprint_power_on_00.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_01.rle:root/bootimages/sprint_power_on_01.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_02.rle:root/bootimages/sprint_power_on_02.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_03.rle:root/bootimages/sprint_power_on_03.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_04.rle:root/bootimages/sprint_power_on_04.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_05.rle:root/bootimages/sprint_power_on_05.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_06.rle:root/bootimages/sprint_power_on_06.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_07.rle:root/bootimages/sprint_power_on_07.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_08.rle:root/bootimages/sprint_power_on_08.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_09.rle:root/bootimages/sprint_power_on_09.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_10.rle:root/bootimages/sprint_power_on_10.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/sprint_power_on_11.rle:root/bootimages/sprint_power_on_11.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_01.rle:root/bootimages/opening_01.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_02.rle:root/bootimages/opening_02.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_03.rle:root/bootimages/opening_03.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_04.rle:root/bootimages/opening_04.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_05.rle:root/bootimages/opening_05.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_06.rle:root/bootimages/opening_06.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_07.rle:root/bootimages/opening_07.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_08.rle:root/bootimages/opening_08.rle \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/sbin/chargerlogo:root/sbin/chargerlogo \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/black_bg.rle:root/chargerimages/black_bg.rle \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_bg.rle:root/chargerimages/battery_bg.rle \
@@ -160,14 +156,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_wait_ani_02.rle:root/chargerimages/battery_wait_ani_02.rle \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_notenough.rle:root/chargerimages/battery_notenough.rle \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/sbin/ftm_power:root/sbin/ftm_power \
-    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_01.rle:root/bootimages/opening_01.rle \
-    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_02.rle:root/bootimages/opening_02.rle \
-    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_03.rle:root/bootimages/opening_03.rle \
-    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_04.rle:root/bootimages/opening_04.rle \
-    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_05.rle:root/bootimages/opening_05.rle \
-    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_06.rle:root/bootimages/opening_06.rle \
-    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_07.rle:root/bootimages/opening_07.rle \
-    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_08.rle:root/bootimages/opening_08.rle \
+
 
 # Backlight
 PRODUCT_COPY_FILES += \

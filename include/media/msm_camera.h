@@ -444,7 +444,7 @@ struct crop_info {
 
 struct msm_postproc {
 	int ftnum;
-	struct msm_frame fthumbnail;
+	struct msm_frame fthumnail;
 	int fmnum;
 	struct msm_frame fmain;
 };
