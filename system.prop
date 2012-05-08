@@ -80,7 +80,7 @@ ro.telephony.ril.v3=signalstrength,skipbrokendatacall,facilitylock,datacall,iccc
 # modified camera blob wants this
 #ro.product.camera=thunderc
 # use gralloc.msm7x27 
-ro.product.camera=msm7x27 
+ro.product.camera=thunderc 
 debug.camcorder.disablemeta=1 
 
 persist.sys.usb.config=mass_storage,adb
