@@ -336,7 +336,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxWmvDec.so:system/lib/libOmxWmvDec.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmm-adspsvc.so:system/lib/libmm-adspsvc.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libdivxdrmdecrypt.so:system/lib/libdivxdrmdecrypt.so \
 
 #PRODUCT_COPY_FILES += \
