@@ -184,6 +184,7 @@ PRODUCT_COPY_FILES += \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libgsl.so:system/lib/libgsl.so \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/lib/egl/egl.cfg:system/lib/egl/egl.cfg \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
 # 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOpenVG.so:system/lib/libOpenVG.so \
