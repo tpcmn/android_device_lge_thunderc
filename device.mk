@@ -180,14 +180,15 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/egl/libGLES_android.so:system/lib/egl/libGLES_android.so \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libgsl.so:system/lib/libgsl.so \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/egl/egl.cfg:system/lib/egl/egl.cfg \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libC2D2.so:system/lib/libC2D2.so \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOpenVG.so:system/lib/libOpenVG.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
-# 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOpenVG.so:system/lib/libOpenVG.so \
+#       vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/egl/libGLES_android.so:system/lib/egl/libGLES_android.so \
 	#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw \
 #	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
 #	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a300_pm4.fw:system/etc/firmware/a300_pm4.fw \
@@ -195,7 +196,6 @@ PRODUCT_COPY_FILES += \
 #	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a225_pm4.fw:system/etc/firmware/a225_pm4.fw \
 #	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a225p5_pm4.fw:system/etc/firmware/a225p5_pm4.fw \
 #	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a225_pfp.fw:system/etc/firmware/a225_pfp.fw \
-		#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libC2D2.so:system/lib/libC2D2.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/gralloc.thunderc.so:system/lib/hw/gralloc.thunderc.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/hwcomposer.thunderc.so:system/lib/hw/hwcomposer.thunderc.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/copybit.thunderc.so:system/lib/hw/copybit.thunderc.so \
@@ -209,8 +209,8 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmmjpeg.so:obj/lib/libmmjpeg.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liboemcamera.so:system/lib/liboemcamera.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liboemcamera.so:obj/lib/liboemcamera.so \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:obj/lib/libcamera.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:system/lib/libcamera.so \
+	#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:obj/lib/libcamera.so \
+    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:system/lib/libcamera.so \
 	#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/camera.msm7x27.so:obj/lib/hw/camera.msm7x27.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/camera.msm7x27.so:system/lib/hw/camera.msm7x27.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcameraservice.so:obj/lib/libcameraservice.so \
