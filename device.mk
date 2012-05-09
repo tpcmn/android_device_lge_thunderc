@@ -54,7 +54,7 @@ PRODUCT_REMOVE_PACKAGE_FILES := \
 DEVICE_PACKAGE_OVERLAYS += device/lge/thunderc/overlay
 
 # XXX: this is non-standard
-LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/iscreamt6
+LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/iscreamt7
 LOCAL_KERNEL_MODULES := librasdioif.ko tun.ko wireless.ko
 	
 
