@@ -30,10 +30,10 @@ PRODUCT_REMOVE_FILES += \
 	system/tts/lang_pico/it-IT_ta.bin
 	
 # Other
-PRODUCT_REMOVE_FILES += \
-	system/app/VideoEditor.apk \
-	system/lib/libvideoeditor_jni.so \
-	system/lib/libvideoeditorplayer.so
+#PRODUCT_REMOVE_FILES += \
+#	system/app/VideoEditor.apk \
+#	system/lib/libvideoeditor_jni.so \
+#	system/lib/libvideoeditorplayer.so
 	
 PRODUCT_REMOVE_PACKAGE_FILES := \
 	LatinIME.apk \
@@ -54,7 +54,7 @@ PRODUCT_REMOVE_PACKAGE_FILES := \
 DEVICE_PACKAGE_OVERLAYS += device/lge/thunderc/overlay
 
 # XXX: this is non-standard
-LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/iscreamt7
+LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/test10
 LOCAL_KERNEL_MODULES := librasdioif.ko tun.ko wireless.ko
 	
 
@@ -181,6 +181,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/egl/libGLES_android.so:system/lib/egl/libGLES_android.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libgsl.so:system/lib/libgsl.so \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/egl/egl.cfg:system/lib/egl/egl.cfg \
@@ -188,7 +189,6 @@ PRODUCT_COPY_FILES += \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOpenVG.so:system/lib/libOpenVG.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
-#       vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/egl/libGLES_android.so:system/lib/egl/libGLES_android.so \
 	#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw \
 #	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
 #	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a300_pm4.fw:system/etc/firmware/a300_pm4.fw \
@@ -209,8 +209,8 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmmjpeg.so:obj/lib/libmmjpeg.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liboemcamera.so:system/lib/liboemcamera.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liboemcamera.so:obj/lib/liboemcamera.so \
-	#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:obj/lib/libcamera.so \
-    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:system/lib/libcamera.so \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:obj/lib/libcamera.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:system/lib/libcamera.so \
 	#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/camera.msm7x27.so:obj/lib/hw/camera.msm7x27.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/camera.msm7x27.so:system/lib/hw/camera.msm7x27.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcameraservice.so:obj/lib/libcameraservice.so \

@@ -104,12 +104,10 @@ void (*LINK_cam_frame_flush_free_video)(void);
 int8_t (*LINK_jpeg_encoder_setMainImageQuality)(uint32_t quality);
 int8_t (*LINK_jpeg_encoder_setThumbnailQuality)(uint32_t quality);
 int8_t (*LINK_jpeg_encoder_setRotation)(uint32_t rotation);
-
 int8_t (*LINK_jpeg_encoder_setLocation)(const camera_position_type *location);
 const struct camera_size_type *(*LINK_default_sensor_get_snapshot_sizes)(int *len);
 int (*LINK_launch_cam_conf_thread)(void);
 int (*LINK_release_cam_conf_thread)(void);
-
 int8_t (*LINK_zoom_crop_upscale)(uint32_t width, uint32_t height,
     uint32_t cropped_width, uint32_t cropped_height, uint8_t *img_buf);
 
@@ -130,12 +128,10 @@ void  (**LINK_camframe_timeout_callback)(void);
 #define LINK_jpeg_encoder_setMainImageQuality jpeg_encoder_setMainImageQuality
 #define LINK_jpeg_encoder_setThumbnailQuality jpeg_encoder_setThumbnailQuality
 #define LINK_jpeg_encoder_setRotation jpeg_encoder_setRotation
-
 #define LINK_jpeg_encoder_setLocation jpeg_encoder_setLocation
 #define LINK_default_sensor_get_snapshot_sizes default_sensor_get_snapshot_sizes
 #define LINK_launch_cam_conf_thread launch_cam_conf_thread
 #define LINK_release_cam_conf_thread release_cam_conf_thread
-
 #define LINK_zoom_crop_upscale zoom_crop_upscale
 extern void (*mmcamera_camframe_callback)(struct msm_frame *frame);
 extern void (*mmcamera_jpegfragment_callback)(uint8_t *buff_ptr,
@@ -195,7 +191,6 @@ static camera_size_type supportedPreviewSizes[PREVIEW_SIZE_COUNT];
 static unsigned int previewSizeCount;
 
 board_property boardProperties[] = {
-
         {TARGET_MSM7625, 0x00000fff},
         {TARGET_MSM7627, 0x000006ff},
         {TARGET_MSM7630, 0x00000fff},
@@ -238,7 +233,6 @@ static int supportedPictureSizesCount;
 #define Q12 4096
 
 static const target_map targetList [] = {
-    { "msm7227", TARGET_MSM7227 },
     { "msm7625", TARGET_MSM7625 },
     { "msm7627", TARGET_MSM7627 },
     { "qsd8250", TARGET_QSD8250 },
@@ -606,7 +600,6 @@ static const str_map focus_modes[] = {
 static const str_map lensshade[] = {
     { CameraParameters::LENSSHADE_ENABLE, TRUE },
     { CameraParameters::LENSSHADE_DISABLE, FALSE }
-
 };
 
 struct SensorType {
@@ -841,11 +834,6 @@ pthread_t w_thread;
 
 void *opencamerafd(void *data) {
     camerafd = open(MSM_CAMERA_CONTROL, O_RDWR);
-
-
-
-
-
     return NULL;
 }
 
@@ -1031,7 +1019,6 @@ void QualcommCameraHardware::initDefaultParameters()
     mDimension.display_width = DEFAULT_PREVIEW_WIDTH;
     mDimension.display_height = DEFAULT_PREVIEW_HEIGHT;
 
-
     mParameters.setPreviewFrameRate(DEFAULT_FPS);
     if((strcmp(mSensorInfo.name, "vx6953")) &&
         (strcmp(mSensorInfo.name, "VX6953")) &&
@@ -1044,8 +1031,6 @@ void QualcommCameraHardware::initDefaultParameters()
             CameraParameters::KEY_SUPPORTED_PREVIEW_FRAME_RATES,
             DEFAULT_FPS);
     }
-
-
     mParameters.setPreviewFormat("yuv420sp"); // informative
 
     mParameters.setPictureSize(DEFAULT_PICTURE_WIDTH, DEFAULT_PICTURE_HEIGHT);
@@ -1072,7 +1057,6 @@ void QualcommCameraHardware::initDefaultParameters()
                     CameraParameters::WHITE_BALANCE_AUTO);
     mParameters.set(CameraParameters::KEY_FOCUS_MODE,
                     CameraParameters::FOCUS_MODE_AUTO);
-
     mParameters.set(CameraParameters::KEY_SUPPORTED_PREVIEW_FORMATS,
                     "yuv420sp");
 
@@ -1157,7 +1141,6 @@ void QualcommCameraHardware::initDefaultParameters()
     } else {
         mParameters.set(CameraParameters::KEY_SUPPORTED_LENSSHADE_MODES,
                     lensshade_values);
-
     }
 
     if (setParameters(mParameters) != NO_ERROR) {
@@ -1270,27 +1253,22 @@ bool QualcommCameraHardware::startCamera()
     *(void**)&LINK_jpeg_encoder_setRotation =
         ::dlsym(libmmcamera, "jpeg_encoder_setRotation");
 
-
 /* Disabling until support is available.
     *(void**)&LINK_jpeg_encoder_setLocation =
         ::dlsym(libmmcamera, "jpeg_encoder_setLocation");
 */
-
     *(void **)&LINK_cam_conf =
         ::dlsym(libmmcamera, "cam_conf");
-
 
 /* Disabling until support is available.
     *(void **)&LINK_default_sensor_get_snapshot_sizes =
         ::dlsym(libmmcamera, "default_sensor_get_snapshot_sizes");
 */
-
     *(void **)&LINK_launch_cam_conf_thread =
         ::dlsym(libmmcamera, "launch_cam_conf_thread");
 
     *(void **)&LINK_release_cam_conf_thread =
         ::dlsym(libmmcamera, "release_cam_conf_thread");
-
 
 /* Disabling until support is available.
     *(void **)&LINK_zoom_crop_upscale =
@@ -1343,8 +1321,6 @@ bool QualcommCameraHardware::startCamera()
     else
         LOGI("%s: camsensor name %s, flash %d", __FUNCTION__,
              mSensorInfo.name, mSensorInfo.flash_enabled);
-
-
 /* Disabling until support is available.
     picture_sizes = LINK_default_sensor_get_snapshot_sizes(&PICTURE_SIZE_COUNT);
     if (!picture_sizes || !PICTURE_SIZE_COUNT) {
@@ -1956,7 +1932,6 @@ void QualcommCameraHardware::jpeg_set_location()
             if (sscanf(what##_str, fmt, &what) == 1)                           \
                 pt.what = what;                                                \
             else {                                                             \
-
                 LOGE("GPS " #what " %s could not"                              \
                      " be parsed as a " #desc, what##_str);                    \
                 encode_location = false;                                       \
@@ -1980,8 +1955,6 @@ void QualcommCameraHardware::jpeg_set_location()
     if (encode_location) {
         LOGD("setting image location ALT %d LAT %lf LON %lf",
              pt.altitude, pt.latitude, pt.longitude);
-
-
 /* Disabling until support is available.
         if (!LINK_jpeg_encoder_setLocation(&pt)) {
             LOGE("jpeg_set_location: LINK_jpeg_encoder_setLocation failed.");
@@ -2279,11 +2252,6 @@ bool QualcommCameraHardware::initPreview()
                                               &attr,
                                               frame_thread,
                                               (void*)&(frame_parms));
-
-
-
-
-
         ret = mFrameThreadRunning;
         mFrameThreadWaitLock.unlock();
     }
@@ -2639,8 +2607,6 @@ status_t QualcommCameraHardware::startPreviewInternal()
         LOGE("startPreview X: native_start_preview failed!");
         return UNKNOWN_ERROR;
     }
-
-
 
     //Reset the Gps Information
     exif_table_numEntries = 0;
@@ -3351,20 +3317,15 @@ void QualcommCameraHardware::receivePreviewFrame(struct msm_frame *frame)
     // Find the offset within the heap of the current buffer.
     ssize_t offset_addr =
         (ssize_t)frame->buffer - (ssize_t)mPreviewHeap->mHeap->base();
-
     ssize_t offset = offset_addr / mPreviewHeap->mAlignedBufferSize;
-
 
     common_crop_t *crop = (common_crop_t *) (frame->cropinfo);
 
     mInPreviewCallback = true;
 	if (crop->in2_w != 0 || crop->in2_h != 0) {
 	    dstOffset = (dstOffset + 1) % NUM_MORE_BUFS;
-
 	    offset = kPreviewBufferCount + dstOffset;
-
 	    ssize_t dstOffset_addr = offset * mPreviewHeap->mAlignedBufferSize;
-
 	    if( !native_zoom_image(mPreviewHeap->mHeap->getHeapID(),
 			offset_addr, dstOffset_addr, crop)) {
 		LOGE(" Error while doing MDP zoom ");
@@ -3951,7 +3912,6 @@ status_t QualcommCameraHardware::setEffect(const CameraParameters& params)
                mParameters.set(CameraParameters::KEY_EFFECT, str);
                bool ret = native_set_parm(CAMERA_SET_PARM_EFFECT, sizeof(value),
                                            (void *)&value);
-
                return ret ? NO_ERROR : UNKNOWN_ERROR;
           }
         }
@@ -3973,7 +3933,6 @@ status_t QualcommCameraHardware::setAutoExposure(const CameraParameters& params)
             mParameters.set(CameraParameters::KEY_AUTO_EXPOSURE, str);
             bool ret = native_set_parm(CAMERA_SET_PARM_EXPOSURE, sizeof(value),
                                        (void *)&value);
-
             return ret ? NO_ERROR : UNKNOWN_ERROR;
         }
     }
@@ -3996,9 +3955,7 @@ status_t QualcommCameraHardware::setSharpness(const CameraParameters& params)
     mParameters.set(CameraParameters::KEY_SHARPNESS, sharpness);
     bool ret = native_set_parm(CAMERA_SET_PARM_SHARPNESS, sizeof(sharpness),
                                (void *)&sharpness);
-
     return ret ? NO_ERROR : UNKNOWN_ERROR;
-
 }
 
 status_t QualcommCameraHardware::setContrast(const CameraParameters& params)
@@ -4016,7 +3973,6 @@ status_t QualcommCameraHardware::setContrast(const CameraParameters& params)
     mParameters.set(CameraParameters::KEY_CONTRAST, contrast);
     bool ret = native_set_parm(CAMERA_SET_PARM_CONTRAST, sizeof(contrast),
                                (void *)&contrast);
-
     return ret ? NO_ERROR : UNKNOWN_ERROR;
 }
 
@@ -4042,7 +3998,6 @@ status_t QualcommCameraHardware::setSaturation(const CameraParameters& params)
 	mParameters.set(CameraParameters::KEY_SATURATION, saturation);
 	bool ret = native_set_parm(CAMERA_SET_PARM_SATURATION, sizeof(saturation),
 		(void *)&saturation);
-
 	return ret ? NO_ERROR : UNKNOWN_ERROR;
     } else {
 	LOGE(" Saturation value will not be set " \
@@ -4059,7 +4014,6 @@ status_t QualcommCameraHardware::setBrightness(const CameraParameters& params) {
 
             bool ret = native_set_parm(CAMERA_SET_PARM_BRIGHTNESS, sizeof(mBrightness),
                                        (void *)&mBrightness);
-
             return ret ? NO_ERROR : UNKNOWN_ERROR;
         } else {
             return NO_ERROR;
@@ -4078,7 +4032,6 @@ status_t QualcommCameraHardware::setExposureCompensation(const CameraParameters&
 
         bool ret = native_set_parm(CAMERA_SET_PARM_EXPOSURE_COMPENSATION, sizeof(expcomp),
                                        (void *)&expcomp);
-
 
         return ret ? NO_ERROR : UNKNOWN_ERROR;
 }
@@ -4099,7 +4052,6 @@ status_t QualcommCameraHardware::setWhiteBalance(const CameraParameters& params)
                 mParameters.set(CameraParameters::KEY_WHITE_BALANCE, str);
                 bool ret = native_set_parm(CAMERA_SET_PARM_WB, sizeof(value),
                                            (void *)&value);
-
                 return ret ? NO_ERROR : UNKNOWN_ERROR;
             }
         }
@@ -4126,7 +4078,6 @@ status_t QualcommCameraHardware::setFlash(const CameraParameters& params)
             mParameters.set(CameraParameters::KEY_FLASH_MODE, str);
             bool ret = native_set_parm(CAMERA_SET_PARM_LED_MODE,
                                        sizeof(value), (void *)&value);
-
             return ret ? NO_ERROR : UNKNOWN_ERROR;
         }
     }
@@ -4152,11 +4103,9 @@ status_t QualcommCameraHardware::setAntibanding(const CameraParameters& params)
             if (temp == CAMERA_ANTIBANDING_AUTO) {
                 ret = native_set_parm(CAMERA_ENABLE_AFD,
                             0, NULL);
-
             } else {
                 ret = native_set_parm(CAMERA_SET_PARM_ANTIBANDING,
                             sizeof(camera_antibanding_type), (void *)&temp);
-
             }
             return ret ? NO_ERROR : UNKNOWN_ERROR;
         }
@@ -4182,13 +4131,11 @@ status_t QualcommCameraHardware::setLensshadeValue(const CameraParameters& param
             int8_t temp = (int8_t)value;
             mParameters.set(CameraParameters::KEY_LENSSHADE, str);
             native_set_parm(CAMERA_SET_PARM_ROLLOFF, sizeof(int8_t), (void *)&temp);
-
             return NO_ERROR;
         }
     }
     LOGE("Invalid lensShade value: %s", (str == NULL) ? "NULL" : str);
     return BAD_VALUE;
-
 }
 
 status_t  QualcommCameraHardware::setISOValue(const CameraParameters& params) {
@@ -4212,10 +4159,8 @@ status_t  QualcommCameraHardware::setISOValue(const CameraParameters& params) {
                }
             }
 
-
             mParameters.set(CameraParameters::KEY_ISO_MODE, str);
             native_set_parm(CAMERA_SET_PARM_ISO, sizeof(camera_iso_mode_type), (void *)&temp);
-
             return NO_ERROR;
         }
     }
@@ -4310,11 +4255,9 @@ status_t QualcommCameraHardware::setZoom(const CameraParameters& params)
         int32_t zoom_value = ZOOM_STEP * zoom_level;
         bool ret = native_set_parm(CAMERA_SET_PARM_ZOOM,
             sizeof(zoom_value), (void *)&zoom_value);
-
         rc = ret ? NO_ERROR : UNKNOWN_ERROR;
     } else {
         rc = BAD_VALUE;
-
     }
 
     return rc;

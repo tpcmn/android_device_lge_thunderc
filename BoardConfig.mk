@@ -1,7 +1,7 @@
 # WARNING: This line must come *before* including the proprietary
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
-USE_CAMERA_STUB := false
+USE_CAMERA_STUB := true
 
 include vendor/lge/thunderc/BoardConfigVendor.mk
 
@@ -17,7 +17,7 @@ BOARD_USE_NASTY_PTHREAD_CREATE_HACK := true
 # Kernel
 #TARGET_KERNEL_SOURCE := kernel/lge/thunderc
 #TARGET_KERNEL_CONFIG := cyanogenmod_thunderc_defconfig
-TARGET_PREBUILT_KERNEL := device/lge/thunderc/kernels/iscreamt7/zImage
+TARGET_PREBUILT_KERNEL := device/lge/thunderc/kernels/test10/zImage
 TARGET_SPECIFIC_HEADER_PATH := device/lge/thunderc/include
 
 # Platform
