@@ -33,7 +33,7 @@ key 355   DEL               WAKE_DROPPED
 key 212   CAMERA
 key 247   FOCUS
 key 217   SEARCH            WAKE_DROPPED
-key 216   ENDCALL           WAKE_DROPPED
+key 216   POWER           WAKE_DROPPED
 
 key 226   HEADSETHOOK       WAKE
 key 116   POWER             WAKE
