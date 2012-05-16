@@ -27,3 +27,4 @@
 key 226   HEADSETHOOK       WAKE
 key 116   POWER             WAKE
 key 107   POWER           WAKE_DROPPED
+key 216    APP_SWITCH         VIRTUAL

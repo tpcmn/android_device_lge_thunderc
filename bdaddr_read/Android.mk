@@ -13,8 +13,6 @@
 # limitations under the License.
 
 
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),thunderc)
-
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
@@ -28,4 +26,4 @@ LOCAL_MODULE := bdaddr_read
 
 include $(BUILD_EXECUTABLE)
 
-endif
+
