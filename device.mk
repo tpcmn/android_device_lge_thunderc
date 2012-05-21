@@ -1,3 +1,6 @@
+PRODUCT_AAPT_CONFIG := normal mdpi 
+PRODUCT_AAPT_PREF_CONFIG := mdpi 
+
 # XXX
 SUB_MODEL := LS670
 
