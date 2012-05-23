@@ -1,7 +1,7 @@
 # WARNING: This line must come *before* including the proprietary
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
-USE_CAMERA_STUB := true
+USE_CAMERA_STUB := false
 
 include vendor/lge/thunderc/BoardConfigVendor.mk
 
@@ -104,8 +104,10 @@ ENABLE_JSC_JIT := true
 # Mass Storage for ICS
 #BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 #BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/thunderc/prebuilt/UsbController.cpp
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
+#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
 BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
+BOARD_SDCARD_INTERNAL_DEVICE := /dev/block/mmcblk0p1
 #BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/vold/179:1
 #BOARD_SDEXT_DEVICE := /dev/block/vold/179:2
 

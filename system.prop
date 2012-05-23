@@ -110,6 +110,7 @@ debug.camcorder.disablemeta=1
 # USB for ICS 
 # etc/init.qcom.post_boot.sh 
 #persist.sys.usb.config=mass_storage,adb
+persist.sys.usb.config=mass_storage
 
 
 # system props for the MM modules 
