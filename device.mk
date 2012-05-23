@@ -22,7 +22,7 @@ $(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 #PRODUCT_INSTALL_PACKAGE := vendor/google/gapps
 
 # PicoTTS
-#PRODUCT_REMOVE_FILES += \
+PRODUCT_REMOVE_FILES += \
 PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/de-DE_gl0_sg.bin 
 PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/de-DE_ta.bin 
 PRODUCT_REMOVE_FILES += system/tts/lang_pico/en-GB_kh0_sg.bin 
@@ -33,8 +33,8 @@ PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/it-IT_cm0_sg.bin
 PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/it-IT_ta.bin
 	
 # Other
-#PRODUCT_REMOVE_FILES += \
-#	system/app/VideoEditor.apk \
+PRODUCT_REMOVE_FILES += \
+	system/app/VideoEditor.apk \
 #	system/lib/libvideoeditor_jni.so \
 #	system/lib/libvideoeditorplayer.so
 	
@@ -57,7 +57,7 @@ PRODUCT_REMOVE_PACKAGE_FILES := \
 DEVICE_PACKAGE_OVERLAYS += device/lge/thunderc/overlay
 
 # XXX: this is non-standard
-LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/test12
+LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/test10
 LOCAL_KERNEL_MODULES := librasdioif.ko tun.ko wireless.ko
 	
 
