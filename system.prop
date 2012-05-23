@@ -45,13 +45,37 @@ hwui.print_config=choice
 #new EGL prop
 
 
-#debug.performance.tuning=1
-#video.accelerate.hw=1
+debug.performance.tuning=1
+video.accelerate.hw=1
 #dalvik.vm.verify-bytecode=false
 dalvik.vm.dexopt-data-only=1
 #persist.android.strictmode=0
 #ro.min_pointer_dur=1
 #dalvik.vm.heapsize=24m
+
+#Dynamite tweaks
+# Increase battery and longer standby time with deeper sleep
+m.sleep_mode=1
+ro.ril.disable.power.collapse=0
+# More accurate touch
+movfilter=40
+move hyst=0
+ 
+# Faster transfer rate for net connections
+net.tcp.buffersize.default=4096,87380,256960,4096, 16384,256960
+net.tcp.buffersize.wifi=4096,87380,256960,4096,163 84,256960
+# store launcher in memory - so that when you switch back to home it loads faster 
+ro.HOME_APP_ADJ=1
+ 
+# improve image and video quality (when taking pics and vids from cam and showing them in gallery)
+ro.media.enc.jpeg.quality=100 
+ro.media.dec.jpeg.memcap=8000000 
+ro.media.enc.hprof.vid.bps=8000000
+#Improve Scrolling Build.prop Tweak
+ro.max.fling_velocity=4000
+ 
+#Disable_ADB_Notification_Icon
+persist.adb.notify=0
 
 # Disable strict mode flash on display 
 persist.sys.strictmode.visual=false 
@@ -77,15 +101,15 @@ ro.telephony.ril.v3=signalstrength,skipbrokendatacall,facilitylock,datacall,iccc
 #ro.telephony.ril_class=LGEQualcommRIL
 
 #ro.sf.compbypass.enable=1	
-#com.qc.hardware=true	
-#com.qc.hdmi_out=false
 # modified camera blob wants this
 #ro.product.camera=thunderc
 # use gralloc.msm7x27 
 ro.product.camera=msm7x27
 debug.camcorder.disablemeta=1 
 
-persist.sys.usb.config=mass_storage,adb
+# USB for ICS 
+# etc/init.qcom.post_boot.sh 
+#persist.sys.usb.config=mass_storage,adb
 
 
 # system props for the MM modules 

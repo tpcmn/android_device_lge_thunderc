@@ -22,15 +22,15 @@ $(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 #PRODUCT_INSTALL_PACKAGE := vendor/google/gapps
 
 # PicoTTS
-PRODUCT_REMOVE_FILES += \
-	system/tts/lang_pico/de-DE_gl0_sg.bin \
-	system/tts/lang_pico/de-DE_ta.bin \
-	system/tts/lang_pico/en-GB_kh0_sg.bin \
-	system/tts/lang_pico/en-GB_ta.bin \
-	system/tts/lang_pico/fr-FR_nk0_sg.bin \
-	system/tts/lang_pico/fr-FR_ta.bin \
-	system/tts/lang_pico/it-IT_cm0_sg.bin \
-	system/tts/lang_pico/it-IT_ta.bin
+#PRODUCT_REMOVE_FILES += \
+PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/de-DE_gl0_sg.bin 
+PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/de-DE_ta.bin 
+PRODUCT_REMOVE_FILES += system/tts/lang_pico/en-GB_kh0_sg.bin 
+PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/en-GB_ta.bin 
+PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/fr-FR_nk0_sg.bin 
+PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/fr-FR_ta.bin 
+PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/it-IT_cm0_sg.bin 
+PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/it-IT_ta.bin
 	
 # Other
 #PRODUCT_REMOVE_FILES += \
@@ -57,7 +57,7 @@ PRODUCT_REMOVE_PACKAGE_FILES := \
 DEVICE_PACKAGE_OVERLAYS += device/lge/thunderc/overlay
 
 # XXX: this is non-standard
-LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/test10
+LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/test12
 LOCAL_KERNEL_MODULES := librasdioif.ko tun.ko wireless.ko
 	
 
@@ -82,7 +82,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/initlogo.rle:root/initlogo.rle \
     $(LOCAL_PATH)/prebuilt/init.qcom.sh:root/init.qcom.sh \
-    $(LOCAL_PATH)/prebuilt/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh
+#    $(LOCAL_PATH)/prebuilt/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh
 
 # BT startup
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/prebuilt/init.qcom.bt.sh:system/bin/init.qcom.bt.sh
@@ -96,16 +96,15 @@ PRODUCT_COPY_FILES += device/lge/thunderc/configs/7k_handset.kl:system/usr/keyla
 PRODUCT_COPY_FILES += device/lge/thunderc/configs/Generic.kl:system/usr/keylayout/Generic.kl 
 PRODUCT_COPY_FILES += device/lge/thunderc/configs/default.prop:root/default.prop 
 PRODUCT_COPY_FILES += device/lge/thunderc/configs/adreno_config.txt:system/etc/adreno_config.txt 	
+#PRODUCT_COPY_FILES += device/lge/thunderc/configs/vold.fstab:system/etc/vold.fstab 
 	
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.local.rc:system/etc/init.local.rc \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \
-
-# Drew's init stuff
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/95zipalign:system/etc/init.d/95zipalign \
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/08dalvik:system/etc/init.d/08dalvik \
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/10apps2sd:system/etc/init.d/10apps2sd \
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/87calibration:system/etc/init.d/87calibration \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/95zipalign:system/etc/init.d/95zipalign \
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/96tweak:system/etc/init.d/96tweak \
 
 PRODUCT_COPY_FILES += \
@@ -262,6 +261,9 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
+	frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml 
+
 
 # LGE services
 PRODUCT_COPY_FILES += \
@@ -270,7 +272,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/rmt_storage:system/bin/rmt_storage \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/netmgrd:system/bin/netmgrd \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/wiperiface:system/bin/wiperiface \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/wiperiface:system/bin/wiperiface 
 
 # Unknown (needed or not?)
 PRODUCT_COPY_FILES += \
@@ -342,24 +344,6 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libdivxdrmdecrypt.so:system/lib/libdivxdrmdecrypt.so \
 
-#PRODUCT_COPY_FILES += \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmm-omxcore.so:system/lib/libmm-omxcore.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAacDec.so:system/lib/libOmxAacDec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAacEnc.so:system/lib/libOmxAacEnc.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAdpcmDec.so:system/lib/libOmxAdpcmDec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAmrDec.so:system/lib/libOmxAmrDec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAmrEnc.so:system/lib/libOmxAmrEnc.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxCore.so:system/lib/libOmxCore.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAmrRtpDec.so:system/lib/libOmxAmrRtpDec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxAmrwbDec.so:system/lib/libOmxAmrwbDec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxEvrcDec.so:system/lib/libOmxEvrcDec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxEvrcEnc.so:system/lib/libOmxEvrcEnc.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxQcelp13Enc.so:system/lib/libOmxQcelp13Enc.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxQcelpDec.so:system/lib/libOmxQcelpDec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOmxWmvDec.so:system/lib/libOmxWmvDec.so \
-
 
 
 # Bluetooth
@@ -381,7 +365,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=COLD.AS.ICE
 PRODUCT_NAME := full_thunderc
 PRODUCT_DEVICE := thunderc
 PRODUCT_BRAND := LGE
-PRODUCT_MODEL := LS670
+PRODUCT_MODEL := LS-LS670
 PRODUCT_MANUFACTURER := LGE
 
 CDMA_GOOGLE_BASE := android-sprint-us

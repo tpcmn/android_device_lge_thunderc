@@ -18,6 +18,6 @@ $(call inherit-product, device/lge/thunderc/full_thunderc.mk)
 PRODUCT_DEVICE := thunderc
 PRODUCT_NAME := cm_thunderc
 PRODUCT_BRAND := Sprint
-PRODUCT_MODEL := LS670
+PRODUCT_MODEL := LS-LS670
 PROUDCT_MANUFACTURER := LGE
 PRODUCT_CHARACTERISTICS := phone
