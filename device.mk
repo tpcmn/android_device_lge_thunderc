@@ -21,7 +21,7 @@ $(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 
 #PRODUCT_INSTALL_PACKAGE := vendor/google/gapps
 
-# PicoTTS
+# PicoTTS tdm diet
 PRODUCT_REMOVE_FILES += \
 PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/de-DE_gl0_sg.bin 
 PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/de-DE_ta.bin 
