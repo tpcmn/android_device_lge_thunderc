@@ -129,7 +129,11 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/ueventd.thunderc.rc:root/ueventd.thunderc.rc \
     
 
-# OFFLINE CHARGING
+# Offmode charging 
+PRODUCT_PACKAGES += charger
+PRODUCT_PACKAGES += charger_res_images 
+
+# bootimage
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/sbin/bootlogo:root/sbin/bootlogo \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_01.rle:root/bootimages/opening_01.rle \
@@ -140,25 +144,6 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_06.rle:root/bootimages/opening_06.rle \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_07.rle:root/bootimages/opening_07.rle \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_08.rle:root/bootimages/opening_08.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/sbin/chargerlogo:root/sbin/chargerlogo \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/black_bg.rle:root/chargerimages/black_bg.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_bg.rle:root/chargerimages/battery_bg.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_ani_01.rle:root/chargerimages/battery_ani_01.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_ani_02.rle:root/chargerimages/battery_ani_02.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_ani_03.rle:root/chargerimages/battery_ani_03.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_ani_04.rle:root/chargerimages/battery_ani_04.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_ani_05.rle:root/chargerimages/battery_ani_05.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_charging_01.rle:root/chargerimages/battery_charging_01.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_charging_02.rle:root/chargerimages/battery_charging_02.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_charging_03.rle:root/chargerimages/battery_charging_03.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_charging_04.rle:root/chargerimages/battery_charging_04.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_charging_05.rle:root/chargerimages/battery_charging_05.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_charging_06.rle:root/chargerimages/battery_charging_06.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_wait_ani_01.rle:root/chargerimages/battery_wait_ani_01.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_wait_ani_02.rle:root/chargerimages/battery_wait_ani_02.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_notenough.rle:root/chargerimages/battery_notenough.rle \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/sbin/ftm_power:root/sbin/ftm_power \
-
 
 # Backlight
 PRODUCT_COPY_FILES += \
@@ -277,7 +262,9 @@ PRODUCT_COPY_FILES += \
 # Unknown (needed or not?)
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/cnd:system/bin/cnd \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/e2fsck:system/bin/e2fsck
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/e2fsck:system/bin/e2fsck \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/.root_explorer:system/etc/.root_explorer \
+	vendor/lge/thunderc/app/RootBrowser.apk:system/app/RootBrowser.apk \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.lge.vibrator_amp=125 \
