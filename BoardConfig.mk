@@ -74,6 +74,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0a4e0000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 BOARD_HAS_NO_SELECT_BUTTON := true
+BOARD_CUSTOM_GRAPHICS := ../../../device/lge/thunderc/recovery/graphics.c 
 
 # Audio & Bluetooth
 TARGET_PROVIDES_LIBAUDIO := true
@@ -155,8 +156,9 @@ BOARD_CUSTOM_BRCM_PATCHRAM_PLUS := ../../../device/lge/thunderc/prebuilt/brcm_pa
 #TARGET_FORCE_CPU_UPLOAD := true
 
 
-# OFFLINE CHARGING
-BOARD_GLOBAL_CFLAGS += -DBOARD_CHARGING_CMDLINE_NAME='"lge.reboot"' -DBOARD_CHARGING_CMDLINE_VALUE='"pwroff"'
+# Command line for charging mode 
+BOARD_CHARGING_CMDLINE_NAME := "lge.reboot" 
+BOARD_CHARGING_CMDLINE_VALUE := "pwroff" 
 BOARD_USES_RECOVERY_CHARGEMODE := false 
-BOARD_CUSTOM_GRAPHICS := ../../../device/lge/thunderc/recovery/graphics.c 
+
 
