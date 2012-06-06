@@ -30,6 +30,4 @@
 	<string name="ffc_supportedEffects"></string>
 	
 	<bool name="focusCamcorderAtStart">false</bool>
-
-	<string name="touchFocusParameter">touch-af-aec</string>
 </resources>

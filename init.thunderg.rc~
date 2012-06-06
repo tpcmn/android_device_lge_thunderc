@@ -32,10 +32,6 @@ on boot
     setprop wifi.interface wlan0
     mkdir /data/misc/dhcp 0777 system system
 
-service setapversion /system/bin/lgapversion
-    disabled
-    oneshot
-
 service qmuxd /system/bin/qmuxd
     user radio
     group radio
@@ -73,6 +69,3 @@ service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c/data/misc/wi
 
 on property:dev.bootcomplete=1
     exec /system/bin/hwaddrs
-
-on property:gsm.version.baseband=V07u-000-000-MAR-23-2009
-    start setapversion
