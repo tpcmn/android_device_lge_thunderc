@@ -7,11 +7,13 @@ include vendor/lge/thunderc/BoardConfigVendor.mk
 
 # Camera
 # http://r.cyanogenmod.com/#/c/13317/
-COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT
+COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT -DFORCE_CPU_UPLOAD
 #BOARD_CAMERA_USE_GETBUFFERINFO := true
 #BOARD_USE_CAF_LIBCAMERA := true
 # This is needed by libcamera.so 
-BOARD_USE_NASTY_PTHREAD_CREATE_HACK := true 
+BOARD_USE_NASTY_PTHREAD_CREATE_HACK := true
+TARGET_BOOTANIMATION_PRELOAD=true
+TARGET_BOOTANIMATION_TEXTURE_CACHE := false 
 
 
 # Kernel
@@ -115,18 +117,18 @@ BOARD_SDEXT_DEVICE := /dev/block/vold/179:2
 # Touch screen compatibility for ICS
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 
-# Wi-Fi & Wi-Fi HotSpot
-WPA_SUPPLICANT_VERSION          := VER_0_6_X
+# Wireless
 BOARD_WLAN_DEVICE               := bcm4325
-BOARD_WEXT_NO_COMBO_SCAN        := true
-BOARD_WPA_SUPPLICANT_DRIVER     := WEXT
-WIFI_DRIVER_HAS_LGE_SOFTAP      := true
-WIFI_DRIVER_MODULE_PATH         := "/system/lib/modules/wireless.ko"
-WIFI_DRIVER_MODULE_ARG          := "firmware_path=/etc/wl/rtecdc.bin nvram_path=/etc/wl/nvram.txt config_path=/data/misc/wifi/config" 
-WIFI_DRIVER_MODULE_NAME         := "wireless" 
 WIFI_DRIVER_FW_STA_PATH         := "/system/etc/wl/rtecdc.bin"
 WIFI_DRIVER_FW_AP_PATH          := "/system/etc/wl/rtecdc-apsta.bin"
-
+WIFI_DRIVER_MODULE_NAME         := "wireless"
+WIFI_DRIVER_MODULE_PATH         := "/system/lib/modules/wireless.ko"
+WIFI_DRIVER_MODULE_ARG          := "firmware_path=/etc/wl/rtecdc.bin nvram_path=/etc/wl/nvram.txt config_path=/data/misc/wifi/config"
+#WIFI_DRIVER_MODULE_ARG          := "firmware_path=/system/etc/wl/rtecdc.bin nvram_path=/system/etc/wl/nvram.txt"
+WPA_SUPPLICANT_VERSION          := VER_0_6_X
+WIFI_DRIVER_HAS_LGE_SOFTAP      := true
+BOARD_WEXT_NO_COMBO_SCAN        := true
+BOARD_WPA_SUPPLICANT_DRIVER     := WEXT
 
 
 # FM Radio
