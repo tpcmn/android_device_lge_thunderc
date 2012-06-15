@@ -15,9 +15,9 @@ $(call inherit-product, vendor/qcom/opensource/omx/mm-video/Android.mk)
 $(call inherit-product, device/lge/thunderc/full_thunderc.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := thunderc
+PRODUCT_DEVICE := thunderc_LS670
 PRODUCT_NAME := cm_thunderc
 PRODUCT_BRAND := Sprint
-PRODUCT_MODEL := LS-LS670
+PRODUCT_MODEL := LG-LS670
 PROUDCT_MANUFACTURER := LGE
 PRODUCT_CHARACTERISTICS := phone
