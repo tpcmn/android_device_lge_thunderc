@@ -57,7 +57,7 @@ PRODUCT_REMOVE_PACKAGE_FILES := \
 DEVICE_PACKAGE_OVERLAYS += device/lge/thunderc/overlay
 
 # XXX: this is non-standard
-LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/test16
+LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/test13usb
 LOCAL_KERNEL_MODULES := librasdioif.ko tun.ko wireless.ko
 	
 
@@ -350,7 +350,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=COLD.AS.ICE
 PRODUCT_NAME := full_thunderc
-PRODUCT_DEVICE := thunderc_LS670
+PRODUCT_DEVICE := thunderc
 PRODUCT_BRAND := LGE
 PRODUCT_MODEL := LG-LS670
 PRODUCT_MANUFACTURER := LGE

@@ -25,7 +25,7 @@ PRODUCT_LOCALES += mdpi
 
 # Discard inherited values and use our own instead.
 PRODUCT_NAME := cm_thunderc
-PRODUCT_DEVICE := thunderc_LS670
+PRODUCT_DEVICE := thunderc
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := LS670
 PROUDCT_MANUFACTURER := LGE

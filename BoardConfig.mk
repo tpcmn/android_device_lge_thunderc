@@ -19,7 +19,7 @@ TARGET_BOOTANIMATION_TEXTURE_CACHE := false
 # Kernel
 #TARGET_KERNEL_SOURCE := kernel/lge/thunderc
 #TARGET_KERNEL_CONFIG := cyanogenmod_thunderc_defconfig
-TARGET_PREBUILT_KERNEL := device/lge/thunderc/kernels/test16/zImage
+TARGET_PREBUILT_KERNEL := device/lge/thunderc/kernels/test13usb/zImage
 TARGET_SPECIFIC_HEADER_PATH := device/lge/thunderc/include
 
 # Platform
@@ -39,7 +39,7 @@ TARGET_PROVIDES_INIT_TARGET_RC := true
 # Boot loader
 TARGET_NO_BOOTLOADER := true
 TARGET_BOOTLOADER_BOARD_NAME := thunderc
-TARGET_OTA_ASSERT_DEVICE := thunderc
+TARGET_OTA_ASSERT_DEVICE := thunderc_LS670
 
 # QCOM Hardware
 BOARD_USES_QCOM_HARDWARE := true
