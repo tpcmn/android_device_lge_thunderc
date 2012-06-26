@@ -1,4 +1,4 @@
-PRODUCT_COPY_FILES += device/lge/thunderc-common/configs/media_profiles.xml:system/etc/media_profiles.xml
+PRODUCT_COPY_FILES += device/lge/thunderc/configs/media_profiles.xml:system/etc/media_profiles.xml
 PRODUCT_AAPT_CONFIG := normal mdpi 
 PRODUCT_AAPT_PREF_CONFIG := mdpi 
 
