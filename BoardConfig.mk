@@ -19,7 +19,7 @@ TARGET_BOOTANIMATION_TEXTURE_CACHE := false
 # Kernel
 #TARGET_KERNEL_SOURCE := kernel/lge/thunderc
 #TARGET_KERNEL_CONFIG := cyanogenmod_thunderc_defconfig
-TARGET_PREBUILT_KERNEL := device/lge/thunderc/kernels/test13usb/zImage
+TARGET_PREBUILT_KERNEL := device/lge/thunderc/kernels/test15/zImage
 TARGET_SPECIFIC_HEADER_PATH := device/lge/thunderc/include
 
 # Platform
