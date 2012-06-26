@@ -1,3 +1,4 @@
+PRODUCT_COPY_FILES += device/lge/thunderc-common/configs/media_profiles.xml:system/etc/media_profiles.xml
 PRODUCT_AAPT_CONFIG := normal mdpi 
 PRODUCT_AAPT_PREF_CONFIG := mdpi 
 
@@ -72,12 +73,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 
-# Keylayouts
-#PRODUCT_COPY_FILES += \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keylayout/thunderc_keypad.kl:system/usr/keylayout/thunderc_keypad.kl \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keylayout/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/keychars/thunderc_keypad.kcm.bin:system/usr/keychars/thunderc_keypad.kcm.bin \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/initlogo.rle:root/initlogo.rle \
@@ -89,7 +84,7 @@ PRODUCT_COPY_FILES += $(LOCAL_PATH)/prebuilt/init.qcom.bt.sh:system/bin/init.qco
 
 # configs
 PRODUCT_COPY_FILES += device/lge/thunderc/configs/AudioFilter.csv:system/etc/AudioFilter.csv 
-PRODUCT_COPY_FILES += device/lge/thunderc/configs/media_profiles.xml:system/etc/media_profiles.xml 
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml 
 PRODUCT_COPY_FILES += device/lge/thunderc/configs/thunderc_keypad.kl:system/usr/keylayout/thunderc_keypad.kl 
 PRODUCT_COPY_FILES += device/lge/thunderc/configs/thunderc_keypad.kcm.bin:system/usr/keychars/thunderc_keypad.kcm.bin 
 PRODUCT_COPY_FILES += device/lge/thunderc/configs/7k_handset.kl:system/usr/keylayout/7k_handset.kl 
@@ -102,8 +97,8 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.local.rc:system/etc/init.local.rc \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/95zipalign:system/etc/init.d/95zipalign \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/08dalvik:system/etc/init.d/08dalvik \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/10apps2sd:system/etc/init.d/10apps2sd \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/08dalvik:system/etc/init.d/08dalvik \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/10apps2sd:system/etc/init.d/10apps2sd \
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/87calibration:system/etc/init.d/87calibration \
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/96tweak:system/etc/init.d/96tweak \
 
@@ -134,7 +129,24 @@ PRODUCT_PACKAGES += charger
 PRODUCT_PACKAGES += charger_res_images 
 
 # bootimage
-#PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES += \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/sbin/chargerlogo:root/sbin/chargerlogo \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/black_bg.rle:root/chargerimages/black_bg.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_bg.rle:root/chargerimages/battery_bg.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_ani_01.rle:root/chargerimages/battery_ani_01.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_ani_02.rle:root/chargerimages/battery_ani_02.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_ani_03.rle:root/chargerimages/battery_ani_03.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_ani_04.rle:root/chargerimages/battery_ani_04.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_ani_05.rle:root/chargerimages/battery_ani_05.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_charging_01.rle:root/chargerimages/battery_charging_01.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_charging_02.rle:root/chargerimages/battery_charging_02.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_charging_03.rle:root/chargerimages/battery_charging_03.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_charging_04.rle:root/chargerimages/battery_charging_04.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_charging_05.rle:root/chargerimages/battery_charging_05.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_charging_06.rle:root/chargerimages/battery_charging_06.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_wait_ani_01.rle:root/chargerimages/battery_wait_ani_01.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_wait_ani_02.rle:root/chargerimages/battery_wait_ani_02.rle \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/chargerimages/battery_notenough.rle:root/chargerimages/battery_notenough.rle \
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/sbin/bootlogo:root/sbin/bootlogo \
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_01.rle:root/bootimages/opening_01.rle \
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/bootimages/opening_02.rle:root/bootimages/opening_02.rle \
@@ -156,10 +168,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/sensors.thunderc.so:system/lib/hw/sensors.thunderc.so \
     
 
-# 2D (using proprietary because of poor perfomance of open source libs)
-#PRODUCT_COPY_FILES += \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/gralloc.default.so:system/lib/hw/gralloc.default.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/gralloc.thunderc.so:system/lib/hw/gralloc.thunderc.so \
+
 
 # 3D
 PRODUCT_COPY_FILES += \
@@ -176,18 +185,7 @@ PRODUCT_COPY_FILES += \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libOpenVG.so:system/lib/libOpenVG.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
-	#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw \
-#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
-#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a300_pm4.fw:system/etc/firmware/a300_pm4.fw \
-#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a300_pfp.fw:system/etc/firmware/a300_pfp.fw \
-#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a225_pm4.fw:system/etc/firmware/a225_pm4.fw \
-#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a225p5_pm4.fw:system/etc/firmware/a225p5_pm4.fw \
-#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/firmware/a225_pfp.fw:system/etc/firmware/a225_pfp.fw \
-    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/gralloc.thunderc.so:system/lib/hw/gralloc.thunderc.so \
-    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/hwcomposer.thunderc.so:system/lib/hw/hwcomposer.thunderc.so \
-    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/copybit.thunderc.so:system/lib/hw/copybit.thunderc.so \
-    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmemalloc.so:system/lib/libmemalloc.so \
-    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmemalloc.so:obj/lib/libmemalloc.so
+
 
 # Camera
 PRODUCT_COPY_FILES += \
@@ -204,8 +202,6 @@ PRODUCT_COPY_FILES += \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcameraservice.so:system/lib/libcameraservice.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/camera.thunderc.so:obj/lib/hw/camera.thunderc.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/camera.thunderc.so:system/lib/hw/camera.thunderc.so \
-	#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmikecamera.so:obj/lib/libmikecamera.so \
-    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmikecamera.so:system/lib/libmikecamera.so \
 	#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera_client.so:obj/lib/libcamera_client.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera_client.so:system/lib/libcamera_client.so \
 
@@ -233,7 +229,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libaudioeq.so:system/lib/libaudioeq.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/AutoVolumeControl.txt:system/etc/AutoVolumeControl.txt \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/audio.a2dp.default.so:system/lib/hw/audio.a2dp.default.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/AudioFilter.csv:system/etc/AudioFilter.csv \
+
 	
 # Device permissions
 PRODUCT_COPY_FILES += \
@@ -354,13 +350,21 @@ PRODUCT_DEVICE := thunderc
 PRODUCT_BRAND := LGE
 PRODUCT_MODEL := LG-LS670
 PRODUCT_MANUFACTURER := LGE
+PRODUCT_TAGS += dalvik.gc.type-precise 
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0 
+
 
 CDMA_GOOGLE_BASE := android-sprint-us
 CDMA_CARRIER_ALPHA := Sprint
 CDMA_CARRIER_NUMERIC := 310120
 
+PRODUCT_TAGS += dalvik.gc.type-precise
+
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ril.hsxpa=3 \
+    ro.ril.gprsclass=12 \
     ro.com.google.clientidbase=$(CDMA_GOOGLE_BASE) \
     ro.cdma.home.operator.alpha=$(CDMA_CARRIER_ALPHA) \
     ro.cdma.home.operator.numeric=$(CDMA_CARRIER_NUMERIC) \

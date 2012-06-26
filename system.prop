@@ -55,7 +55,7 @@ dalvik.vm.dexopt-data-only=1
 
 #Dynamite tweaks
 # Increase battery and longer standby time with deeper sleep
-m.sleep_mode=1
+pm.sleep_mode=1
 ro.ril.disable.power.collapse=0
 # More accurate touch
 movfilter=40
@@ -133,8 +133,8 @@ ro.config.vc_call_vol_steps=15
 #mobiledata.interfaces=wlan0,ppp0
 
 # V6 SuperCharger settings
-ro.ril.hsxpa=3
-ro.ril.gprsclass=12
+#ro.ril.hsxpa=3
+#ro.ril.gprsclass=12
 ro.ril.hep=1
 ro.ril.enable.dtm=1
 ro.ril.hsdpa.category=28
