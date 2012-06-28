@@ -7,15 +7,25 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
+ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
+    LOCAL_CFLAGS += -DQCOM_HARDWARE
+endif
 
 ifeq ($(BOARD_HAVE_BLUETOOTH),true)
     LOCAL_CFLAGS += -DWITH_A2DP
+endif
+
+ifeq ($(BOARD_HAVE_FM_RADIO),true)
+    LOCAL_CFLAGS += -DHAVE_FM_RADIO
 endif
 
 ifeq ($(BOARD_COMBO_DEVICE_SUPPORTED),true)
     LOCAL_CFLAGS += -DCOMBO_DEVICE_SUPPORTED
 endif
 
+ifeq ($(BOARD_CDMA_NETWORK),true)
+    LOCAL_CFLAGS += -DCDMA_NETWORK
+endif
 
 LOCAL_SRC_FILES := \
     AudioHardware.cpp \
@@ -54,15 +64,25 @@ include $(BUILD_SHARED_LIBRARY)
 # -------------------------------------------------------------
 include $(CLEAR_VARS)
 
+ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
+    LOCAL_CFLAGS += -DQCOM_HARDWARE
+endif
 
 ifeq ($(BOARD_HAVE_BLUETOOTH),true)
     LOCAL_CFLAGS += -DWITH_A2DP
+endif
+
+ifeq ($(BOARD_HAVE_FM_RADIO),true)
+    LOCAL_CFLAGS += -DHAVE_FM_RADIO
 endif
 
 ifeq ($(BOARD_COMBO_DEVICE_SUPPORTED),true)
     LOCAL_CFLAGS += -DCOMBO_DEVICE_SUPPORTED
 endif
 
+ifeq ($(BOARD_CDMA_NETWORK),true)
+    LOCAL_CFLAGS += -DCDMA_NETWORK
+endif
 
 LOCAL_SRC_FILES := \
     AudioPolicyManager.cpp \

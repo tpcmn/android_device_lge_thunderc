@@ -43,7 +43,7 @@
 #define LOG_SND_RPC 0  // Set to 1 to log sound RPC's
 
 //#define COMBO_DEVICE_SUPPORTED // Headset speaker combo device supported on this target
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
 #define FM_ON_KEY "fm_on"
 #define FM_OFF_KEY "fm_off"
 #endif
@@ -110,7 +110,7 @@ static uint32_t SND_DEVICE_TTY_HEADSET=-1;
 static uint32_t SND_DEVICE_TTY_HCO=-1;
 static uint32_t SND_DEVICE_TTY_VCO=-1;
 static uint32_t SND_DEVICE_CARKIT=-1;
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
 static uint32_t SND_DEVICE_FM_SPEAKER=-1;
 static uint32_t SND_DEVICE_FM_HEADSET=-1;
 #endif
@@ -121,7 +121,7 @@ AudioHardware::AudioHardware() :
     mInit(false), mMicMute(true), mBluetoothNrec(true), mBluetoothId(0),
     mOutput(0), mSndEndpoints(NULL), mCurSndDevice(-1),
     mDualMicEnabled(false), mBuiltinMicSelected(false)
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
     , mFmRadioEnabled(false), mFmPrev(false)
 #endif
 {
@@ -157,7 +157,7 @@ AudioHardware::AudioHardware() :
                 CHECK_FOR(TTY_HCO);
                 CHECK_FOR(TTY_VCO);
                 CHECK_FOR(CARKIT);
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
                 CHECK_FOR(FM_SPEAKER);
                 CHECK_FOR(FM_HEADSET);
 #endif
@@ -444,7 +444,7 @@ status_t AudioHardware::setParameters(const String8& keyValuePairs)
         mTtyMode = TTY_OFF;
     }
 
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
     key = String8(FM_ON_KEY);
     int devices;
     if (param.getInt(key, devices) == NO_ERROR) {
@@ -473,6 +473,14 @@ String8 AudioHardware::getParameters(const String8& keys)
         param.add(key, value);
     }
 
+    key = String8("tunneled-input-formats");
+    if (param.get(key, value) == NO_ERROR) {
+        param.addInt(String8("AMR"), true);
+#ifdef CDMA_NETWORK
+        param.addInt(String8("QCELP"), true);
+        param.addInt(String8("EVRC"), true);
+#endif
+    }
     LOGV("AudioHardware::getParameters() %s", param.toString().string());
     return param.toString();
 }
@@ -1090,6 +1098,10 @@ size_t AudioHardware::getInputBufferSize(uint32_t sampleRate, int format, int ch
 {
     if ( (format != AudioSystem::PCM_16_BIT) &&
          (format != AudioSystem::AMR_NB)     &&
+#ifdef CDMA_NETWORK
+         (format != AudioSystem::EVRC)       &&
+         (format != AudioSystem::QCELP)      &&
+#endif
          (format != AudioSystem::AAC)){
         LOGW("getInputBufferSize bad format: 0x%x", format);
         return 0;
@@ -1103,6 +1115,12 @@ size_t AudioHardware::getInputBufferSize(uint32_t sampleRate, int format, int ch
        return 2048;
     else if (format == AudioSystem::AMR_NB)
        return 320*channelCount;
+#ifdef CDMA_NETWORK
+    else if (format == AudioSystem::EVRC)
+       return 230*channelCount;
+    else if (format == AudioSystem::QCELP)
+       return 350*channelCount;
+#endif
     else
        return 2048*channelCount;
 }
@@ -1188,7 +1206,7 @@ status_t AudioHardware::setMasterVolume(float v)
     // return error - software mixer will handle it
     return -1;
 }
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
 status_t AudioHardware::setFmVolume(float v)
 {
     if (v < 0.0) {
@@ -1283,7 +1301,7 @@ status_t AudioHardware::doAudioRouteOrMute(uint32_t device)
         /* enable routing to earpiece (unmute) if mic is selected as input */
         mute = !mBuiltinMicSelected;
     }
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
     mFmPrev = mFmRadioEnabled;
 
     if (mFmRadioEnabled) {
@@ -1370,7 +1388,7 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
 #ifdef COMBO_DEVICE_SUPPORTED
         } else if ((outputDevices & AudioSystem::DEVICE_OUT_WIRED_HEADSET) &&
                    (outputDevices & AudioSystem::DEVICE_OUT_SPEAKER)) {
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
             if (mFmRadioEnabled) {
                 LOGI("Routing audio to FM Speakerphone\n");
                 new_snd_device = SND_DEVICE_FM_SPEAKER;
@@ -1385,7 +1403,7 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
             }
         } else if (outputDevices & AudioSystem::DEVICE_OUT_WIRED_HEADPHONE) {
             if (outputDevices & AudioSystem::DEVICE_OUT_SPEAKER) {
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
                 if (mFmRadioEnabled) {
                     LOGI("Routing audio to FM Speakerphone\n");
                     new_snd_device = SND_DEVICE_FM_SPEAKER;
@@ -1399,7 +1417,7 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
                     new_post_proc_feature_mask = (ADRC_ENABLE | EQ_ENABLE | RX_IIR_ENABLE | MBADRC_ENABLE);
                 }
             } else {
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
                 if (mFmRadioEnabled) {
                     LOGI("Routing audio to FM Headset\n");
                     new_snd_device = SND_DEVICE_FM_HEADSET;
@@ -1414,7 +1432,7 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
             }
 #endif // COMBO_DEVICE_SUPPORTED
         } else if (outputDevices & AudioSystem::DEVICE_OUT_WIRED_HEADSET) {
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
             if (mFmRadioEnabled) {
                 LOGI("Routing FM audio to Wired Headset\n");
                 new_snd_device = SND_DEVICE_FM_HEADSET;
@@ -1428,7 +1446,7 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
                 new_post_proc_feature_mask = (ADRC_ENABLE | EQ_ENABLE | RX_IIR_ENABLE | MBADRC_ENABLE);
             }
         } else if (outputDevices & AudioSystem::DEVICE_OUT_WIRED_HEADPHONE) {
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
             if (mFmRadioEnabled) {
                 LOGI("Routing audio to FM Headset\n");
                 new_snd_device = SND_DEVICE_FM_HEADSET;
@@ -1442,7 +1460,7 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
                 new_post_proc_feature_mask = (ADRC_ENABLE | EQ_ENABLE | RX_IIR_ENABLE | MBADRC_ENABLE);
             }
         } else if (outputDevices & AudioSystem::DEVICE_OUT_SPEAKER) {
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
             if (mFmRadioEnabled) {
                 LOGI("Routing audio to FM Speakerphone\n");
                 new_snd_device = SND_DEVICE_FM_SPEAKER;
@@ -1455,7 +1473,7 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
                 new_snd_device = SND_DEVICE_SPEAKER;
                 new_post_proc_feature_mask = (ADRC_ENABLE | EQ_ENABLE | RX_IIR_ENABLE | MBADRC_ENABLE);
             }
-        } else if (outputDevices & AUDIO_DEVICE_OUT_SPEAKER_IN_CALL) { // P500 SPEAKER_IN_CALL fix
+        } else if (outputDevices & AudioSystem::DEVICE_OUT_ANC_HEADSET) {
             LOGI("Routing audio to Speaker in call\n");
             new_snd_device = SND_DEVICE_SPEAKER_IN_CALL;
             new_post_proc_feature_mask = (ADRC_ENABLE | EQ_ENABLE | RX_IIR_ENABLE | MBADRC_ENABLE);
@@ -1477,7 +1495,7 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
     }
 
     if ( (new_snd_device != -1 && new_snd_device != mCurSndDevice)
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
      ||  (mFmRadioEnabled != mFmPrev)
 #endif     
      )
@@ -1805,6 +1823,10 @@ status_t AudioHardware::AudioStreamInMSM72xx::set(
     if ((pFormat == 0) ||
         ((*pFormat != AUDIO_HW_IN_FORMAT) &&
          (*pFormat != AudioSystem::AMR_NB) &&
+#ifdef CDMA_NETWORK
+         (*pFormat != AudioSystem::EVRC) &&
+         (*pFormat != AudioSystem::QCELP) &&
+#endif
          (*pFormat != AudioSystem::AAC)))
     {
         *pFormat = AUDIO_HW_IN_FORMAT;
@@ -1894,6 +1916,10 @@ status_t AudioHardware::AudioStreamInMSM72xx::set(
     mBufferSize = config.buffer_size;
     }
     else if( (*pFormat == AudioSystem::AMR_NB)
+#ifdef CDMA_NETWORK
+              || (*pFormat == AudioSystem::EVRC)
+              || (*pFormat == AudioSystem::QCELP)
+#endif
              )
            {
 
@@ -1955,7 +1981,31 @@ status_t AudioHardware::AudioStreamInMSM72xx::set(
           mBufferSize = 320;
           break;
         }
+#ifdef CDMA_NETWORK
+        case AudioSystem::EVRC:
+        {
+          LOGI("Recording Format: EVRC");
+          gcfg.capability = RPC_VOC_CAP_IS127;
+          gcfg.max_rate = RPC_VOC_1_RATE; // Max rate (Fixed frame)
+          gcfg.min_rate = RPC_VOC_1_RATE; // Min rate (Fixed frame length)
+          gcfg.frame_format = RPC_VOC_PB_NATIVE_QCP;
+          mFormat = AudioSystem::EVRC;
+          mBufferSize = 230;
+          break;
+        }
 
+        case AudioSystem::QCELP:
+        {
+          LOGI("Recording Format: QCELP");
+          gcfg.capability = RPC_VOC_CAP_IS733; // RPC_VOC_CAP_AMR (64)
+          gcfg.max_rate = RPC_VOC_1_RATE; // Max rate (Fixed frame)
+          gcfg.min_rate = RPC_VOC_1_RATE; // Min rate (Fixed frame length)
+          gcfg.frame_format = RPC_VOC_PB_NATIVE_QCP;
+          mFormat = AudioSystem::QCELP;
+          mBufferSize = 350;
+          break;
+        }
+#endif
         default:
         break;
       }

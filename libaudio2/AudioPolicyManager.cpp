@@ -24,8 +24,6 @@
 #include <fcntl.h>
 #include <cutils/properties.h> // for property_get
 
-#include "AudioHardware.h"
-
 namespace android_audio_legacy {
 
 // ----------------------------------------------------------------------------
@@ -118,13 +116,6 @@ uint32_t AudioPolicyManager::getDeviceForStrategy(routing_strategy strategy, boo
                 if (device) break;
             }
 #endif
-            // P500 SPEAKER_IN_CALL fix
-            if (isInCall()) {
-                device = AUDIO_DEVICE_OUT_SPEAKER_IN_CALL;
-                if (device)
-                    break;
-            }
-
             device = mAvailableOutputDevices & AudioSystem::DEVICE_OUT_SPEAKER;
             if (device == 0) {
                 LOGE("getDeviceForStrategy() speaker device not found");
@@ -155,7 +146,7 @@ uint32_t AudioPolicyManager::getDeviceForStrategy(routing_strategy strategy, boo
         // FALL THROUGH
 
     case STRATEGY_MEDIA: {
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
         uint32_t device2 = 0;
         if (mForceUse[AudioSystem::FOR_MEDIA] == AudioSystem::FORCE_SPEAKER) {
             device2 = mAvailableOutputDevices & AudioSystem::DEVICE_OUT_SPEAKER;
@@ -203,7 +194,7 @@ uint32_t AudioPolicyManager::getDeviceForStrategy(routing_strategy strategy, boo
             LOGE("getDeviceForStrategy() speaker device not found");
         }
 
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
         if (mAvailableOutputDevices & AudioSystem::DEVICE_OUT_FM) {
             device |= AudioSystem::DEVICE_OUT_FM;
             
@@ -255,7 +246,7 @@ status_t AudioPolicyManager::checkAndSetVolume(int stream, int index, audio_io_h
     // - the force flag is set
     if (volume != mOutputs.valueFor(output)->mCurVolume[stream] ||
         (stream == AudioSystem::VOICE_CALL) ||
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
 	    (stream == AudioSystem::FM) ||
 #endif
 	force) {
@@ -282,7 +273,7 @@ status_t AudioPolicyManager::checkAndSetVolume(int stream, int index, audio_io_h
         }
         
         if ((voiceVolume >= 0 && output == mHardwareOutput)
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
           && (!(mAvailableOutputDevices & AudioSystem::DEVICE_OUT_FM))
 #endif
         ) {
@@ -290,7 +281,7 @@ status_t AudioPolicyManager::checkAndSetVolume(int stream, int index, audio_io_h
             mLastVoiceVolume = voiceVolume;
         }
     }
-#ifdef FM_RADIO
+#ifdef HAVE_FM_RADIO
     else if ((stream == AudioSystem::FM) && (mAvailableOutputDevices & AudioSystem::DEVICE_OUT_FM)) {
         float fmVolume = -1.0;
         fmVolume = (float)index/(float)mStreams[stream].mIndexMax;
