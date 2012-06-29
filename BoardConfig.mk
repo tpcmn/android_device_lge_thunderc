@@ -22,7 +22,7 @@ ENABLE_WEBGL := true
 # Kernel
 #TARGET_KERNEL_SOURCE := kernel/lge/thunderc
 #TARGET_KERNEL_CONFIG := cyanogenmod_thunderc_defconfig
-TARGET_PREBUILT_KERNEL := device/lge/thunderc/kernels/test15/zImage
+TARGET_PREBUILT_KERNEL := device/lge/thunderc/kernels/test17/zImage
 TARGET_SPECIFIC_HEADER_PATH := device/lge/thunderc/include
 
 # Platform
@@ -126,17 +126,12 @@ WIFI_DRIVER_FW_STA_PATH         := "/system/etc/wl/rtecdc.bin"
 WIFI_DRIVER_FW_AP_PATH          := "/system/etc/wl/rtecdc-apsta.bin"
 WIFI_DRIVER_MODULE_NAME         := "wireless"
 WIFI_DRIVER_MODULE_PATH         := "/system/lib/modules/wireless.ko"
-#WIFI_DRIVER_MODULE_ARG          := "firmware_path=/etc/wl/rtecdc.bin nvram_path=/etc/wl/nvram.txt config_path=/data/misc/wifi/config"
-WIFI_DRIVER_MODULE_ARG          := "iface_name=wlan0 firmware_path=/etc/wl/rtecdc.bin nvram_path=/etc/wl/nvram.txt config_path=/data/misc/wifi/config" 
+WIFI_DRIVER_MODULE_ARG          := "firmware_path=/etc/wl/rtecdc.bin nvram_path=/etc/wl/nvram.txt config_path=/data/misc/wifi/config"
 #WIFI_DRIVER_MODULE_ARG          := "firmware_path=/system/etc/wl/rtecdc.bin nvram_path=/system/etc/wl/nvram.txt"
 WPA_SUPPLICANT_VERSION          := VER_0_6_X
 WIFI_DRIVER_HAS_LGE_SOFTAP      := true
 BOARD_WEXT_NO_COMBO_SCAN        := true
 BOARD_WPA_SUPPLICANT_DRIVER     := WEXT
-BOARD_HOSTAPD_DRIVER            := bcm4325 
-BOARD_HOSTAPD_PRIVATE_LIB       := lib_driver_cmd_wext 
-BOARD_SOFTAP_DEVICE_TI          := bcm4325 
-BOARD_P2P_DEVICE_TI             := bcm4325 
 
 
 # FM Radio
@@ -168,9 +163,6 @@ TARGET_FORCE_CPU_UPLOAD := true
 
 # Command line for charging mode 
 BOARD_GLOBAL_CFLAGS += -DBOARD_CHARGING_CMDLINE_NAME='"lge.reboot"' -DBOARD_CHARGING_CMDLINE_VALUE='"pwroff"'
-# OFFLINE CHARGING
-#BOARD_GLOBAL_CFLAGS += -DCHARGERMODE_CMDLINE_NAME='"lge.reboot"' -DCHARGERMODE_CMDLINE_VALUE='"pwroff"'
-
 #BOARD_CHARGING_CMDLINE_NAME := "lge.reboot" 
 #BOARD_CHARGING_CMDLINE_VALUE := "pwroff" 
 BOARD_USES_RECOVERY_CHARGEMODE := false 

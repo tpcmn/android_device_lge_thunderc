@@ -22,16 +22,15 @@ $(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 
 #PRODUCT_INSTALL_PACKAGE := vendor/google/gapps
 
-# PicoTTS tdm diet
 PRODUCT_REMOVE_FILES += \
-PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/de-DE_gl0_sg.bin 
-PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/de-DE_ta.bin 
-PRODUCT_REMOVE_FILES += system/tts/lang_pico/en-GB_kh0_sg.bin 
-PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/en-GB_ta.bin 
-PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/fr-FR_nk0_sg.bin 
-PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/fr-FR_ta.bin 
-PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/it-IT_cm0_sg.bin 
-PRODUCT_REMOVE_FILES +=	system/tts/lang_pico/it-IT_ta.bin
+	system/tts/lang_pico/de-DE_gl0_sg.bin \
+	system/tts/lang_pico/de-DE_ta.bin \
+	system/tts/lang_pico/en-GB_kh0_sg.bin \
+	system/tts/lang_pico/en-GB_ta.bin \
+	system/tts/lang_pico/fr-FR_nk0_sg.bin \
+	system/tts/lang_pico/fr-FR_ta.bin \
+	system/tts/lang_pico/it-IT_cm0_sg.bin \
+	system/tts/lang_pico/it-IT_ta.bin
 	
 # Other
 PRODUCT_REMOVE_FILES += \
@@ -54,11 +53,22 @@ PRODUCT_REMOVE_PACKAGE_FILES := \
 		res/raw-pt/main.dict \
 		res/raw-ru/main.dict \
 		res/raw-sv/main.dict
+		
+# Recent additions
+PRODUCT_REMOVE_FILES += \
+	system/media/audio/notifications/Doink.ogg \
+	system/media/audio/notifications/Rang.ogg \
+	system/media/audio/notifications/Stone.ogg \
+	system/media/audio/ringtones/Bongo.ogg \
+	system/media/audio/ringtones/Boxbeat.ogg \
+	system/media/audio/ringtones/Gigolo.ogg \
+	system/media/audio/ringtones/House_of_house.ogg \
+	system/media/audio/ringtones/Silmarillia.ogg
 
 DEVICE_PACKAGE_OVERLAYS += device/lge/thunderc/overlay
 
 # XXX: this is non-standard
-LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/test15
+LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/test17
 LOCAL_KERNEL_MODULES := librasdioif.ko tun.ko wireless.ko
 	
 
