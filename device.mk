@@ -40,6 +40,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nvram.txt:system/etc/wl/nvram.txt \
     $(LOCAL_PATH)/configs/vold.fstab:system/etc/vold.fstab \
     $(LOCAL_PATH)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+    
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/prebuilt/OTAUpdater.apk:system/app/OTAUpdater.apk
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.camera=msm7x27 \
@@ -131,3 +134,12 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 DEVICE_PACKAGE_OVERLAYS += device/lge/p500/overlay
+
+# OTAUpdater
+OTA_VERSION = 0.1
+OTA_BUILD_TIME = $(shell date +%Y%m%d-%k%M)
+
+PRODUCT_PROPERTY_OVERRIDES += \
+	otaupdater.otaid=oxygenforp500 \
+	otaupdater.otatime=$(OTA_BUILD_TIME) \
+	otaupdater.otaver=$(OTA_VERSION)
