@@ -31,7 +31,7 @@ PRODUCT_PACKAGES += \
     librs_jni
 
 # Full-featured build of the Open-Source
-$(call inherit-product, build/target/product/full.mk)
+$(call inherit-product, build/target/product/full_base_telephony.mk)
 
 PRODUCT_NAME := p500
 PRODUCT_DEVICE := p500
