@@ -40,9 +40,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nvram.txt:system/etc/wl/nvram.txt \
     $(LOCAL_PATH)/configs/vold.fstab:system/etc/vold.fstab \
     $(LOCAL_PATH)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
-    
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/prebuilt/OTAUpdater.apk:system/app/OTAUpdater.apk
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.camera=msm7x27 \
@@ -110,7 +107,8 @@ PRODUCT_PACKAGES += \
     gps.default \
     lights.msm7x27 \
     camera.msm7x27 \
-    lgapversion
+    lgapversion \
+    OTAUpdater
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
