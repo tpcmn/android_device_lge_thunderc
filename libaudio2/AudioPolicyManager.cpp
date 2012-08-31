@@ -118,8 +118,8 @@ uint32_t AudioPolicyManager::getDeviceForStrategy(routing_strategy strategy, boo
                 if (device) break;
             }
 #endif
+            // VM670 SPEAKER_IN_CALL fix
             if (isInCall()) {
-                //XXX: check mAvailableOutputDevices or remove if()
                 device = AUDIO_DEVICE_OUT_SPEAKER_IN_CALL;
                 if (device)
                     break;

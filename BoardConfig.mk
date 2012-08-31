@@ -1,7 +1,7 @@
 # WARNING: This line must come *before* including the proprietary
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
-USE_CAMERA_STUB := false
+USE_CAMERA_STUB := true
 
 include vendor/lge/thunderc/BoardConfigVendor.mk
 

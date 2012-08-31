@@ -204,8 +204,8 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmmjpeg.so:obj/lib/libmmjpeg.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liboemcamera.so:system/lib/liboemcamera.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liboemcamera.so:obj/lib/liboemcamera.so \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:obj/lib/libcamera.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:system/lib/libcamera.so \
+	#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:obj/lib/libcamera.so \
+    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:system/lib/libcamera.so \
 	#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/camera.msm7x27.so:obj/lib/hw/camera.msm7x27.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/camera.msm7x27.so:system/lib/hw/camera.msm7x27.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcameraservice.so:obj/lib/libcameraservice.so \

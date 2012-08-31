@@ -38,8 +38,9 @@ namespace android_audio_legacy {
 using android::SortedVector;
 using android::Mutex;
 
-// thunderc SPEAKER_IN_CALL fix
+// VM670 SPEAKER_IN_CALL fix
 #define AUDIO_DEVICE_OUT_SPEAKER_IN_CALL 0x4000
+
 
 // ----------------------------------------------------------------------------
 // Kernel driver interface
