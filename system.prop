@@ -87,8 +87,7 @@ dalvik.vm.execution-mode=int:jit
 #dalvik.vm.dexopt-flags=m=y
 windowsmgr.max_events_per_sec=260
 
-persist.sys.use_dithering=1
-
+persist.sys.use_dithering=2
 #ro.camera.preview=true
 persist.cust.tel.eons=1
 
