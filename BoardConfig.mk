@@ -22,7 +22,7 @@ ENABLE_WEBGL := true
 # Kernel
 #TARGET_KERNEL_SOURCE := kernel/lge/thunderc
 #TARGET_KERNEL_CONFIG := cyanogenmod_thunderc_defconfig
-TARGET_PREBUILT_KERNEL := device/lge/thunderc/kernels/test17/zImage
+TARGET_PREBUILT_KERNEL := device/lge/thunderc/kernels/test19/zImage
 TARGET_SPECIFIC_HEADER_PATH := device/lge/thunderc/include
 
 # Platform
