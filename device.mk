@@ -102,7 +102,7 @@ PRODUCT_PACKAGES += \
     libstagefrighthw \
     libmm-omxcore \
     libOmxCore \
-    libdivxdrmdecrypt
+    libdivxdrmdecrypt 
 
 # Misc
 PRODUCT_PACKAGES += \

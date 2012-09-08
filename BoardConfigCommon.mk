@@ -35,6 +35,7 @@ WITH_JIT := true
 ENABLE_JSC_JIT := true
 ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := true
+ENABLE_WTF_USE_ACCELERATED_COMPOSITING := true
 
 # Boot loader & recovery
 TARGET_NO_BOOTLOADER := true
