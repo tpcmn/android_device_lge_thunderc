@@ -16,7 +16,7 @@ TARGET_NO_HW_VSYNC := true
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/lge/msm7x27
 # Copy LG Kernel Headers here if necessary, DON'T use Adroid auto-generated headers
-TARGET_SPECIFIC_HEADER_PATH := device/lge/msm7x27-common/include
+TARGET_SPECIFIC_HEADER_PATH := device/lge/p500/include
 BOARD_KERNEL_CMDLINE := mem=471M console=ttyMSM2,115200n8 androidboot.hardware=qcom no_console_suspend
 
 # CPU & Platform
@@ -66,7 +66,7 @@ BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBS := true
 BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
 BOARD_USE_SKIA_LCDTEXT := true
-BOARD_EGL_CFG := device/lge/msm7x27-common/configs/egl.cfg
+BOARD_EGL_CFG := device/lge/p500/configs/egl.cfg
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
 COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK
 
@@ -111,4 +111,8 @@ WIFI_DRIVER_FW_PATH_STA         := "/system/etc/wl/rtecdc.bin"
 WIFI_DRIVER_FW_PATH_AP          := "/system/etc/wl/rtecdc-apsta.bin"
 
 # OTA script
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/lge/msm7x27-common/releasetools/ota_from_target_files
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/lge/p500/releasetools/ota_from_target_files
+
+PRODUCT_RESTRICT_VENDOR_FILES := false
+
+
