@@ -1,7 +1,7 @@
 PRODUCT_AAPT_CONFIG := normal mdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi
 
-$(call inherit-product, device/lge/p500/device.mk)
+$(call inherit-product, device/p500/device.mk)
 $(call inherit-product-if-exists, vendor/lge/p500/p500-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/lge/p500/overlay
@@ -31,7 +31,7 @@ PRODUCT_PACKAGES += \
     librs_jni
 
 # Full-featured build of the Open-Source
-$(call inherit-product, build/target/product/full_base_telephony.mk)
+$(call inherit-product, build/target/product/full.mk)
 
 PRODUCT_NAME := p500
 PRODUCT_DEVICE := p500
