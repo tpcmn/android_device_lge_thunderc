@@ -89,7 +89,7 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB
 
 # RIL
-BOARD_PROVIDES_LIBRIL := true
+BOARD_PROVIDES_LIBRIL := false
 
 # Mass Storage for ICS
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
