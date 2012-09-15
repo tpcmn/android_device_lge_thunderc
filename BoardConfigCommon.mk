@@ -115,4 +115,7 @@ TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/lge/p500/releasetools/ota_fr
 
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
+WITH_DEXPREOPT := false
 
+# Save some space on the device
+MINIMAL_FONT_FOOTPRINT := true
