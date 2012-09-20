@@ -1,16 +1,16 @@
 ## Specify phone tech before including full_phone
-$(call inherit-product, vendor/common/config/gsm.mk)
+$(call inherit-product, vendor/cerebrum/config/gsm.mk)
 
 PRODUCT_RELEASE_NAME := OptimusOne
 
 # Inherit some common stuff.
-$(call inherit-product, vendor/common/config/common_full_phone.mk)
+$(call inherit-product, vendor/cerebrum/config/common_full_phone.mk)
 
 # Inherit device configuration.
 $(call inherit-product, device/lge/p500/p500.mk)
 
 
-PRODUCT_NAME := aosp_p500
+PRODUCT_NAME := cerebrum_p500
 PRODUCT_DEVICE := p500
 PRODUCT_BRAND := lge
 PRODUCT_MODEL := LG-P500
