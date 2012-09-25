@@ -268,7 +268,6 @@ PRODUCT_COPY_FILES += \
 # Unknown (needed or not?)
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/cnd:system/bin/cnd \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/e2fsck:system/bin/e2fsck \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/.root_explorer:system/etc/.root_explorer \
 	vendor/lge/thunderc/app/RootBrowser.apk:system/app/RootBrowser.apk \
 
@@ -368,9 +367,6 @@ CDMA_GOOGLE_BASE := android-sprint-us
 CDMA_CARRIER_ALPHA := Sprint
 CDMA_CARRIER_NUMERIC := 310120
 
-PRODUCT_TAGS += dalvik.gc.type-precise
-
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.hsxpa=3 \

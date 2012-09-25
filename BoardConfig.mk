@@ -7,11 +7,15 @@ include vendor/lge/thunderc/BoardConfigVendor.mk
 
 # Camera
 # http://r.cyanogenmod.com/#/c/13317/
-COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT -DFORCE_CPU_UPLOAD
+COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT -DFORCE_CPU_UPLOAD -DMISSING_EGL_PIXEL_FORMAT_YV12 
 #BOARD_CAMERA_USE_GETBUFFERINFO := true
 #BOARD_USE_CAF_LIBCAMERA := true
 # This is needed by libcamera.so 
 BOARD_USE_NASTY_PTHREAD_CREATE_HACK := true
+## Fixes colors in panorama
+BOARD_CPU_COLOR_CONVERT := true
+
+
 TARGET_BOOTANIMATION_PRELOAD=true
 TARGET_BOOTANIMATION_TEXTURE_CACHE := false 
 # Enable WEBGL in WebKit  
@@ -28,6 +32,7 @@ TARGET_SPECIFIC_HEADER_PATH := device/lge/thunderc/include
 # Platform
 TARGET_BOARD_PLATFORM := msm7x27
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
+PLATFORM_VENDOR := qcom
 
 # CPU
 ARCH_ARM_HAVE_VFP := true
@@ -42,7 +47,11 @@ TARGET_PROVIDES_INIT_TARGET_RC := true
 # Boot loader
 TARGET_NO_BOOTLOADER := true
 TARGET_BOOTLOADER_BOARD_NAME := thunderc
-TARGET_OTA_ASSERT_DEVICE := thunderc,LS670,thunderc_LS670
+TARGET_OTA_ASSERT_DEVICE := thunderc,LS670,thunderc_LS670,VM670
+#TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+TARGET_BOOTANIMATION_USE_RGB565 := true
+TARGET_BOOTANIMATION_TEXTURE_CACHE := true
+#TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
 # QCOM Hardware
 BOARD_USES_QCOM_HARDWARE := true
@@ -60,6 +69,7 @@ TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true 
 BOARD_NO_ALLOW_DEQUEUE_CURRENT_BUFFER := true
 BOARD_EGL_CFG := vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/egl/egl.cfg
+BOARD_NEEDS_MEMORYHEAPPMEM := true
 
 # http://www.slideshare.net/jserv/design-and-concepts-of-android-graphics
 COMMON_GLOBAL_CFLAGS += -DTARGET_MSM7x27 -DQCOM_HARDWARE
@@ -79,7 +89,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0a4e0000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_CUSTOM_GRAPHICS := ../../../device/lge/thunderc/recovery/graphics.c 
+#BOARD_CUSTOM_GRAPHICS := ../../../device/lge/thunderc/recovery/graphics.c 
 
 # Audio & Bluetooth
 TARGET_PROVIDES_LIBAUDIO := true
@@ -110,12 +120,12 @@ ENABLE_JSC_JIT := true
 # Mass Storage for ICS
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/thunderc/prebuilt/UsbController.cpp
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
+#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
 #TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
-BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
+#BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
 #BOARD_SDCARD_INTERNAL_DEVICE := /dev/block/mmcblk0p1
-BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/vold/179:1
-BOARD_SDEXT_DEVICE := /dev/block/vold/179:2
+#BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/vold/179:1
+#BOARD_SDEXT_DEVICE := /dev/block/vold/179:2
 
 # Touch screen compatibility for ICS
 BOARD_USE_LEGACY_TOUCHSCREEN := true
@@ -145,7 +155,7 @@ TARGET_NO_RADIOIMAGE := true
 #TARGET_GLOBAL_CPPFLAGS += -mfpu=vfp -mfloat-abi=softfp -Os
 
 #Camera
-#BOARD_USE_FROYO_LIBCAMERA := true
+BOARD_USE_FROYO_LIBCAMERA := true
 
 
 BOARD_CUSTOM_BRCM_PATCHRAM_PLUS := ../../../device/lge/thunderc/prebuilt/brcm_patchram_plus.c
@@ -166,5 +176,14 @@ BOARD_GLOBAL_CFLAGS += -DBOARD_CHARGING_CMDLINE_NAME='"lge.reboot"' -DBOARD_CHAR
 #BOARD_CHARGING_CMDLINE_NAME := "lge.reboot" 
 #BOARD_CHARGING_CMDLINE_VALUE := "pwroff" 
 BOARD_USES_RECOVERY_CHARGEMODE := false 
+
+#twrp
+DEVICE_RESOLUTION := 320x480
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TW_NO_REBOOT_BOOTLOADER := true
+LOCAL_CFLAGS += -DTW_NO_REBOOT_BOOTLOADER
+#TARGET_RECOVERY_PIXEL_FORMAT := RGB_565
+TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
+
 
 
