@@ -26,7 +26,7 @@ ENABLE_WEBGL := true
 # Kernel
 #TARGET_KERNEL_SOURCE := kernel/lge/thunderc
 #TARGET_KERNEL_CONFIG := cyanogenmod_thunderc_defconfig
-TARGET_PREBUILT_KERNEL := device/lge/thunderc/kernels/test19/zImage
+TARGET_PREBUILT_KERNEL := device/lge/thunderc/kernels/test21/zImage
 TARGET_SPECIFIC_HEADER_PATH := device/lge/thunderc/include
 
 # Platform
@@ -120,12 +120,12 @@ ENABLE_JSC_JIT := true
 # Mass Storage for ICS
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/thunderc/prebuilt/UsbController.cpp
-#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
-#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
-#BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
-#BOARD_SDCARD_INTERNAL_DEVICE := /dev/block/mmcblk0p1
-#BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/vold/179:1
-#BOARD_SDEXT_DEVICE := /dev/block/vold/179:2
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
+BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
+BOARD_SDCARD_INTERNAL_DEVICE := /dev/block/mmcblk0p1
+BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/vold/179:1
+BOARD_SDEXT_DEVICE := /dev/block/vold/179:2
 
 # Touch screen compatibility for ICS
 BOARD_USE_LEGACY_TOUCHSCREEN := true
@@ -147,7 +147,7 @@ BOARD_WPA_SUPPLICANT_DRIVER     := WEXT
 # FM Radio
 BOARD_FM_DEVICE := bcm4325
 BOARD_HAVE_FM_RADIO := true
-BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO -DFM_RADIO
+#BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO -DFM_RADIO
 
 TARGET_NO_RADIOIMAGE := true
 #TARGET_NO_RECOVERY := true
@@ -159,9 +159,6 @@ BOARD_USE_FROYO_LIBCAMERA := true
 
 
 BOARD_CUSTOM_BRCM_PATCHRAM_PLUS := ../../../device/lge/thunderc/prebuilt/brcm_patchram_plus.c
-
-#Kernel
-#BOARD_KERNEL_CMDLINE := mem=471M console=ttyMSM2,115200n8 androidboot.hardware=thunderc
 
 
 #ICS settings
@@ -182,6 +179,8 @@ DEVICE_RESOLUTION := 320x480
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TW_NO_REBOOT_BOOTLOADER := true
 LOCAL_CFLAGS += -DTW_NO_REBOOT_BOOTLOADER
+TW_CUSTOM_POWER_BUTTON := 107 
+
 #TARGET_RECOVERY_PIXEL_FORMAT := RGB_565
 TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
 
