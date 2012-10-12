@@ -24,8 +24,8 @@ $(call inherit-product, device/lge/thunderc/device.mk)
 PRODUCT_LOCALES += mdpi
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := cm_thunderc
-PRODUCT_DEVICE := thunderc
+PRODUCT_NAME := full_thunderc
+PRODUCT_DEVICE := LS670
 PRODUCT_BRAND := Android
-PRODUCT_MODEL := LS670
+PRODUCT_MODEL := LG-LS670
 PROUDCT_MANUFACTURER := LGE

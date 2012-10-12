@@ -20,6 +20,8 @@
     <bool name="japanFeature">false</bool>
     <bool name="enableMultipartSMS">false</bool>
     <bool name="enableSplitSMS">true</bool>
+     <!-- Hide Sprint VVM text messages. -->  
+    <bool name="enableSprintVVM">true</bool>  
     <int name="smsToMmsTextThreshold">4</int>
     <string name="uaProfTagName">Profile</string>
     <string name="userAgent">LGE-LS670/Android-mms\u0020</string>

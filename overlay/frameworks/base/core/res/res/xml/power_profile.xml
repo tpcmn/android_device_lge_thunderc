@@ -39,28 +39,32 @@
       <value>3</value>
   </array>
   <array name="cpu.speeds">
+      <value>120000</value>
       <value>122880</value>
+      <value>200000</value>
       <value>245760</value>
       <value>320000</value>
+      <value>400000</value>
       <value>480000</value>
       <value>600000</value>
-      <value>672000</value>
-      <value>729600</value>
-      <value>748800</value>
       <value>768000</value>
+      <value>787200</value>
+      <value>806400</value>
   </array>
   <!-- Power consumption in suspend -->
-  <item name="cpu.idle">2.8</item>
+  <item name="cpu.idle">3.0</item>
   <!-- Power consumption at different speeds -->
   <array name="cpu.active">
-      <value>66.6</value>
-      <value>84</value>
-      <value>90.8</value>
-      <value>96</value>
-      <value>105</value>
-      <value>111.5</value>
-      <value>117.3</value>
-      <value>123.6</value>
-      <value>134.5</value>
+      <value>30</value>  <!-- 120000 -->
+      <value>32</value>  <!-- 122880 -->
+      <value>45</value>  <!-- 200000 -->
+      <value>60</value>  <!-- 245760 -->
+      <value>74</value>  <!-- 320000 -->
+      <value>88</value>  <!-- 400000 -->
+      <value>100</value> <!-- 480000 -->
+      <value>120</value> <!-- 600000 -->
+      <value>160</value> <!-- 768000 -->
+      <value>170</value> <!-- 787200 -->
+      <value>180</value> <!-- 806400 -->
   </array>
 </device>

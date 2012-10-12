@@ -19,7 +19,9 @@ BOARD_CPU_COLOR_CONVERT := true
 TARGET_BOOTANIMATION_PRELOAD=true
 TARGET_BOOTANIMATION_TEXTURE_CACHE := false 
 # Enable WEBGL in WebKit  
-ENABLE_WEBGL := true  
+ENABLE_WEBGL := true
+ENABLE_WEBAUDIO := false  
+ENABLE_WTF_USE_ACCELERATED_COMPOSITING := true
  
 
 
@@ -32,7 +34,7 @@ TARGET_SPECIFIC_HEADER_PATH := device/lge/thunderc/include
 # Platform
 TARGET_BOARD_PLATFORM := msm7x27
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
-PLATFORM_VENDOR := qcom
+#PLATFORM_VENDOR := qcom
 
 # CPU
 ARCH_ARM_HAVE_VFP := true
@@ -50,7 +52,7 @@ TARGET_BOOTLOADER_BOARD_NAME := thunderc
 TARGET_OTA_ASSERT_DEVICE := thunderc,LS670,thunderc_LS670,VM670
 #TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_BOOTANIMATION_USE_RGB565 := true
-TARGET_BOOTANIMATION_TEXTURE_CACHE := true
+#TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 #TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
 # QCOM Hardware
@@ -121,9 +123,9 @@ ENABLE_JSC_JIT := true
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/thunderc/prebuilt/UsbController.cpp
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
+#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
 BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
-BOARD_SDCARD_INTERNAL_DEVICE := /dev/block/mmcblk0p1
+#BOARD_SDCARD_INTERNAL_DEVICE := /dev/block/mmcblk0p1
 BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/vold/179:1
 BOARD_SDEXT_DEVICE := /dev/block/vold/179:2
 

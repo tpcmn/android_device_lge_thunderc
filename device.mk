@@ -199,13 +199,13 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_COPY_FILES += \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmmipl.so:system/lib/libmmipl.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmmjpeg.so:system/lib/libmmjpeg.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmmjpeg.so:obj/lib/libmmjpeg.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liboemcamera.so:system/lib/liboemcamera.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liboemcamera.so:obj/lib/liboemcamera.so \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:obj/lib/libcamera.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:system/lib/libcamera.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/libgb/libmmipl.so:system/lib/libmmipl.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/libgb/libmmjpeg.so:system/lib/libmmjpeg.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/libgb/libmmjpeg.so:obj/lib/libmmjpeg.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/libgb/liboemcamera.so:system/lib/liboemcamera.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/libgb/liboemcamera.so:obj/lib/liboemcamera.so \
+	#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:obj/lib/libcamera.so \
+    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:system/lib/libcamera.so \
 	#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/camera.msm7x27.so:obj/lib/hw/camera.msm7x27.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/camera.msm7x27.so:system/lib/hw/camera.msm7x27.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcameraservice.so:obj/lib/libcameraservice.so \
@@ -355,7 +355,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=COLD.AS.ICE
 PRODUCT_NAME := full_thunderc
-PRODUCT_DEVICE := thunderc
+PRODUCT_DEVICE := LS670
 PRODUCT_BRAND := LGE
 PRODUCT_MODEL := LG-LS670
 PRODUCT_MANUFACTURER := LGE
