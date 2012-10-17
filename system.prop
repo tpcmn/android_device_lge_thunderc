@@ -67,6 +67,9 @@ net.tcp.buffersize.wifi=4096,87380,256960,4096,163 84,256960
 # store launcher in memory - so that when you switch back to home it loads faster 
 ro.HOME_APP_ADJ=1
  
+# turn on navbar keys
+# qemu.hw.mainkeys=0 
+
 # improve image and video quality (when taking pics and vids from cam and showing them in gallery)
 ro.media.enc.jpeg.quality=100 
 ro.media.dec.jpeg.memcap=8000000 
@@ -95,7 +98,7 @@ ro.telephony.call_ring.multiple=false
 
 #DEVICE_PROVISIONED=1
 ro.telephony.ril.v3=signalstrength,skipbrokendatacall,facilitylock,datacall,icccardstatus,1
-#mobiledata.interfaces=rmnet0,rmnet1,rmnet2
+mobiledata.interfaces=rmnet0,rmnet1,rmnet2
 #ril.subscription.types=NV,RUIM
 #ro.telephony.ril_class=LGEQualcommRIL
 
@@ -114,12 +117,27 @@ persist.sys.usb.config=mass_storage,adb
 
 # system props for the MM modules 
 # 
+
+ro.media.enc.file.format       = 3gp,mp4 
+ro.media.enc.vid.codec         = m4v,h263
+ro.media.enc.vid.h263.width    = 176,640 
+ro.media.enc.vid.h263.height   = 144,480 
+ro.media.enc.vid.h263.bps      = 64000,1600000 
+ro.media.enc.vid.h263.fps      = 1,30 
+ro.media.enc.vid.m4v.width     = 176,640 
+ro.media.enc.vid.m4v.height    = 144,480 
+ro.media.enc.vid.m4v.bps       = 64000,1600000 
+ro.media.enc.vid.m4v.fps       = 1,30 
+ro.media.dec.aud.wma.enabled=1 
+ro.media.dec.vid.wmv.enabled=1 
 media.stagefright.enable-player=true 
 media.stagefright.enable-meta=false 
 media.stagefright.enable-scan=false 
-media.stagefright.enable-http=true 
+media.stagefright.enable-http=true
 media.stagefright.enable-aac=true 
 media.stagefright.enable-qcp=true 
+
+
 # BT 
 ro.bt.bdaddr_path=/data/misc/bd_addr
 ro.config.vc_call_vol_steps=15 
@@ -132,8 +150,8 @@ ro.config.vc_call_vol_steps=15
 #mobiledata.interfaces=wlan0,ppp0
 
 # V6 SuperCharger settings
-#ro.ril.hsxpa=3
-#ro.ril.gprsclass=12
+ro.ril.hsxpa=3
+ro.ril.gprsclass=12
 ro.ril.hep=1
 ro.ril.enable.dtm=1
 ro.ril.hsdpa.category=28

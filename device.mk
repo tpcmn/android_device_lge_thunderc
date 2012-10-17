@@ -106,20 +106,28 @@ PRODUCT_COPY_FILES += device/lge/thunderc/configs/adreno_config.txt:system/etc/a
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.local.rc:system/etc/init.local.rc \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/95zipalign:system/etc/init.d/95zipalign \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/08dalvik:system/etc/init.d/08dalvik \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/10apps2sd:system/etc/init.d/10apps2sd \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/87calibration:system/etc/init.d/87calibration \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/96tweak:system/etc/init.d/96tweak \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/00check:system/etc/init.d/00check \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/01zipalign:system/etc/init.d/01zipalign \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/02sysctl:system/etc/init.d/02sysctl \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/03firstboot:system/etc/init.d/03firstboot \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/05freemem:system/etc/init.d/05freemem \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/05mountext:system/etc/init.d/05mountext \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/06removecache:system/etc/init.d/06removecache \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/07fixperms:system/etc/init.d/07fixperms \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/08reloc:system/etc/init.d/08reloc \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/09cron:system/etc/init.d/09cron \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/10sdboost:system/etc/init.d/10sdboost \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/98tweaks:system/etc/init.d/98tweaks \
 
 PRODUCT_COPY_FILES += \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/05mountext:system/etc/init.d/05mountext \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/08dalvik:system/etc/init.d/08dalvik \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.local.rc:system/etc/init.local.rc \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/spn-conf.xml:system/etc/spn-conf.xml \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/profile:system/etc/profile \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/terminfo/l/linux:system/etc/terminfo/l/linux \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/terminfo/u/unknown:system/etc/terminfo/u/unknown \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/xbin/zipalign:system/xbin/zipalign \
+	#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/05mountext:system/etc/init.d/05mountext \
+    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/08dalvik:system/etc/init.d/08dalvik \
 
 #WIFI
 PRODUCT_COPY_FILES += \
@@ -199,13 +207,13 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_COPY_FILES += \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/libgb/libmmipl.so:system/lib/libmmipl.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/libgb/libmmjpeg.so:system/lib/libmmjpeg.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/libgb/libmmjpeg.so:obj/lib/libmmjpeg.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/libgb/liboemcamera.so:system/lib/liboemcamera.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/libgb/liboemcamera.so:obj/lib/liboemcamera.so \
-	#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:obj/lib/libcamera.so \
-    #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:system/lib/libcamera.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmmipl.so:system/lib/libmmipl.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmmjpeg.so:system/lib/libmmjpeg.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libmmjpeg.so:obj/lib/libmmjpeg.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liboemcamera.so:system/lib/liboemcamera.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liboemcamera.so:obj/lib/liboemcamera.so \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:obj/lib/libcamera.so \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcamera.so:system/lib/libcamera.so \
 	#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/camera.msm7x27.so:obj/lib/hw/camera.msm7x27.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/hw/camera.msm7x27.so:system/lib/hw/camera.msm7x27.so \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libcameraservice.so:obj/lib/libcameraservice.so \
@@ -269,6 +277,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/cnd:system/bin/cnd \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/.root_explorer:system/etc/.root_explorer \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/liberty.bsh:system/etc/liberty.bsh \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d:system/etc/init.d \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/resolv.conf:system/etc/resolv.conf \
 	vendor/lge/thunderc/app/RootBrowser.apk:system/app/RootBrowser.apk \
 
 PRODUCT_PROPERTY_OVERRIDES += \

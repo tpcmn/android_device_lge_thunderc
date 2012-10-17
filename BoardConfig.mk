@@ -7,7 +7,8 @@ include vendor/lge/thunderc/BoardConfigVendor.mk
 
 # Camera
 # http://r.cyanogenmod.com/#/c/13317/
-COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT -DFORCE_CPU_UPLOAD -DMISSING_EGL_PIXEL_FORMAT_YV12 
+COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT -DFORCE_CPU_UPLOAD 
+#-DMISSING_EGL_PIXEL_FORMAT_YV12 
 #BOARD_CAMERA_USE_GETBUFFERINFO := true
 #BOARD_USE_CAF_LIBCAMERA := true
 # This is needed by libcamera.so 
@@ -122,12 +123,12 @@ ENABLE_JSC_JIT := true
 # Mass Storage for ICS
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/thunderc/prebuilt/UsbController.cpp
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
+#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
 #TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
-BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
+#BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
 #BOARD_SDCARD_INTERNAL_DEVICE := /dev/block/mmcblk0p1
-BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/vold/179:1
-BOARD_SDEXT_DEVICE := /dev/block/vold/179:2
+#BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/vold/179:1
+#BOARD_SDEXT_DEVICE := /dev/block/vold/179:2
 
 # Touch screen compatibility for ICS
 BOARD_USE_LEGACY_TOUCHSCREEN := true
@@ -157,7 +158,7 @@ TARGET_NO_RADIOIMAGE := true
 #TARGET_GLOBAL_CPPFLAGS += -mfpu=vfp -mfloat-abi=softfp -Os
 
 #Camera
-BOARD_USE_FROYO_LIBCAMERA := true
+#BOARD_USE_FROYO_LIBCAMERA := true
 
 
 BOARD_CUSTOM_BRCM_PATCHRAM_PLUS := ../../../device/lge/thunderc/prebuilt/brcm_patchram_plus.c
