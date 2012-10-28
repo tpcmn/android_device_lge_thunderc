@@ -118,18 +118,7 @@ persist.sys.usb.config=mass_storage,adb
 # system props for the MM modules 
 # 
 
-ro.media.enc.file.format       = 3gp,mp4 
-ro.media.enc.vid.codec         = m4v,h263
-ro.media.enc.vid.h263.width    = 176,640 
-ro.media.enc.vid.h263.height   = 144,480 
-ro.media.enc.vid.h263.bps      = 64000,1600000 
-ro.media.enc.vid.h263.fps      = 1,30 
-ro.media.enc.vid.m4v.width     = 176,640 
-ro.media.enc.vid.m4v.height    = 144,480 
-ro.media.enc.vid.m4v.bps       = 64000,1600000 
-ro.media.enc.vid.m4v.fps       = 1,30 
-ro.media.dec.aud.wma.enabled=1 
-ro.media.dec.vid.wmv.enabled=1 
+
 media.stagefright.enable-player=true 
 media.stagefright.enable-meta=false 
 media.stagefright.enable-scan=false 
