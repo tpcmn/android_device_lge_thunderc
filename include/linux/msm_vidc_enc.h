@@ -517,7 +517,7 @@ struct venc_qprange{
 };
 struct venc_intraperiod{
 	unsigned long	num_pframes;
-	unsigned long	num_bframes;
+//	unsigned long	num_bframes;
 };
 struct venc_seqheader{
 	unsigned char *hdrbufptr;
@@ -597,7 +597,7 @@ struct venc_msg{
 };
 
 struct venc_recon_addr{
-	unsigned char *pbuffer;
+//	unsigned char *pbuffer;
 	unsigned long buffer_size;
 	unsigned long pmem_fd;
 	unsigned long offset;

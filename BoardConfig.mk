@@ -7,7 +7,8 @@ include vendor/lge/thunderc/BoardConfigVendor.mk
 
 # Camera
 # http://r.cyanogenmod.com/#/c/13317/
-COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT -DFORCE_CPU_UPLOAD 
+COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT -DFORCE_CPU_UPLOAD -DCPU_COLOR_CONVERT -DUSES_NAM
+USES_NAM := true
 #-DMISSING_EGL_PIXEL_FORMAT_YV12 
 #BOARD_CAMERA_USE_GETBUFFERINFO := true
 #BOARD_USE_CAF_LIBCAMERA := true
@@ -76,6 +77,7 @@ BOARD_NEEDS_MEMORYHEAPPMEM := true
 
 # http://www.slideshare.net/jserv/design-and-concepts-of-android-graphics
 COMMON_GLOBAL_CFLAGS += -DTARGET_MSM7x27 -DQCOM_HARDWARE
+COMMON_GLOBAL_CFLAGS += -DQCOM_LEGACY_OMX
 COMMON_GLOBAL_CFLAGS += -DMISSING_GRALLOC_BUFFERS -DREFRESH_RATE=60
 
 # Skia
@@ -123,12 +125,12 @@ ENABLE_JSC_JIT := true
 # Mass Storage for ICS
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/thunderc/prebuilt/UsbController.cpp
-#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
 #TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
-#BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
+BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
 #BOARD_SDCARD_INTERNAL_DEVICE := /dev/block/mmcblk0p1
-#BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/vold/179:1
-#BOARD_SDEXT_DEVICE := /dev/block/vold/179:2
+BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/vold/179:1
+BOARD_SDEXT_DEVICE := /dev/block/vold/179:2
 
 # Touch screen compatibility for ICS
 BOARD_USE_LEGACY_TOUCHSCREEN := true
