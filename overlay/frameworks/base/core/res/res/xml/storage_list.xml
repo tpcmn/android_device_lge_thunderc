@@ -40,5 +40,7 @@
              android:emulated="false"
              android:maxFileSize="4096"
              android:allowMassStorage="true" />
+		 
+	 
 </StorageList>
 

@@ -31,6 +31,8 @@ ro.opengles.version=131072
 
 
 # QCOM implementation 
+persist.timed.enable=true
+
 com.qc.hardware=true 
 com.qc.hdmi_out=false 
 debug.sf.hw=1

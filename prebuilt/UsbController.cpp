@@ -47,6 +47,7 @@ int UsbController::stopRNDIS() {
 }
 
 int UsbController::enableRNDIS(bool enable) {
+    property_set("net.usb_tethering", enable ? "1" : "0");
     char value[20];
     int fd = open("/sys/module/g_android/parameters/product_id", O_RDWR);
 

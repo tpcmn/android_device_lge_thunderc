@@ -16,6 +16,8 @@ USES_NAM := true
 BOARD_USE_NASTY_PTHREAD_CREATE_HACK := true
 ## Fixes colors in panorama
 BOARD_CPU_COLOR_CONVERT := true
+HAVE_QC_TIME_SERVICES := true
+BOARD_HAVE_QC_TIME_SERVICES := true
 
 
 TARGET_BOOTANIMATION_PRELOAD=true
@@ -94,7 +96,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0a4e0000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 BOARD_HAS_NO_SELECT_BUTTON := true
-#BOARD_CUSTOM_GRAPHICS := ../../../device/lge/thunderc/recovery/graphics.c 
+BOARD_CUSTOM_GRAPHICS := ../../../device/lge/thunderc/recovery/graphics.c 
 
 # Audio & Bluetooth
 TARGET_PROVIDES_LIBAUDIO := true
@@ -126,7 +128,10 @@ ENABLE_JSC_JIT := true
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/thunderc/prebuilt/UsbController.cpp
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
+##TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
+
 #TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
+#BOARD_UMS_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun/file
 BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
 #BOARD_SDCARD_INTERNAL_DEVICE := /dev/block/mmcblk0p1
 BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/vold/179:1

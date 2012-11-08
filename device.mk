@@ -125,6 +125,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/profile:system/etc/profile \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/terminfo/l/linux:system/etc/terminfo/l/linux \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/terminfo/u/unknown:system/etc/terminfo/u/unknown \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/time_daemon:system/bin/time_daemon \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/xbin/zipalign:system/xbin/zipalign \
 	#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/05mountext:system/etc/init.d/05mountext \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/08dalvik:system/etc/init.d/08dalvik \
@@ -321,6 +322,8 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libril.so:system/lib/libril.so \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libril.so:obj/lib/libril.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/rild:system/bin/rild \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libtime_genoff.so:system/lib/libtime_genoff.so \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libtime_genoff.so:obj/lib/libtime_genoff.so \
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/pppd_runner:system/bin/pppd_runner 
 
 
@@ -354,7 +357,7 @@ PRODUCT_COPY_FILES += \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libomx_amrenc_sharedlibrary.so:system/lib/libomx_amrenc_sharedlibrary.so \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libomx_amrdec_sharedlibrary.so:system/lib/libomx_amrdec_sharedlibrary.so \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libomx_aacdec_sharedlibrary.so:system/lib/libomx_aacdec_sharedlibrary.so \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libomx_sharedlibrary.so:system/lib/libomx_sharedlibrary.so \	
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libomx_sharedlibrary.so:system/lib/libomx_sharedlibrary.so 	
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libdivxdrmdecrypt.so:system/lib/libdivxdrmdecrypt.so \
 
 
