@@ -60,6 +60,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.gr.numframebuffers=2 \
     debug.qctwa.statusbar=1 \
     debug.qctwa.preservebuf=1 \
+    debug.hwui.render_dirty_regions=false \
     hwui.render_dirty_regions=false \
     hwui.disable_vsync=true \
     hwui.print_config=choice \
