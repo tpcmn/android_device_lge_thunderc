@@ -91,6 +91,9 @@ COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB
 # RIL
 BOARD_PROVIDES_LIBRIL := false
 
+# Lights
+TARGET_PROVIDES_LIBLIGHTS := true
+
 # Mass Storage for ICS
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
 BOARD_UMS_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun/file
