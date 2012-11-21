@@ -17,8 +17,8 @@
     <bool name="convertCharsToSpace">false</bool>
     <bool name="inputModeAuto">false</bool>
     <bool name="dateTimeFormat">false</bool>
-    <bool name="japanFeature">false</bool>
-    <bool name="enableMultipartSMS">false</bool>
+    <bool name="japanFeature">true</bool>
+    <bool name="enableMultipartSMS">true</bool>
     <bool name="enableSplitSMS">true</bool>
      <!-- Hide Sprint VVM text messages. -->  
     <bool name="enableSprintVVM">false</bool>  

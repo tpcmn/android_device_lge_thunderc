@@ -21,7 +21,7 @@
     <!-- The width that is used when creating thumbnails of applications. -->
     <dimen name="thumbnail_width">240dp</dimen>
     <!-- The height that is used when creating thumbnails of applications. -->
-    <dimen name="thumbnail_height">240dp</dimen>
+    <dimen name="thumbnail_height">263dp</dimen>
     <!-- The standard size (both width and height) of an application icon that
          will be displayed in the app launcher and elsewhere. -->
     <dimen name="app_icon_size">48dip</dimen>
@@ -56,28 +56,26 @@
     <dimen name="min_xlarge_screen_width">800dp</dimen>
 
     <!-- Default height of a key in the password keyboard for alpha (used by keyguard) -->
-    <dimen name="password_keyboard_key_height_alpha">56dip</dimen>
+    <dimen name="password_keyboard_key_height_alpha">35dip</dimen>
     <!-- Default height of a key in the password keyboard for numeric (used by keyguard) -->
-    <dimen name="password_keyboard_key_height_numeric">56dip</dimen>
+    <dimen name="password_keyboard_key_height_numeric">35dip</dimen>
     <!-- Default correction for the space key in the password keyboard  (used by keyguard) -->
-    <dimen name="password_keyboard_spacebar_vertical_correction">4dip</dimen>
+    <dimen name="password_keyboard_spacebar_vertical_correction">2dip</dimen>
     <!-- Default horizontal gap between keys in the password keyboard (used by keyguard) -->
-    <dimen name="password_keyboard_horizontalGap">3dip</dimen>
+    <dimen name="password_keyboard_horizontalGap">1dip</dimen>
     <!-- Default vertical gap between keys in the password keyboard (used by keyguard) -->
-    <dimen name="password_keyboard_verticalGap">9dip</dimen>
+    <dimen name="password_keyboard_verticalGap">4dip</dimen>
 
     <!-- Size of lockscreen outerring on unsecure unlock LockScreen -->
     <dimen name="keyguard_lockscreen_outerring_diameter">270dp</dimen>
-
-    <!-- Default target placement radius for MultiWaveView -->
+ 
     <dimen name="multiwaveview_target_placement_radius">135dip</dimen>
-
-    <!-- Default distance beyond which MultiWaveView snaps to the target radius -->
     <dimen name="multiwaveview_snap_margin">20dip</dimen>
 
-    <!-- Default distance from each snap target that MultiWaveView considers a "hit" -->
     <dimen name="multiwaveview_hit_radius">60dip</dimen>
 
+
+	
     <!-- Preference activity side margins -->
     <dimen name="preference_screen_side_margin">0dp</dimen>
     <!-- Preference activity side margins negative-->
@@ -155,7 +153,7 @@
     <dimen name="action_bar_subtitle_bottom_margin">5dip</dimen>
 
     <!-- Size of clock font in LockScreen on Unsecure unlock screen. -->
-    <dimen name="keyguard_lockscreen_clock_font_size">80dip</dimen>
+    <dimen name="keyguard_lockscreen_clock_font_size">70dip</dimen>
 
     <!-- Size of status line font on Unsecure unlock LockScreen. -->
     <dimen name="keyguard_lockscreen_status_line_font_size">14dip</dimen>
@@ -164,10 +162,10 @@
     <dimen name="keyguard_lockscreen_status_line_font_right_margin">42dip</dimen>
 
     <!-- Size of top margin on Clock font to edge on unlock LockScreen -->
-    <dimen name="keyguard_lockscreen_status_line_clockfont_top_margin">22dip</dimen>
+    <dimen name="keyguard_lockscreen_status_line_clockfont_top_margin">2dip</dimen>
 
     <!-- Size of top margin on Clock font to edge on unlock LockScreen -->
-    <dimen name="keyguard_lockscreen_status_line_clockfont_bottom_margin">12dip</dimen>
+    <dimen name="keyguard_lockscreen_status_line_clockfont_bottom_margin">2dip</dimen>
 
     <!-- Padding on left margin of PIN text entry field to center it when del button is showing -->
     <dimen name="keyguard_lockscreen_pin_margin_left">40dip</dimen>

@@ -106,18 +106,29 @@ PRODUCT_COPY_FILES += device/lge/thunderc/configs/adreno_config.txt:system/etc/a
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.local.rc:system/etc/init.local.rc \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.thunderc.usb.rc:system/etc/init.thunderc.usb.rc \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/00check:system/etc/init.d/00check \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/01zipalign:system/etc/init.d/01zipalign \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/02sysctl:system/etc/init.d/02sysctl \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/03firstboot:system/etc/init.d/03firstboot \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/05freemem:system/etc/init.d/05freemem \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/999youtube:system/etc/init.d/999youtube \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/00banner:system/etc/init.d/00banner \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/04modules:system/etc/init.d/04modules \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/05mountext:system/etc/init.d/05mountext \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/06removecache:system/etc/init.d/06removecache \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/07fixperms:system/etc/init.d/07fixperms \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/08reloc:system/etc/init.d/08reloc \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/09cron:system/etc/init.d/09cron \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/10sdboost:system/etc/init.d/10sdboost \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/98tweaks:system/etc/init.d/98tweaks \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/06minicm:system/etc/init.d/06minicm \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/07fixperms:system/etc/init.d/07fixperms \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/10apps2sd:system/etc/init.d/10apps2sd \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/10dnsconf:system/etc/init.d/10dnsconf \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/10hostapconf:system/etc/init.d/10hostapconf \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/90userinit:system/etc/init.d/90userinit \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/95zipalign:system/etc/init.d/95zipalign \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/00check:system/etc/init.d/00check \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/01zipalign:system/etc/init.d/01zipalign \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/02sysctl:system/etc/init.d/02sysctl \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/03firstboot:system/etc/init.d/03firstboot \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/05freemem:system/etc/init.d/05freemem \
+#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/05mountext:system/etc/init.d/05mountext \
+#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/06removecache:system/etc/init.d/06removecache \
+#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/07fixperms:system/etc/init.d/07fixperms \
+#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/08reloc:system/etc/init.d/08reloc \
+#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/09cron:system/etc/init.d/09cron \
+#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/10sdboost:system/etc/init.d/10sdboost \
+#	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/98tweaks:system/etc/init.d/98tweaks \
 
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.local.rc:system/etc/init.local.rc \
@@ -126,6 +137,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/terminfo/l/linux:system/etc/terminfo/l/linux \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/terminfo/u/unknown:system/etc/terminfo/u/unknown \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/time_daemon:system/bin/time_daemon \
+	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/a2sd:system/bin/a2sd \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/xbin/zipalign:system/xbin/zipalign \
 	#vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/05mountext:system/etc/init.d/05mountext \
     #vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/08dalvik:system/etc/init.d/08dalvik \
@@ -228,6 +240,8 @@ PRODUCT_COPY_FILES += \
 # Wifi
 PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/wifi/dnsmasq.conf:system/etc/wifi/dnsmasq.conf \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/wifi/softap/hostapd.conf:system/etc/wifi/softap/hostapd.conf \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/wl/nvram.txt:system/etc/wl/nvram.txt \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/dhcpd/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/wl/rtecdc.bin:system/etc/wl/rtecdc.bin \
