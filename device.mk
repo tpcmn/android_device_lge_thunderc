@@ -106,6 +106,10 @@ PRODUCT_PACKAGES += \
     gps.default \
     lights.msm7x27 \
     lgapversion
+    
+# OTA Updater
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/prebuilt/OTAUpdater.apk:system/app/OTAUpdater.apk
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -124,3 +128,12 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 DEVICE_PACKAGE_OVERLAYS += device/lge/p500/overlay
+
+# OTA Updated Config
+OTA_VERSION = 0.1
+OTA_BUILD_TIME = $(shell date +%Y%m%d-%k%M)
+
+PRODUCT_PROPERTY_OVERRIDES += \
+	otaupdater.otaid=cerebrumJBp500 \
+	otaupdater.otatime=$(OTA_BUILD_TIME) \
+	otaupdater.otaver=$(OTA_VERSION)
