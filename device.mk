@@ -134,6 +134,6 @@ OTA_VERSION = 0.1
 OTA_BUILD_TIME = $(shell date +%Y%m%d-%k%M)
 
 PRODUCT_PROPERTY_OVERRIDES += \
-	otaupdater.otaid=cerebrumJBp500 \
+	otaupdater.otaid=slimbeanJBP500 \
 	otaupdater.otatime=$(OTA_BUILD_TIME) \
 	otaupdater.otaver=$(OTA_VERSION)
