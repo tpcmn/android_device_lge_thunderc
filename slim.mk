@@ -9,6 +9,10 @@ $(call inherit-product, vendor/slim/config/common_full_phone.mk)
 # Inherit device configuration.
 $(call inherit-product, device/lge/p500/p500.mk)
 
+#Boot Animation
+PRODUCT_COPY_FILES +=  \
+    vendor/slim/prebuilt/hdpi/bootanimation.zip:system/media/bootanimation.zip
+
 
 PRODUCT_NAME := slim_p500
 PRODUCT_DEVICE := p500
