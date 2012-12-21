@@ -87,6 +87,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/initlogo.rle:root/initlogo.rle \
     $(LOCAL_PATH)/prebuilt/init.qcom.sh:root/init.qcom.sh \
+	$(LOCAL_PATH)/configs/init.qcom.usb.rc:root/init.qcom.usb.rc \
 #    $(LOCAL_PATH)/prebuilt/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh
 
 # BT startup
@@ -100,6 +101,7 @@ PRODUCT_COPY_FILES += device/lge/thunderc/configs/thunderc_keypad.kcm.bin:system
 PRODUCT_COPY_FILES += device/lge/thunderc/configs/7k_handset.kl:system/usr/keylayout/7k_handset.kl 
 PRODUCT_COPY_FILES += device/lge/thunderc/configs/Generic.kl:system/usr/keylayout/Generic.kl 
 PRODUCT_COPY_FILES += device/lge/thunderc/configs/default.prop:root/default.prop 
+PRODUCT_COPY_FILES += device/lge/thunderc/configs/init.qcom.usb.rc:root/init.qcom.usb.rc
 PRODUCT_COPY_FILES += device/lge/thunderc/configs/adreno_config.txt:system/etc/adreno_config.txt 	
 #PRODUCT_COPY_FILES += device/lge/thunderc/configs/vold.fstab:system/etc/vold.fstab 
 	
@@ -333,13 +335,12 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/liblgerft.so:system/lib/liblgerft.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libbcmwl.so:system/lib/libbcmwl.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libdss.so:system/lib/libdss.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libril.so:system/lib/libril.so \
-	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libril.so:obj/lib/libril.so \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/rild:system/bin/rild \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libtime_genoff.so:system/lib/libtime_genoff.so \
 	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libtime_genoff.so:obj/lib/libtime_genoff.so \
-#    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/pppd_runner:system/bin/pppd_runner 
-
+##    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/bin/pppd_runner:system/bin/pppd_runner 
+##	vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libril.so:obj/lib/libril.so \
+##    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/lib/libril.so:system/lib/libril.so \
 
 # OMX
 PRODUCT_COPY_FILES += \

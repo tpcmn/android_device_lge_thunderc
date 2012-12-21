@@ -102,7 +102,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0a4e0000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_CUSTOM_GRAPHICS := ../../../device/lge/thunderc/recovery/graphics.c 
+#BOARD_CUSTOM_GRAPHICS := ../../../device/lge/thunderc/recovery/graphics.c 
 
 # Audio & Bluetooth
 TARGET_PROVIDES_LIBAUDIO := true
@@ -113,6 +113,7 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 
 # RIL
 #BOARD_PROVIDES_LIBRIL := true
+TARGET_PROVIDES_LIBRIL := true
 
 # Enable the GPS HAL & AMSS version to use for GPS
 BOARD_USES_QCOM_LIBRPC := true
@@ -133,15 +134,15 @@ ENABLE_JSC_JIT := true
 # Mass Storage for ICS
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/thunderc/prebuilt/UsbController.cpp
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
+#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
 ##TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
 
 #TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
 #BOARD_UMS_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun/file
-BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
+#BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
 #BOARD_SDCARD_INTERNAL_DEVICE := /dev/block/mmcblk0p1
-BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/vold/179:1
-BOARD_SDEXT_DEVICE := /dev/block/vold/179:2
+#BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/vold/179:1
+#BOARD_SDEXT_DEVICE := /dev/block/vold/179:2
 
 # Touch screen compatibility for ICS
 BOARD_USE_LEGACY_TOUCHSCREEN := true
@@ -190,7 +191,7 @@ BOARD_GLOBAL_CFLAGS += -DBOARD_CHARGING_CMDLINE_NAME='"lge.reboot"' -DBOARD_CHAR
 #BOARD_CHARGING_CMDLINE_NAME := "lge.reboot" 
 #BOARD_CHARGING_CMDLINE_VALUE := "pwroff" 
 BOARD_USES_RECOVERY_CHARGEMODE := false 
-
+TARGET_RECOVERY_INITRC := device/lge/thunderc/init.recovery.rc
 #twrp
 DEVICE_RESOLUTION := 320x480
 RECOVERY_GRAPHICS_USE_LINELENGTH := true

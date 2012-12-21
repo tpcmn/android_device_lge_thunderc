@@ -104,7 +104,6 @@ static uint32_t SND_DEVICE_BT_EC_OFF=-1;
 static uint32_t SND_DEVICE_HEADSET=-1;
 static uint32_t SND_DEVICE_HEADSET_STEREO=-1;
 static uint32_t SND_DEVICE_HEADSET_AND_SPEAKER=-1;
-static uint32_t SND_DEVICE_HEADPHONE=-1;
 static uint32_t SND_DEVICE_IN_S_SADC_OUT_HANDSET=-1;
 static uint32_t SND_DEVICE_IN_S_SADC_OUT_SPEAKER_PHONE=-1;
 static uint32_t SND_DEVICE_TTY_HEADSET=-1;
@@ -152,19 +151,17 @@ AudioHardware::AudioHardware() :
                 CHECK_FOR(HEADSET);
                 CHECK_FOR(HEADSET_STEREO);
                 CHECK_FOR(HEADSET_AND_SPEAKER);
-                CHECK_FOR(HEADPHONE);
                 CHECK_FOR(IN_S_SADC_OUT_HANDSET);
                 CHECK_FOR(IN_S_SADC_OUT_SPEAKER_PHONE);
                 CHECK_FOR(TTY_HEADSET);
                 CHECK_FOR(TTY_HCO);
                 CHECK_FOR(TTY_VCO);
                 CHECK_FOR(CARKIT);
-				CHECK_FOR(NO_MIC_HEADSET);
 #ifdef HAVE_FM_RADIO
                 CHECK_FOR(FM_SPEAKER);
                 CHECK_FOR(FM_HEADSET);
 #endif
-
+                CHECK_FOR(NO_MIC_HEADSET);
 #undef CHECK_FOR
             }
         }
@@ -501,7 +498,6 @@ int check_and_set_audpp_parameters(char *buf, int size)
         if(buf[1] == '1') device_id=0;
         if(buf[1] == '2') device_id=1;
         if(buf[1] == '3') device_id=2;
-        if(buf[1] == '4') device_id=3;
         if (!(p = strtok(buf, ",")))
             goto token_err;
 
@@ -523,12 +519,11 @@ int check_and_set_audpp_parameters(char *buf, int size)
             goto token_err;
         iir_cfg[device_id].num_bands = (uint16_t)strtol(p, &ps, 16);
 
-    } else if ((buf[0] == 'B') && ((buf[1] == '1') || (buf[1] == '2') || (buf[1] == '3') || (buf[1] == '4'))) {
+    } else if ((buf[0] == 'B') && ((buf[1] == '1') || (buf[1] == '2') || (buf[1] == '3'))) {
         /* This is the ADRC record we are looking for.  Tokenize it */
         if(buf[1] == '1') device_id=0;
         if(buf[1] == '2') device_id=1;
         if(buf[1] == '3') device_id=2;
-        if(buf[1] == '4') device_id=3;
         adrc_filter_exists[device_id] = true;
         if (!(p = strtok(buf, ",")))
             goto token_err;
@@ -578,12 +573,11 @@ int check_and_set_audpp_parameters(char *buf, int size)
         if (!(p = strtok(NULL, seps)))
             goto token_err;
 
-    } else if (buf[0] == 'C' && ((buf[1] == '1') || (buf[1] == '2') || (buf[1] == '3') || (buf[1] == '4'))) {
+    } else if (buf[0] == 'C' && ((buf[1] == '1') || (buf[1] == '2') || (buf[1] == '3'))) {
         /* This is the EQ record we are looking for.  Tokenize it */
         if(buf[1] == '1') device_id=0;
         if(buf[1] == '2') device_id=1;
         if(buf[1] == '3') device_id=2;
-        if(buf[1] == '4') device_id=3;
         if (!(p = strtok(buf, ",")))
             goto token_err;
 
@@ -639,12 +633,11 @@ int check_and_set_audpp_parameters(char *buf, int size)
         }
         ::dlclose(audioeq);
 
-    } else if ((buf[0] == 'D') && ((buf[1] == '1') || (buf[1] == '2') || (buf[1] == '3') || (buf[1] == '4'))) {
+    } else if ((buf[0] == 'D') && ((buf[1] == '1') || (buf[1] == '2') || (buf[1] == '3'))) {
      /* This is the MB_ADRC record we are looking for.  Tokenize it */
         if(buf[1] == '1') device_id=0;
         if(buf[1] == '2') device_id=1;
         if(buf[1] == '3') device_id=2;
-        if(buf[1] == '4') device_id=3;
         mbadrc_filter_exists[device_id] = true;
         if (!(p = strtok(buf, ",")))
             goto token_err;
@@ -963,11 +956,6 @@ static int msm72xx_enable_postproc(bool state)
         device_id = 2;
         LOGI("set device to SND_DEVICE_HEADSET_STEREO/SND_DEVICE_HEADSET device_id=2");
     }
-    if(snd_device == SND_DEVICE_HEADPHONE)
-    {
-        device_id = 3;
-        LOGI("set device to SND_DEVICE_HEADPHONE device_id=3");
-    }
 
     fd = open(PCM_CTL_DEVICE, O_RDWR);
     if (fd < 0) {
@@ -1210,15 +1198,22 @@ status_t AudioHardware::setFmVolume(float v)
         LOGW("setFmVolume(%f) over 1.0, assuming 1.0\n", v);
         v = 1.0;
     }
-
-    int vol = lrint(v * 7.5);
-    if (vol > 7)
-        vol = 7;
     LOGD("setFmVolume(%f)\n", v);
-    Mutex::Autolock lock(mLock);
-    set_volume_rpc(SND_DEVICE_CURRENT, SND_METHOD_VOICE, vol, m7xsnddriverfd);
+
+    // FM volume range: 0-20
+    int fm_vol  = lrint(v * 20);
+    struct msm_snd_set_fm_radio_vol_param args;
+    args.volume = fm_vol;
+
+    if (ioctl(m7xsnddriverfd, SND_SET_FM_RADIO_VOLUME, &args) < 0) {
+        LOGE("snd_set_fm_radio_volume error.");
+        return -EIO;
+    }
+
+    LOGD("snd_set_fm_radio_volume(%d)\n", fm_vol);
     return NO_ERROR;
 }
+
 status_t AudioHardware::setFmOnOff(bool onoff)
 {
     mFmRadioEnabled = onoff;
@@ -1456,7 +1451,7 @@ SND_DEVICE_HEADSET_STEREO = stereo audio + muted mic
             } else
 #endif
             {
-                LOGI("Routing audio to Wired Headset\n");
+                LOGI("Routing audio to Wired Headset 2b (Media Path)\n");
                 new_snd_device = SND_DEVICE_HEADSET_STEREO; //STEREO
                 new_post_proc_feature_mask = (ADRC_ENABLE | EQ_ENABLE | RX_IIR_ENABLE | MBADRC_ENABLE);
             }
@@ -1488,19 +1483,15 @@ SND_DEVICE_HEADSET_STEREO = stereo audio + muted mic
                 new_snd_device = SND_DEVICE_SPEAKER;
                 new_post_proc_feature_mask = (ADRC_ENABLE | EQ_ENABLE | RX_IIR_ENABLE | MBADRC_ENABLE);
             }
-        } else if (outputDevices & AUDIO_DEVICE_OUT_SPEAKER_IN_CALL) { // VM670 SPEAKER_IN_CALL fix
+        } else if (outputDevices & AUDIO_DEVICE_OUT_SPEAKER_IN_CALL) { // P500 SPEAKER_IN_CALL fix
             LOGI("Routing audio to Speaker in call\n");
             new_snd_device = SND_DEVICE_SPEAKER_IN_CALL;
             new_post_proc_feature_mask = (ADRC_ENABLE | EQ_ENABLE | RX_IIR_ENABLE | MBADRC_ENABLE);
-        } else if (outputDevices & AudioSystem::DEVICE_OUT_EARPIECE) {
+        } else {
             LOGI("Routing audio to Handset\n");
             new_snd_device = SND_DEVICE_HANDSET;
             new_post_proc_feature_mask = (ADRC_ENABLE | EQ_ENABLE | RX_IIR_ENABLE | MBADRC_ENABLE);
-        } else if ((outputDevices & AudioSystem::DEVICE_OUT_WIRED_HEADPHONE)) {
-            LOGI("Routing audio to No microphone Wired Headset (%d,%x)\n", mMode, outputDevices);
-            new_snd_device = SND_DEVICE_NO_MIC_HEADSET;
-            new_post_proc_feature_mask = (ADRC_ENABLE | EQ_ENABLE | RX_IIR_ENABLE | MBADRC_ENABLE);
-    }
+        }
     }
 
     if (mDualMicEnabled && mMode == AudioSystem::MODE_IN_CALL) {
