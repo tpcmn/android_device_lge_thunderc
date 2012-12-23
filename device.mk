@@ -105,6 +105,7 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     gps.default \
     lights.msm7x27 \
+    camera.msm7x27 \
     lgapversion
     
 # OTA Updater
