@@ -5,7 +5,6 @@
 
 ## RIL
 bin/qmuxd
-etc/flex/flex.xml
 ## OLDBB != NEWBB
 lib/libgstk_exp.so
 lib/libpbmlib.so
@@ -39,8 +38,6 @@ lib/libsnd.so
 
 ## AUDIO
 lib/libaudioeq.so
-lib/hw/audio.primary.p500.so 
-lib/hw/audio_policy.p500.so
 
 ## CAMERA
 lib/liboemcamera.so
@@ -56,4 +53,4 @@ etc/wl/rtecdc-mfgtest.bin
 
 ## HAL
 bin/ami304d
-lib/hw/sensors.p500.so
+lib/hw/sensors.thunderc.so
