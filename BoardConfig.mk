@@ -3,7 +3,7 @@
 
 #TARGET_KERNEL_CONFIG := cyanogenmod_p500_p509_defconfig
 BOARD_KERNEL_CMDLINE := mem=471M console=ttyMSM2,115200n8 androidboot.hardware=thunderc
-
+BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/thunderc/bluetooth
 
 TARGET_BOOTLOADER_BOARD_NAME := thunderc

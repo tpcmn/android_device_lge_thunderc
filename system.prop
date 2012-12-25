@@ -21,9 +21,9 @@ ro.telephony.call_ring.delay=3000
 
 
 ro.telephony.ril.v3=signalstrength,skipbrokendatacall,facilitylock,datacall,icccardstatus,1
-#mobiledata.interfaces=rmnet0,rmnet1,rmnet2
-#ril.subscription.types=NV,RUIM
-#ro.telephony.ril_class=LGEQualcommRIL
+mobiledata.interfaces=rmnet0,rmnet1,rmnet2
+ril.subscription.types=NV,RUIM
+ro.telephony.ril_class=LGEQualcommRIL
 
 ro.bt.bdaddr_path=/data/misc/bd_addr
 
@@ -53,7 +53,7 @@ dalvik.vm.heapminfree=512k
 dalvik.vm.heapmaxfree=2m
 dalvik.vm.lockprof.threshold=500
 dalvik.vm.verify-bytecode=false
-
+ro.com.google.networklocation=1 
 ro.com.google.locationfeatures=1
 ro.cdma.voicemail.number=mine
 ro.setupwizard.enable_bypass=1

@@ -12,7 +12,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thunder_keypad.kl:system/usr/keylayout/thunder_keypad.kl \
     $(LOCAL_PATH)/configs/thunder_keypad.kcm.bin:system/usr/keychars/thunder_keypad.kcm.bin \
     $(LOCAL_PATH)/configs/wireless.ko:system/lib/modules/wireless.ko \
-    $(LOCAL_PATH)/configs/tun.ko:system/lib/modules/tun.ko \
     $(LOCAL_PATH)/configs/librasdioif.ko:system/lib/modules/librasdioif.ko \
 	$(LOCAL_PATH)/configs/touch_mcs6000.idc:system/usr/idc/touch_mcs6000.idc \
 	$(LOCAL_PATH)/configs/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
@@ -43,6 +42,9 @@ PRODUCT_PACKAGES += \
 
 # Full-featured build of the Open-Source
 $(call inherit-product, build/target/product/full.mk)
+# Inherit languages 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_small.mk) 
+
 
 PRODUCT_NAME := thunderc
 PRODUCT_DEVICE := thunderc

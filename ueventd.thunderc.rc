@@ -74,17 +74,18 @@
 /dev/msm_mp3*             0660   system     audio
 
 
+
 /dev/audience_a1026*      0660   system     audio
-/dev/tpa2018d1*           0660   system     audio
-/dev/msm_audpre           0660   system     audio
+/dev/tpa2018d1*           0660   system     audio/dev/msm_audpre           0660   system     audio
 /dev/msm_audio_ctl        0660   system     audio
-/dev/htc-acoustic         0660   system     audio
-/dev/vdec                 0660   system     audio
-/dev/qce                  0660   system     audio
-/dev/q6venc               0660   system     audio
+
+/dev/htc-acoustic         0660   system     audio/dev/vdec                 0660   system     audio
+
+/dev/qce                  0660   system     audio/dev/q6venc               0660   system     audio
 /dev/snd/dsp              0660   system     audio
 /dev/snd/dsp1             0660   system     audio
 /dev/snd/mixer            0660   system     audio
+
 /dev/msm_pcm_lp_dec       0660   system     audio
 /dev/smd0                 0640   radio      radio
 /dev/smd7                 0640   radio      radio
@@ -109,12 +110,12 @@
 /dev/qmi                  0640   radio      radio
 /dev/qmi0                 0640   radio      radio
 /dev/qmi1                 0640   radio      radio
-/dev/qmi2                 0640   radio      radio
-/dev/bus/usb/*            0660   root       usb
-/dev/gemini0              0660   system     system
-/dev/mtp_usb              0660   root       mtp
+/dev/qmi2                 0640   radio      radio/dev/bus/usb/*            0660   root       usb
+
+/dev/gemini0              0660   system     system/dev/mtp_usb              0660   root       mtp
 /dev/usb_accessory        0660   root       usb
 /dev/tun                  0660   system     vpn 
+
 /dev/qemu_trace           0666   system     system 
 /dev/qemu_pipe            0666   system     system 
 
@@ -125,11 +126,11 @@
 
 # sysfs properties
 /sys/devices/virtual/input/input*   enable      0660  root   input
-/sys/devices/virtual/input/input*   poll_delay  0660  root   input
-#permissions for video
+/sys/devices/virtual/input/input*   poll_delay  0660  root   input#permissions for video
 /dev/msm_vidc_reg         0660  system       audio
 /dev/msm_vidc_dec         0660  system       audio
 /dev/msm_vidc_enc         0660  system       audio
+
 
 #permissions for audio
 /dev/msm_amrnb            0660  system       audio
