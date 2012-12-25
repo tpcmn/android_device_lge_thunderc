@@ -13,9 +13,9 @@ $(call inherit-product, vendor/cm/config/tiny.mk)
 # Include FM-Radio stuff
 #$(call inherit-product, vendor/cyanogen/products/bcm_fm_radio.mk)
 
-PRODUCT_NAME := cm_LS670
+PRODUCT_NAME := cm_thunderc
 PRODUCT_BRAND := lge
-PRODUCT_DEVICE := LS670
+PRODUCT_DEVICE := thunderc
 PRODUCT_MODEL := LG-LS670
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_CHARACTERISTICS := phone
