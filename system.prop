@@ -23,7 +23,7 @@ ro.telephony.call_ring.delay=3000
 ro.telephony.ril.v3=signalstrength,skipbrokendatacall,facilitylock,datacall,icccardstatus,1
 mobiledata.interfaces=rmnet0,rmnet1,rmnet2
 ril.subscription.types=NV,RUIM
-ro.telephony.ril_class=LGEQualcommRIL
+ro.telephony.ril_class=QualcommSharedRIL
 
 ro.bt.bdaddr_path=/data/misc/bd_addr
 

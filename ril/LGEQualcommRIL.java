@@ -19,28 +19,27 @@ package com.android.internal.telephony;
 import static com.android.internal.telephony.RILConstants.*;
 
 import android.content.Context;
+import android.os.AsyncResult;
 import android.os.Message;
 import android.os.Parcel;
+import android.os.SystemProperties;
+import android.text.TextUtils;
 import android.util.Log;
 
-import com.android.internal.telephony.DataCallState;
-import com.android.internal.telephony.gsm.NetworkInfo;
-import com.android.internal.telephony.IccCardApplication;
-import com.android.internal.telephony.IccCardStatus;
-
-import java.util.ArrayList;
-
 /**
+ * Qualcomm RIL class for basebands that do not send the SIM status
+ * piggybacked in RIL_UNSOL_RESPONSE_RADIO_STATE_CHANGED. Instead,
+ * these radios will send radio state and we have to query for SIM
+ * status separately.
  * Custom Qualcomm No SimReady RIL for LGE
  *
  * {@hide}
  */
-public class LGEQualcommRIL extends QualcommNoSimReadyRIL implements CommandsInterface {
-    protected String mAid;
 
-    public LGEQualcommRIL(Context context) {
-        super(context);
-    }
+public class LGEQualcommRIL extends QualcommSharedRIL implements CommandsInterface {
+    protected int mPinState;
+    boolean RILJ_LOGV = true;
+    boolean RILJ_LOGD = true;
 
     public LGEQualcommRIL(Context context, int networkMode, int cdmaSubscription) {
         super(context, networkMode, cdmaSubscription);
@@ -143,19 +142,6 @@ public class LGEQualcommRIL extends QualcommNoSimReadyRIL implements CommandsInt
 
     @Override
     public void
-    supplyNetworkDepersonalization(String netpin, Message result) {
-        RILRequest rr = RILRequest.obtain(RIL_REQUEST_ENTER_NETWORK_DEPERSONALIZATION, result);
-
-        if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
-
-        rr.mp.writeInt(3);
-        rr.mp.writeString(netpin);
-
-        send(rr);
-    }
-
-    @Override
-    public void
     getIMSI(Message result) {
         RILRequest rr = RILRequest.obtain(RIL_REQUEST_GET_IMSI, result);
 
@@ -186,7 +172,7 @@ public class LGEQualcommRIL extends QualcommNoSimReadyRIL implements CommandsInt
         rr.mp.writeString(user);
         rr.mp.writeString(password);
         rr.mp.writeString(authType);
-        rr.mp.writeString("0"); // ipVersion
+        rr.mp.writeString("IP"); // ipVersion
 
         if (RILJ_LOGD) riljLog(rr.serialString() + "> "
                 + requestToString(rr.mRequest) + " " + radioTechnology + " "
@@ -228,35 +214,6 @@ public class LGEQualcommRIL extends QualcommNoSimReadyRIL implements CommandsInt
 
     @Override
     public void
-    setNetworkSelectionModeAutomatic(Message response) {
-        RILRequest rr
-                = RILRequest.obtain(RIL_REQUEST_SET_NETWORK_SELECTION_AUTOMATIC,
-                                    response);
-
-        if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
-
-        send(rr);
-    }
-
-    @Override
-    public void
-    setNetworkSelectionModeManual(String operatorNumeric, Message response) {
-        RILRequest rr
-                = RILRequest.obtain(RIL_REQUEST_SET_NETWORK_SELECTION_MANUAL,
-                                    response);
-
-        if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest)
-                    + " " + operatorNumeric);
-
-        rr.mp.writeInt(2);
-        rr.mp.writeString(operatorNumeric);
-        rr.mp.writeString("NOCHANGE");
-
-        send(rr);
-    }
-
-    @Override
-    public void
     queryFacilityLock (String facility, String password, int serviceClass,
                             Message response) {
         RILRequest rr = RILRequest.obtain(RIL_REQUEST_QUERY_FACILITY_LOCK, response);
@@ -264,16 +221,24 @@ public class LGEQualcommRIL extends QualcommNoSimReadyRIL implements CommandsInt
         if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest)
                     + " aid: " + mAid + " facility: " + facility);
 
-        // count strings
-        rr.mp.writeInt(4);
+        if (facility.equals("SC") &&
+               SystemProperties.get("ro.cm.device").indexOf("e73") == 0) {
+            int [] iccstatus = new int[1];
+            iccstatus[0] = mPinState;
+            AsyncResult.forMessage(response, iccstatus, null);
+            response.sendToTarget();
+        } else {
+            // count strings
+            rr.mp.writeInt(4);
 
-        rr.mp.writeString(mAid);
-        rr.mp.writeString(facility);
-        rr.mp.writeString(password);
+            rr.mp.writeString(mAid);
+            rr.mp.writeString(facility);
+            rr.mp.writeString(password);
 
-        rr.mp.writeString(Integer.toString(serviceClass));
+            rr.mp.writeString(Integer.toString(serviceClass));
 
-        send(rr);
+            send(rr);
+        }
     }
 
     @Override
@@ -340,8 +305,8 @@ public class LGEQualcommRIL extends QualcommNoSimReadyRIL implements CommandsInt
             ca.aid            = p.readString();
             ca.app_label      = p.readString();
             ca.pin1_replaced  = p.readInt();
-            ca.pin1           = p.readInt();
-            ca.pin2           = p.readInt();
+            ca.pin1           = ca.PinStateFromRILInt(p.readInt());
+            ca.pin2           = ca.PinStateFromRILInt(p.readInt());
             status.addApplication(ca);
             p.readInt();
             p.readInt();
@@ -360,58 +325,55 @@ public class LGEQualcommRIL extends QualcommNoSimReadyRIL implements CommandsInt
 
         IccCardApplication application = status.getApplication(appIndex);
         mAid = application.aid;
+        mPinState = (application.pin1 == IccCardStatus.PinState.PINSTATE_DISABLED || 
+                     application.pin1 == IccCardStatus.PinState.PINSTATE_UNKNOWN) ? 0 : 1;
 
         return status;
     }
 
     @Override
-    protected Object
-    responseDataCallList(Parcel p) {
-        int num;
-        ArrayList<DataCallState> response;
+    protected DataCallState getDataCallState(Parcel p, int version) {
+        DataCallState dataCall = new DataCallState();
 
-        num = p.readInt();
-        response = new ArrayList<DataCallState>(num);
+        boolean oldRil = needsOldRilFeature("datacall");
 
-        for (int i = 0; i < num; i++) {
-            DataCallState dataCall = new DataCallState();
+        if (!oldRil)
+           return super.getDataCallState(p, version);
 
-            dataCall.cid = p.readInt();
-            dataCall.active = p.readInt();
-            dataCall.type = p.readString();
-            dataCall.apn = p.readString();
-            dataCall.address = p.readString();
-            p.readInt(); // RadioTechnology
-            p.readInt(); // inactiveReason
-            response.add(dataCall);
+        dataCall.version = 3; // was dataCall.version = version;
+        dataCall.cid = p.readInt();
+        dataCall.active = p.readInt();
+        dataCall.type = p.readString();
+        p.readString(); // apn
+        String addresses = p.readString();
+        if (!TextUtils.isEmpty(addresses)) {
+            dataCall.addresses = addresses.split(" ");
         }
+        dataCall.ifname = "rmnet0";
+        p.readInt(); // RadioTechnology
+        p.readInt(); // inactiveReason
 
-        return response;
+        dataCall.dnses = new String[2];
+        dataCall.dnses[0] = SystemProperties.get("net."+dataCall.ifname+".dns1");
+        dataCall.dnses[1] = SystemProperties.get("net."+dataCall.ifname+".dns2");
+
+        return dataCall;
     }
 
     @Override
-    protected Object
-    responseNetworkInfos(Parcel p) {
-        String strings[] = (String [])responseStrings(p);
-        ArrayList<NetworkInfo> ret;
+    public void
+    getBasebandVersion (Message response) {
+        if (SystemProperties.get("ro.cm.device").indexOf("e73") == 0) {
+            /* This model wants a RIL_REQUEST_GET_MODEM_VERSION */
+            RILRequest rr
+                = RILRequest.obtain(220, response);
 
-        if (strings.length % 5 != 0) {
-            throw new RuntimeException(
-                "RIL_REQUEST_QUERY_AVAILABLE_NETWORKS: invalid response. Got "
-                + strings.length + " strings, expected multible of 5");
+            if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
+
+            send(rr);
+        } else {
+            super.getBasebandVersion(response);
         }
-
-        ret = new ArrayList<NetworkInfo>(strings.length / 5);
-
-        for (int i = 0 ; i < strings.length ; i += 5) {
-            ret.add (
-                new NetworkInfo(
-                    strings[i+0],
-                    strings[i+1],
-                    strings[i+2],
-                    strings[i+3]));
-        }
-
-        return ret;
     }
+
 }
