@@ -93,12 +93,12 @@ PRODUCT_PACKAGES += \
     copybit.msm7x27 \
     hwcomposer.msm7x27
 
-# Media (no support for msm7x27 in JB)
-#PRODUCT_PACKAGES += \
-#    libstagefrighthw \
-#    libmm-omxcore \
-#    libOmxCore \
-#    libdivxdrmdecrypt
+# Media
+PRODUCT_PACKAGES += \
+    libstagefrighthw \
+    libmm-omxcore \
+    libOmxCore \
+    libdivxdrmdecrypt
 
 # Misc
 PRODUCT_PACKAGES += \
