@@ -20,13 +20,18 @@ ro.telephony.call_ring.multiple=false
 ro.telephony.call_ring.delay=3000
 
 
-ro.telephony.ril.v3=signalstrength,skipbrokendatacall,facilitylock,datacall,icccardstatus,1
+#ro.telephony.ril.v3=signalstrength,skipbrokendatacall,facilitylock,datacall,icccardstatus,1
+ro.telephony.ril.v3=skipCdmaSubcription 
 mobiledata.interfaces=rmnet0,rmnet1,rmnet2
 ril.subscription.types=NV,RUIM
 ro.telephony.ril_class=QualcommSharedRIL
 
 ro.bt.bdaddr_path=/data/misc/bd_addr
 
+# Wifi
+interfacewifi.interface=wlan0
+wifi.supplicant_scan_interval=180
+#wifi.ap.interface=athap0
 # See also: init.qcom.usb.rc and init.qcom.post_boot.sh
 persist.sys.usb.config=mass_storage,adb
 
@@ -39,6 +44,12 @@ persist.sys.use_dithering=2
 ro.opengles.version=131072
 
 ro.sf.lcd_density=160
+
+# Qualcomm
+debug.qctwa.statusbar=1
+debug.qctwa.preservebuf=1
+com.qc.hardware=true
+debug.enabletr=false
 
 # dalvik options
 dalvik.vm.checkjni=0

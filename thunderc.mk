@@ -36,6 +36,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 PRODUCT_PACKAGES += \
     LiveWallpapers \
+	Trebuchet \
     LiveWallpapersPicker \
     VisualizationWallpapers \
     librs_jni
@@ -56,11 +57,15 @@ CDMA_CARRIER_NUMERIC := 310120
 
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.com.google.clientidbase=$(CDMA_GOOGLE_BASE) \
-    ro.cdma.home.operator.alpha=$(CDMA_CARRIER_ALPHA) \
-    ro.cdma.home.operator.numeric=$(CDMA_CARRIER_NUMERIC) \
-    gsm.sim.operator.alpha=$(CDMA_CARRIER_ALPHA) \
-    gsm.sim.operator.numeric=$(CDMA_CARRIER_NUMERIC) \
-    gsm.operator.alpha=$(CDMA_CARRIER_ALPHA) \
-    gsm.operator.numeric=$(CDMA_CARRIER_NUMERIC)
+	ro.com.google.clientidbase=android-sprint-us \
+    ro.com.google.locationfeatures=1 \
+    ro.cdma.home.operator.numeric=310120 \
+    ro.cdma.home.operator.alpha=Sprint \
+    gsm.sim.operator.alpha = sprint \
+    gsm.sim.operator.numeric = 310120 \
+    gsm.sim.operator.iso-country = us \
+    gsm.operator.alpha = sprint \
+    gsm.operator.numeric = 310120 \
+    gsm.operator.iso-country = us
+
 

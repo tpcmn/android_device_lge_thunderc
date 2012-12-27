@@ -1,7 +1,19 @@
 # inherit qcom init
 import init.qcom.rc
 
+on early-boot
+    exec /sbin/chargerlogo
+	
+on init
+    # Add permissions for camera access
+    chmod 0666 /dev/msm_camera/config0
+    chmod 0666 /dev/msm_camera/control0
+    chmod 0666 /dev/msm_camera/frame0
+    chmod 0666 /dev/msm_camera/pic0	
+	
 on boot
+    mkdir /data/radio 0770 radio radio
+    chmod 2770 /data/radio
 
     ## VIBRATOR
     chmod 0660 /sys/class/timed_output/vibrator/amp
@@ -10,7 +22,7 @@ on boot
 	mkdir /data/amit 0777 ami304d ami304d
 	chmod 0666 /data/amit/AMI306_Config.ini
     chmod 0666 /data/amit/AMI306_Config2.ini
-
+	
     ## PROXIMITY SENSOR
 	chown compass system /sys/bus/i2c/drivers/proximity_gp2ap/4-0044/enable
 	chmod 0660 /sys/bus/i2c/drivers/proximity_gp2ap/4-0044/enable
@@ -19,9 +31,56 @@ on boot
     chmod 0664 /sys/class/leds/lcd-backlight/alc
     chown system system /sys/devices/platform/mddi_hitachi_hvga.10/lcd_onoff
     chmod 0664 /sys/devices/platform/mddi_hitachi_hvga.10/lcd_onoff
+	
+	    # allow interfaces to get IPv6 address when tethering is enabled
+    write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
+    write /proc/sys/net/ipv6/conf/rmnet1/accept_ra 2
+    write /proc/sys/net/ipv6/conf/rmnet2/accept_ra 2
+	
+on fs
+    # framebuffer permission for copybit
+    chmod 0666 /dev/graphics/fb0	
+	
+on post-fs
 
+    # nv
+    mkdir /data/nv
+    chown system system /data/nv
+    chmod 0711 /data/nv
+	chmod 0771 /cache
+
+    # wifi
+    chmod 0777 /data/misc/wifi/config_mac
+    mkdir /data/audioprop 0777 system system
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    setprop wifi.supplicant_scan_interval 20
+    setprop wifi.interface wlan0
+    mkdir /data/misc/dhcp 0777 system system	
+
+service chargerlogo /charger
+    class charger
+    user root
+
+on property:init.svc.chargerlogo=running
+    setprop sys.usb.config adb
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave	
+	
 service ami304d /system/bin/ami304d
     class main
     user compass
     group system
+	
+service qcom-sh /system/bin/sh /init.qcom.sh
+    class core
+    user root
+    oneshot
+
+service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
+    class main
+    user root
+    disabled
+    oneshot
+
+on property:init.svc.bootanim=stopped
+    start qcom-post-boot
 
