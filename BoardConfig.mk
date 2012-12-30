@@ -7,10 +7,11 @@ BOARD_KERNEL_CMDLINE := mem=471M console=ttyMSM2,115200n8 androidboot.hardware=t
 TARGET_BOOTLOADER_BOARD_NAME := thunderc
 TARGET_OTA_ASSERT_DEVICE := thunderc,LS670,VM670
 
-USE_CAMERA_STUB := false
+USE_CAMERA_STUB := true
 
 TARGET_PROVIDES_LIBAUDIO := true
 # Enable ICS-backwards compatibility    
 COMMON_GLOBAL_CFLAGS += -DQCOM_ICS_COMPAT
 # Disable PIE since it breaks ICS camera blobs
 TARGET_DISABLE_ARM_PIE := true
+BOARD_USES_LEGACY_CAMERA := true
