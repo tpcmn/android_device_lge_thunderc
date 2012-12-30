@@ -1,11 +1,11 @@
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_small.mk)
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
@@ -37,6 +37,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/configs/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
+	$(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/nvram.txt:system/etc/wl/nvram.txt \
     $(LOCAL_PATH)/configs/vold.fstab:system/etc/vold.fstab \
     $(LOCAL_PATH)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
@@ -58,7 +59,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     com.qc.hdmi_out=false \
     debug.sf.hw=1 \
     debug.enabletr=false \
-    debug.composition.type=mdp \
+    debug.composition.type=gpu \
     debug.gr.numframebuffers=2 \
     debug.qctwa.statusbar=1 \
     debug.qctwa.preservebuf=1 \
@@ -111,8 +112,8 @@ PRODUCT_PACKAGES += \
     lgapversion
     
 # OTA Updater
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/prebuilt/OTAUpdater.apk:system/app/OTAUpdater.apk
+#PRODUCT_COPY_FILES += \
+#	$(LOCAL_PATH)/prebuilt/OTAUpdater.apk:system/app/OTAUpdater.apk
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -130,13 +131,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
-DEVICE_PACKAGE_OVERLAYS += device/lge/p500/overlay
+DEVICE_PACKAGE_OVERLAYS += device/lge/thunderc/overlay
 
 # OTA Updated Config
-OTA_VERSION = 0.1
-OTA_BUILD_TIME = $(shell date +%Y%m%d-%k%M)
+#OTA_VERSION = 0.1
+#OTA_BUILD_TIME = $(shell date +%Y%m%d-%k%M)
 
-PRODUCT_PROPERTY_OVERRIDES += \
-	otaupdater.otaid=slimbeanJBP500 \
-	otaupdater.otatime=$(OTA_BUILD_TIME) \
-	otaupdater.otaver=$(OTA_VERSION)
+#PRODUCT_PROPERTY_OVERRIDES += \
+#	otaupdater.otaid=slimbeanJBL \
+#	otaupdater.otatime=$(OTA_BUILD_TIME) \
+#	otaupdater.otaver=$(OTA_VERSION)

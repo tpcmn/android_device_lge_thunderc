@@ -1,3 +1,6 @@
+ro.lge.proximity.delay=100
+ro.ril.def.preferred.network=4
+ro.telephony.default_network=4
 rild.libpath=/system/lib/libril-qc-1.so
 rild.libargs=-d /dev/smd0
 persist.rild.nitz_plmn=
@@ -10,14 +13,25 @@ persist.rild.nitz_short_ons_1=
 persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
 
+persist.cust.tel.eons=1
+DEVICE_PROVISIONED=1
 ro.telephony.call_ring.multiple=false
 ro.telephony.call_ring.delay=3000
 
-ro.telephony.default_network=0
+
 ro.telephony.ril.v3=signalstrength,skipbrokendatacall,facilitylock,datacall,icccardstatus,1
+#ro.telephony.ril.v3=skipCdmaSubcription
 mobiledata.interfaces=rmnet0,rmnet1,rmnet2
+#ril.subscription.types=NV,RUIM
+#ro.telephony.ril_class=LGEQualcommRIL
+#persist.radio.cdma.min=0
+#ro.cdma.homesystem=64,65,76,77,78,79,80,81,82,83 
+#ro.cdma.otaspnumschema=SELC,1,80,99
 
 ro.bt.bdaddr_path=/data/misc/bd_addr
+
+wifi.interface=wlan0
+wifi.supplicant_scan_interval=120
 
 # see also: init.qcom.usb.rc and init.qcom.post_boot.sh
 persist.sys.usb.config=mass_storage,adb

@@ -35,7 +35,7 @@
 
 extern "C" {
 #include <linux/android_pmem.h>
-#include <linux/msm_camera.h>
+#include <msm_camera.h>
 }
 
 struct str_map {
@@ -43,13 +43,13 @@ struct str_map {
     int val;
 };
 
-typedef enum{
-    TARGET_MSM7227,
+typedef enum {
+
     TARGET_MSM7625,
     TARGET_MSM7627,
     TARGET_QSD8250,
     TARGET_MSM7630,
-    TARGET_MAX,
+    TARGET_MAX
 }targetType;
 
 struct target_map {
@@ -612,7 +612,7 @@ private:
     pthread_t mFrameThread;
     pthread_t mVideoThread;
     pthread_t mSnapshotThread;
-    pthread_t mCamConfigThread;
+
 
     common_crop_t mCrop;
 

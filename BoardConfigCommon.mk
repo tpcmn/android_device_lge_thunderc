@@ -14,10 +14,11 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_ICS_COMPAT
 TARGET_NO_HW_VSYNC := true
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/lge/msm7x27
+#TARGET_KERNEL_SOURCE := kernel/lge/msm7x27
+TARGET_PREBUILT_KERNEL := device/lge/thunderc/kernels/test21/zImage
 # Copy LG Kernel Headers here if necessary, DON'T use Adroid auto-generated headers
-TARGET_SPECIFIC_HEADER_PATH := device/lge/p500/include
-BOARD_KERNEL_CMDLINE := mem=471M console=ttyMSM2,115200n8 androidboot.hardware=qcom no_console_suspend
+TARGET_SPECIFIC_HEADER_PATH := device/lge/thunderc/include
+BOARD_KERNEL_CMDLINE := mem=471M console=ttyMSM2,115200n8 androidboot.hardware=qcom 
 
 # CPU & Platform
 ARCH_ARM_HAVE_VFP := true
@@ -45,16 +46,16 @@ TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Fix this up by examining /proc/mtd on a running device
-BOARD_KERNEL_BASE := 0x12800000
+BOARD_KERNEL_BASE := 0x12200000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00440000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00500000
+BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00700000
 # Ignore that this is much larger than the 190Mb allowed.
 # It's only for resolving build issues with the system.img
 # being too big. It will still be only about 130MB MAXIMUM.
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0xDC00000
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0c780000
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00700000
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0a4e0000
 BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0xDC00000
 
 # Enable OpenGL Hardware Acceleration
 # msm7x27: no support for overlay, bypass, or c2d
@@ -66,7 +67,7 @@ BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBS := true
 BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
 BOARD_USE_SKIA_LCDTEXT := true
-BOARD_EGL_CFG := device/lge/p500/configs/egl.cfg
+BOARD_EGL_CFG := device/lge/thunderc/configs/egl.cfg
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
 COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK
 
@@ -87,14 +88,26 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
 # RIL
-BOARD_PROVIDES_LIBRIL := false
+BOARD_PROVIDES_LIBRIL := true
+BOARD_CDMA_NETWORK := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
 
 # Mass Storage for ICS
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
-BOARD_UMS_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun/file
+#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
+#BOARD_UMS_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun/file
+BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/thunderc/prebuilt/UsbController.cpp
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
+##TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
+
+#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
+#BOARD_UMS_LUNFILE := /sys/class/android_usb/android0/f_mass_storage/lun/file
+BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
+#BOARD_SDCARD_INTERNAL_DEVICE := /dev/block/mmcblk0p1
+BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/vold/179:1
+BOARD_SDEXT_DEVICE := /dev/block/vold/179:2
 
 # Touch screen compatibility for ICS
 BOARD_USE_LEGACY_TOUCHSCREEN := true
@@ -112,7 +125,7 @@ WIFI_DRIVER_FW_PATH_STA         := "/system/etc/wl/rtecdc.bin"
 WIFI_DRIVER_FW_PATH_AP          := "/system/etc/wl/rtecdc-apsta.bin"
 
 # OTA script
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/lge/p500/releasetools/ota_from_target_files
+#TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/lge/thunderc/releasetools/ota_from_target_files
 
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
@@ -120,3 +133,4 @@ WITH_DEXPREOPT := false
 
 # Save some space on the device
 MINIMAL_FONT_FOOTPRINT := true
+BOARD_GLOBAL_CFLAGS += -DBOARD_CHARGING_CMDLINE_NAME='"lge.reboot"' -DBOARD_CHARGING_CMDLINE_VALUE='"pwroff"'
