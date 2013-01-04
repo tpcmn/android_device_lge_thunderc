@@ -20,11 +20,11 @@ ro.telephony.call_ring.multiple=false
 ro.telephony.call_ring.delay=3000
 
 
-#ro.telephony.ril.v3=signalstrength,skipbrokendatacall,facilitylock,datacall,icccardstatus,1
-ro.telephony.ril.v3=skipCdmaSubcription 
+ro.telephony.ril.v3=signalstrength,skipbrokendatacall,facilitylock,datacall,icccardstatus,1
+#ro.telephony.ril.v3=skipCdmaSubcription 
 mobiledata.interfaces=rmnet0,rmnet1,rmnet2
-ril.subscription.types=NV,RUIM
-ro.telephony.ril_class=QualcommSharedRIL
+#ril.subscription.types=NV,RUIM
+#ro.telephony.ril_class=QualcommSharedRIL
 
 ro.bt.bdaddr_path=/data/misc/bd_addr
 
