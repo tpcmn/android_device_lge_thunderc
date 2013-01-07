@@ -28,8 +28,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ueventd.thunderc.rc:root/ueventd.thunderc.rc
 
 # P500 bluetooth vendor configuration 
-PRODUCT_COPY_FILES += \ 
-    $(LOCAL_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 	
 # thunderc Audio
 #PRODUCT_PACKAGES += \
@@ -50,9 +50,9 @@ PRODUCT_PACKAGES += \
 #$(call inherit-product, build/target/product/full.mk)
 $(call inherit-product, vendor/lge/thunderc/thunderc-vendor.mk) 
 $(call inherit-product, device/lge/msm7x27-common/device.mk)
-$(call inherit-product, vendor/lge/msm7x27-common/msm7x27-common-vendor-blobs.mk) 
+$(call inherit-product, vendor/lge/msm7x27-common/msm7x27-common-vendor-blobs.mk)
 # Inherit languages 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_small.mk) 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_small.mk)
 
 PRODUCT_NAME := thunderc
 PRODUCT_DEVICE := thunderc
