@@ -1,12 +1,19 @@
 # Most specific first. 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk) 
 
+LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/test21
+LOCAL_KERNEL_MODULES := librasdioif.ko tun.ko wireless.ko
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL_DIR)/zImage:kernel
+
+PRODUCT_COPY_FILES += \
+    $(foreach f,$(LOCAL_KERNEL_MODULES),$(LOCAL_KERNEL_DIR)/$(f):system/lib/modules/$(f)) \
+
 # thunderc configs
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thunder_keypad.kl:system/usr/keylayout/thunder_keypad.kl \
     $(LOCAL_PATH)/configs/thunder_keypad.kcm.bin:system/usr/keychars/thunder_keypad.kcm.bin \
-    $(LOCAL_PATH)/configs/wireless.ko:system/lib/modules/wireless.ko \
-    $(LOCAL_PATH)/configs/librasdioif.ko:system/lib/modules/librasdioif.ko \
 	$(LOCAL_PATH)/configs/touch_mcs6000.idc:system/usr/idc/touch_mcs6000.idc \
 	$(LOCAL_PATH)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
 	$(LOCAL_PATH)/configs/40a2sd:system/etc/init.d/40a2sd \
@@ -14,7 +21,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/999youtube:system/etc/init.d/999youtube \
 	$(LOCAL_PATH)/configs/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
 #	$(LOCAL_PATH)/configs/12Seeder:system/etc/init.d/12Seeder \
-#	$(LOCAL_PATH)/configs/rngd:system/xbin/rngd \	
+#	$(LOCAL_PATH)/configs/rngd:system/xbin/rngd \
+#    $(LOCAL_PATH)/configs/wireless.ko:system/lib/modules/wireless.ko \
+#	$(LOCAL_PATH)/configs/tun.ko:system/lib/modules/tun.ko \
+ #   $(LOCAL_PATH)/configs/librasdioif.ko:system/lib/modules/librasdioif.ko \	
+
 PRODUCT_COPY_FILES += device/lge/thunderc/configs/default.prop:root/default.prop 
 PRODUCT_COPY_FILES += device/lge/thunderc/configs/thunderc_keypad.kl:system/usr/keylayout/thunderc_keypad.kl 
 PRODUCT_COPY_FILES += device/lge/thunderc/configs/thunderc_keypad.kcm.bin:system/usr/keychars/thunderc_keypad.kcm.bin 
