@@ -18,7 +18,6 @@ PRODUCT_CHARACTERISTICS := phone
 # Release name and versioning
 PRODUCT_RELEASE_NAME := LS670
 PRODUCT_VERSION_DEVICE_SPECIFIC :=
--include vendor/cyanogen/products/common_versions.mk
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=lge_LS670 \
     BUILD_FINGERPRINT="lge/LS670/LS670:2.3.3/GRI40/LG-LS670-V20g.19C11F164C:user/release-keys" \
