@@ -10,12 +10,11 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/touch_mcs6000.idc:system/usr/idc/touch_mcs6000.idc \
 	$(LOCAL_PATH)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
 	$(LOCAL_PATH)/configs/40a2sd:system/etc/init.d/40a2sd \
-	$(LOCAL_PATH)/configs/12Seeder:system/etc/init.d/12Seeder \
-	$(LOCAL_PATH)/configs/rngd:system/xbin/rngd \
 	$(LOCAL_PATH)/configs/05mountsd:system/etc/init.d/05mountsd \
     $(LOCAL_PATH)/configs/999youtube:system/etc/init.d/999youtube \
 	$(LOCAL_PATH)/configs/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
-	
+#	$(LOCAL_PATH)/configs/12Seeder:system/etc/init.d/12Seeder \
+#	$(LOCAL_PATH)/configs/rngd:system/xbin/rngd \	
 PRODUCT_COPY_FILES += device/lge/thunderc/configs/default.prop:root/default.prop 
 PRODUCT_COPY_FILES += device/lge/thunderc/configs/thunderc_keypad.kl:system/usr/keylayout/thunderc_keypad.kl 
 PRODUCT_COPY_FILES += device/lge/thunderc/configs/thunderc_keypad.kcm.bin:system/usr/keychars/thunderc_keypad.kcm.bin 
