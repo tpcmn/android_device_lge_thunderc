@@ -2,7 +2,8 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk) 
 
 LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/test21
-LOCAL_KERNEL_MODULES := librasdioif.ko tun.ko wireless.ko
+LOCAL_KERNEL_MODULES := librasdioif.ko wireless.ko
+#LOCAL_KERNEL_MODULES := librasdioif.ko tun.ko wireless.ko
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL_DIR)/zImage:kernel
