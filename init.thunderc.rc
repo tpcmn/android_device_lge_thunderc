@@ -39,3 +39,9 @@ service ami304d /system/bin/ami304d
     user compass
     group system
 	
+service hostapd /system/bin/hostapd /data/misc/wifi/hostapd.conf 
+    socket hostapd_w10.10 dgram 660 wifi wifi 
+    group wifi inet 
+    oneshot 
+    disabled 
+
