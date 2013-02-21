@@ -83,6 +83,7 @@ CDMA_CARRIER_NUMERIC := 310120
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.cdma.home.operator.numeric=310120 \
+	ro.com.google.clientidbase=android-sprint-us \
     ro.cdma.home.operator.alpha=Sprint \
     gsm.sim.operator.alpha = sprint \
     gsm.sim.operator.numeric = 310120 \
