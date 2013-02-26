@@ -38,6 +38,14 @@ persist.sys.usb.config=mass_storage,adb
 # Enable dithering (always)
 persist.sys.use_dithering=2
 
+# System and Misc.
+ro.tether.denied=false
+sys.checkfs.fat=false
+
+# A-GPS
+ro.ril.def.agps.mode=2
+ro.ril.def.agps.feature=1
+
 # Force use of GPU on 2D rendering
 # persist.sys.force_hw_ui=true
 
@@ -45,20 +53,25 @@ ro.opengles.version=131072
 
 ro.sf.lcd_density=160
 
+dev.sfbootcomplete=0
+ro.com.google.locationfeatures=1
+ro.config.play.bootsound=0
+ro.com.android.wifi-watchlist=GoogleGuest
 
 # dalvik options
 dalvik.vm.checkjni=0
 dalvik.vm.dexopt-data-only=1
-dalvik.vm.dexopt-flags=m=y
-dalvik.vm.execution-mode=int:jit
+#dalvik.vm.dexopt-flags=m=y
+dalvik.vm.dexopt-flags=v=a,o=v,m=y,u=y
+dalvik.vm.execution-mode=int:fast
 dalvik.vm.heapstartsize=5m
-dalvik.vm.heapgrowthlimit=36m
+dalvik.vm.heapgrowthlimit=24m
 dalvik.vm.heapsize=64m
 dalvik.vm.heaptargetutilization=0.75
 dalvik.vm.heapminfree=512k
 dalvik.vm.heapmaxfree=2m
 dalvik.vm.lockprof.threshold=500
-dalvik.vm.verify-bytecode=false
+#dalvik.vm.verify-bytecode=false
 
 ro.cdma.voicemail.number=mine
 ro.setupwizard.enable_bypass=1

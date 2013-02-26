@@ -46,6 +46,12 @@ PRODUCT_COPY_FILES += \
 #PRODUCT_PACKAGES += \
     audio_policy.thunderc \
     audio.primary.thunderc
+	
+## Wifi
+PRODUCT_PACKAGES += \
+    abtfilt \
+    wlan_tool \
+    wmiconfig	
 
 # Live wallpapers
 PRODUCT_COPY_FILES += packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
@@ -82,6 +88,7 @@ CDMA_CARRIER_NUMERIC := 310120
 
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.com.google.clientidbase=android-sprint-us \
     ro.cdma.home.operator.numeric=310120 \
     ro.cdma.home.operator.alpha=Sprint \
     gsm.sim.operator.alpha = sprint \
