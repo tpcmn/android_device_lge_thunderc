@@ -39,8 +39,8 @@ persist.sys.usb.config=mass_storage,adb
 persist.sys.use_dithering=2
 
 # System and Misc.
-ro.tether.denied=false
-sys.checkfs.fat=false
+#ro.tether.denied=false
+#sys.checkfs.fat=false
 
 # A-GPS
 ro.ril.def.agps.mode=2
@@ -59,9 +59,9 @@ dalvik.vm.checkjni=0
 dalvik.vm.dexopt-data-only=1
 #dalvik.vm.dexopt-flags=m=y
 dalvik.vm.dexopt-flags=v=a,o=v,m=y,u=y
-dalvik.vm.execution-mode=int:fast
+dalvik.vm.execution-mode=int:jit
 dalvik.vm.heapstartsize=5m
-dalvik.vm.heapgrowthlimit=36m
+dalvik.vm.heapgrowthlimit=24m
 dalvik.vm.heapsize=64m
 dalvik.vm.heaptargetutilization=0.75
 dalvik.vm.heapminfree=512k
@@ -106,7 +106,7 @@ ro.max.fling_velocity=4000
 persist.sys.strictmode.visual=false
 #Disable_ADB_Notification_Icon
 persist.adb.notify=0
-dalvik.vm.execution-mode=int:jit
+#dalvik.vm.execution-mode=int:jit
 windowsmgr.max_events_per_sec=150
 ro.config.vc_call_vol_steps=15
 # improve image and video quality (when taking pics and vids from cam and showing them in gallery)

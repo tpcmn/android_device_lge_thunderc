@@ -5,8 +5,8 @@ $(call inherit-product, device/lge/thunderc/thunderc.mk)
 # Boot Animation
 TARGET_SCREEN_HEIGHT := 480
 TARGET_SCREEN_WIDTH := 320
-
-$(call inherit-product, vendor/cm/config/mini.mk)
+$(call inherit-product, vendor/cm/config/common_mini_phone.mk)
+##$(call inherit-product, vendor/cm/config/mini.mk)
 
 PRODUCT_NAME := cm_thunderc
 PRODUCT_BRAND := lge
