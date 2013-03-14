@@ -44,8 +44,8 @@ PRODUCT_COPY_FILES += \
 	
 # thunderc Audio
 #PRODUCT_PACKAGES += \
-    audio_policy.thunderc \
-    audio.primary.thunderc
+#    audio_policy.thunderc \
+#    audio.primary.thunderc
 
 # Live wallpapers
 PRODUCT_COPY_FILES += packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
