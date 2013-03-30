@@ -62,7 +62,7 @@ dalvik.vm.dexopt-flags=v=a,o=v,m=y,u=y
 dalvik.vm.execution-mode=int:jit
 dalvik.vm.heapstartsize=5m
 dalvik.vm.heapgrowthlimit=24m
-dalvik.vm.heapsize=64m
+dalvik.vm.heapsize=48m
 dalvik.vm.heaptargetutilization=0.75
 dalvik.vm.heapminfree=512k
 dalvik.vm.heapmaxfree=2m
