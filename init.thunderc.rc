@@ -1,8 +1,8 @@
 # inherit qcom init
 import init.qcom.rc
 
-#on early-boot
-#    exec /sbin/chargerlogo
+on early-boot
+    exec /sbin/chargerlogo
 	
 on early-init
     mkdir /storage 0755 system sdcard_r
@@ -58,14 +58,14 @@ service ami304d /system/bin/ami304d
     user compass
     group system
 	
-#service chargerlogo /charger
-#    class charger
-#    user root
-service chargerlogo /sbin/checkbootreason
+service chargerlogo /charger
     class charger
     user root
-    group root
-    oneshot
+#service chargerlogo /sbin/checkbootreason
+#    class charger
+#    user root
+#    group root
+#    oneshot
 	
 on property:init.svc.chargerlogo=running
     setprop sys.usb.config adb
