@@ -46,8 +46,11 @@ PRODUCT_COPY_FILES += \
 	
 # thunderc Audio
 #PRODUCT_PACKAGES += \
-    audio_policy.thunderc \
-    audio.primary.thunderc
+#    audio_policy.thunderc \
+#    audio.primary.thunderc
+	
+#P500_SPEAKER_IN_CALL_FIX 
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
 
 # Live wallpapers
 PRODUCT_COPY_FILES += packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
