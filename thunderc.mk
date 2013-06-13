@@ -37,6 +37,8 @@ PRODUCT_COPY_FILES += device/lge/thunderc/configs/Generic.kl:system/usr/keylayou
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.thunderc.rc:root/init.thunderc.rc \
     $(LOCAL_PATH)/ueventd.thunderc.rc:root/ueventd.thunderc.rc
+	
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/checkbootreason:root/sbin/checkbootreason 
 
 # P500 bluetooth vendor configuration 
 PRODUCT_COPY_FILES += \
@@ -70,7 +72,6 @@ PRODUCT_DEVICE := thunderc
 PRODUCT_MODEL := LG-LS670
 PRODUCT_MANUFACTURER := LGE
 
-PRODUCT_AAPT_CONFIG := normal mdpi 
 PRODUCT_AAPT_PREF_CONFIG := mdpi 
 $(call inherit-product, device/mdpi-common/mdpi.mk)
  
