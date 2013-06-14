@@ -29,8 +29,8 @@ mobiledata.interfaces=rmnet0,rmnet1,rmnet2
 ro.bt.bdaddr_path=/data/misc/bd_addr
 
 # Wifi
-wifi.interface=wlan0
-wifi.supplicant_scan_interval=180
+#wifi.interface=wlan0
+#wifi.supplicant_scan_interval=180
 #wifi.ap.interface=athap0
 # See also: init.qcom.usb.rc and init.qcom.post_boot.sh
 persist.sys.usb.config=mass_storage,adb
