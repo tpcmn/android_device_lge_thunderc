@@ -1,14 +1,14 @@
 # Most specific first. 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk) 
 
-LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/test21
-LOCAL_KERNEL_MODULES := librasdioif.ko wireless.ko
+#LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/test21
+#LOCAL_KERNEL_MODULES := librasdioif.ko wireless.ko
 #LOCAL_KERNEL_MODULES := librasdioif.ko tun.ko wireless.ko
 
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL_DIR)/zImage:kernel
 
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
     $(foreach f,$(LOCAL_KERNEL_MODULES),$(LOCAL_KERNEL_DIR)/$(f):system/lib/modules/$(f)) \
 
 # thunderc configs
@@ -56,8 +56,6 @@ PRODUCT_COPY_FILES += $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_p
 PRODUCT_COPY_FILES += packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 PRODUCT_PACKAGES += \
     LiveWallpapers \
-	Phone \
-	Trebuchet \
     LiveWallpapersPicker \
     VisualizationWallpapers \
     librs_jni
