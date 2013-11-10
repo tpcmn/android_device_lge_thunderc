@@ -19,6 +19,8 @@ on property:dev.bootcomplete=1
     stop dhcp-service
     start dhcp-service
 	
+on fs 
+   mount_all /fstab.p500 
 	
 on boot
 

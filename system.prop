@@ -35,9 +35,6 @@ ro.bt.bdaddr_path=/data/misc/bd_addr
 # See also: init.qcom.usb.rc and init.qcom.post_boot.sh
 persist.sys.usb.config=mass_storage,adb
 
-# Enable dithering (always)
-persist.sys.use_dithering=2
-
 # System and Misc.
 ro.tether.denied=false
 sys.checkfs.fat=false
@@ -55,18 +52,16 @@ ro.sf.lcd_density=160
 
 
 # dalvik options
-dalvik.vm.checkjni=0
+dalvik.vm.checkjni=false
 dalvik.vm.dexopt-data-only=1
-#dalvik.vm.dexopt-flags=m=y
 dalvik.vm.dexopt-flags=v=a,o=v,m=y,u=y
 dalvik.vm.heapstartsize=5m
 dalvik.vm.heapgrowthlimit=36m
 dalvik.vm.heapsize=64m
-dalvik.vm.heaptargetutilization=0.75
+dalvik.vm.heaptargetutilization=0.25
 dalvik.vm.heapminfree=512k
 dalvik.vm.heapmaxfree=2m
-dalvik.vm.lockprof.threshold=500
-#dalvik.vm.verify-bytecode=false
+
 
 ro.cdma.voicemail.number=mine
 ro.setupwizard.enable_bypass=1
