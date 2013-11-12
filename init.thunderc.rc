@@ -20,7 +20,7 @@ on property:dev.bootcomplete=1
     start dhcp-service
 	
 on fs 
-   mount_all /fstab.p500 
+   mount_all /fstab.thunderc
 	
 on boot
 
