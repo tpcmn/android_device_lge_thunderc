@@ -1,2 +1,1 @@
-add_lunch_combo cm_thunderc-eng
-add_lunch_combo cm_thunderc-userdebug
+

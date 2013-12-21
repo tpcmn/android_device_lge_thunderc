@@ -3,6 +3,7 @@
 
 TARGET_KERNEL_CONFIG := aaathunderc-test1_defconfig
 BOARD_KERNEL_CMDLINE := mem=471M console=ttyMSM2,115200n8 androidboot.hardware=thunderc
+#BOARD_KERNEL_CMDLINE := mem=471M console=ttyMSM2,115200n8 androidboot.hardware=thunderc androidboot.selinux=permissive 
 COMMON_GLOBAL_CFLAGS += -DBOARD_CHARGING_CMDLINE_NAME='"lge.reboot"' -DBOARD_CHARGING_CMDLINE_VALUE='"pwroff"'
 TARGET_BOOTLOADER_BOARD_NAME := thunderc
 TARGET_OTA_ASSERT_DEVICE := thunderc,LS670,VM670,thunderc_LS670,thunderc_VM670
